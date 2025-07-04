@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Ho;Ten;;;            *# Tên (Họ; Tên; Tên đệm; Tiền tố; Hậu tố) *#
+FN:Ten Ho             *# Tên đầy đủ hiển thị *#
+ORG:Ten Cong ty       *# Tên công ty *#
+TITLE:Chuc danh       *# Chức danh (nếu cần) *#
+TEL;TYPE=CELL:+84 912 345 678    *# Số ĐT, kèm nhãn loại (di động, công ty, etc.) *#
+EMAIL:email@vidu.com             *# Địa chỉ email *#
+ADR;TYPE=WORK:;;123 Pho Mau;Ha Noi;;100000;Vietnam   *# Địa chỉ (theo thứ tự: ;;Đường;Thành phố;;Mã;Quốc gia) *#
+END:VCARD
