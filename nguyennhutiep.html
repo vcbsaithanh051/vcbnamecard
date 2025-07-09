@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <title>VCB NameCard</title>
   <link rel="icon" href="vcb-logo.png" type="image/png">
+
+  <!-- Font nghệ thuật -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -23,73 +25,66 @@
     /* === Banner === */
     .banner {
       background: url('z6543995508125_b47629561edb0f4025d661838d184499.jpg') center/cover no-repeat;
-      height: 600px;
+      height: 420px;
       position: relative;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      text-align: center;
+      padding-bottom: 40px;
     }
 
     .banner-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: white;
-    padding: 14px 30px;
-    background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
-    border-radius: 16px;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
-    animation: fadeInDown 0.8s ease-out;
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      color: white;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+      animation: fadeInDown 0.6s ease-out;
     }
-
 
     @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* === Avatar === */
-     .avatar {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 6px solid white;
-    object-fit: cover;
-    position: absolute;
-    top: 540px; /* điều chỉnh theo banner height */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    background-color: #fff;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 5px solid white;
+      object-fit: cover;
+      margin-top: -65px;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
     }
+
     .avatar:hover {
-    transform: translateX(-50%) scale(1.05);
+      transform: scale(1.05);
     }
 
     /* === Card container === */
     .info-container {
       background: white;
-      max-width: 500px;
-      margin: 100px auto 30px auto;
+      max-width: 480px;
+      margin: 0 auto 30px auto;
       padding: 80px 30px 30px 30px;
-      border-radius: 12px;
+      border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       position: relative;
-      z-index: 5;
       text-align: center;
     }
 
     .info-container h2 {
       color: #006c3f;
       margin-bottom: 6px;
+      font-size: 22px;
     }
 
     .info-container p {
@@ -146,11 +141,12 @@
     <div class="banner-text">Chào mừng đến với Vietcombank Chi nhánh Sài Thành</div>
   </div>
 
-  <!-- Avatar -->
-  <img src="z6543995514763_b0131da682690fd6cb0b8977b4e849ee.jpg" alt="Ảnh đại diện" class="avatar">
-
   <!-- Container Thông tin -->
   <div class="info-container">
+    <!-- Avatar -->
+    <img src="z6543995514763_b0131da682690fd6cb0b8977b4e849ee.jpg" alt="Ảnh đại diện" class="avatar">
+
+    <!-- Info -->
     <h2>Nguyễn Văn A</h2>
     <p>Chuyên viên Quan hệ khách hàng</p>
     <p><strong>Chi nhánh:</strong> Sài Thành</p>
