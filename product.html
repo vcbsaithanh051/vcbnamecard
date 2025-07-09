@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sản phẩm & Dịch vụ</title>
+  <link rel="icon" type="image/webp" href="Icon-Vietcombank.webp" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e6f7ef;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden; /* Ngăn trang web cuộn ngang ngoài ý muốn */
+    }
+    /* Header cố định trên cùng với logo */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background-color: #e6f7ef;
+      z-index: 1000;
+    }
+    .logo {
+      width: 30px;
+      height: auto;
+    }
+    /* Container cho các slide (cuộn ngang có snap) */
+    .slides-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;    /* Kích hoạt scroll snap ngang :contentReference[oaicite:6]{index=6} */
+      overscroll-behavior-x: contain;   /* Tránh cuộn quá đà ra khỏi container :contentReference[oaicite:7]{index=7} */
+      -webkit-overflow-scrolling: touch;/* Cuộn mượt trên iOS */
+      margin-top: 60px; /* chừa khoảng trống bên dưới header cố định */
+    }
+    /* Định dạng mỗi slide */
+    .slide {
+      scroll-snap-align: start;  /* Mỗi slide sẽ dừng ở mép bắt đầu khi snap :contentReference[oaicite:8]{index=8} */
+      flex: 0 0 100%;            /* Mỗi phần tử con chiếm 100% chiều rộng container */
+      width: 100%;
+      background-color: #e6f7ef;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .slide h1, .slide h2 {
+      color: #006c3f;
+      margin: 15px 0;
+    }
+    .slide h1 {
+      font-size: 26px;
+    }
+    .slide h2 {
+      font-size: 24px;
+    }
+    .slide p {
+      color: #006c3f;
+      font-size: 16px;
+      margin: 10px 20px;
+    }
+    /* Định dạng nút trên mỗi slide */
+    .btn-slide {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #009639;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+    .btn-slide:hover {
+      background-color: #007f2a;
+      transform: scale(1.02);
+    }
+    /* Đáp ứng trên màn hình nhỏ hơn 480px */
+    @media (max-width: 480px) {
+      .slide h1 { font-size: 22px; margin-top: 10px; }
+      .slide h2 { font-size: 20px; }
+      .btn-slide { font-size: 16px; padding: 12px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header cố định với logo góc trái trên cùng -->
+  <div class="header">
+    <img src="Icon-Vietcombank.webp" alt="VCB Logo" class="logo">
+  </div>
+
+  <!-- Container bao các slide nội dung -->
+  <div class="slides-container">
+    <!-- Slide 1: Giới thiệu chung -->
+    <section class="slide intro">
+      <h1><strong>Sản phẩm &amp; Dịch vụ Vietcombank</strong></h1>
+      <p>← Vuốt sang bên để xem các danh mục dịch vụ →</p>
+    </section>
+
+    <!-- Slide 2: Khách hàng Cá nhân -->
+    <section class="slide personal">
+      <!-- Biểu tượng khách hàng cá nhân (SVG) -->
+      <!-- SVG icon from Bootstrap Icons (MIT) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#009639" viewBox="0 0 16 16">
+        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 
+        8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664
+        C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 
+        1.664z"/>
+      </svg>
+      <h2>Dành cho Khách hàng Cá nhân</h2>
+      <a href="https://vietcombank.com.vn/vi-VN" class="btn-slide">Xem chi tiết</a>
+    </section>
+
+    <!-- Slide 3: Khách hàng Doanh nghiệp -->
+    <section class="slide business">
+      <!-- Biểu tượng khách hàng doanh nghiệp (SVG) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#009639" viewBox="0 0 16 16">
+        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 
+        4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 
+        3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 
+        .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15
+        l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 
+        7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+      </svg>
+      <h2>Dành cho Khách hàng Doanh nghiệp</h2>
+      <a href="https://vietcombank.com.vn/vi-VN/To-chuc/Doanh-Nghi%E1%BB%87p" class="btn-slide">Xem chi tiết</a>
+    </section>
+
+    <!-- Slide 4: Khách hàng Ưu tiên -->
+    <section class="slide priority">
+      <!-- Biểu tượng khách hàng ưu tiên (SVG) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#009639" viewBox="0 0 16 16">
+        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 
+        3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 
+        0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 
+        4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 
+        6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 
+        .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 
+        0 0 0-.461 0z"/>
+      </svg>
+      <h2>Dành cho Khách hàng Ưu tiên</h2>
+      <a href="https://vietcombank.com.vn/vi-VN/KHUT" class="btn-slide">Xem chi tiết</a>
+    </section>
+  </div>
+</body>
+</html>
