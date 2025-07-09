@@ -6,7 +6,8 @@ TITLE:Trưởng phòng Khách hàng Bán lẻ
 TEL;TYPE=WORK:(028) 3957 1450
 TEL;TYPE=CELL: 0906 577 986
 EMAIL:tiepnn.stn@vietcombank.com.vn
-ADR;TYPE=WORK:;;2A-2B-2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP.HCM;;;;
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A Đường Lý Thường Kiệt Phường Chợ Lớn TP HC
+ M;;;;;
 URL:www.vietcombank.com.vn
 NOTE:Fax: (84-28) 3 957 2978; Tax Code: 0100112437-041
 END:VCARD
