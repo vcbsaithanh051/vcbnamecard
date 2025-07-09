@@ -1,7 +1,8 @@
 BEGIN:VCARD
 VERSION:3.0
-FN:Nguyễn Như Tiệp
-ORG:VCB Sài Thành
+N;CHARSET=utf-8:Tiệp;Nguyễn Như;;;
+FN;CHARSET=utf-8:Nguyễn Như Tiệp
+ORG;CHARSET=utf-8:VCB Sài Thành
 TITLE:Trưởng phòng Khách hàng Bán lẻ
 TEL;TYPE=WORK:(028) 3957 1450
 TEL;TYPE=CELL: 0906 577 986
