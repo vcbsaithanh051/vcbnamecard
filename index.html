@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>VCB NameCard</title>
+  <link rel="icon" type="image/webp" href="logo-vcb60.webp">
 
   <style>
-    .body {
+    body {
       margin: 0;
       font-family: system-ui, Arial, sans-serif;
       background-color: #d6f5e3;
@@ -14,6 +15,16 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .logo {
+      height: 40px;
     }
 
     .container {
@@ -82,6 +93,11 @@
 </head>
 
 <body>
+  <!-- Logo góc trái -->
+  <header>
+    <!-- Thay src này bằng đường link logo thực tế của bạn -->
+    <img src="logo-vcb60.webp" alt="VCB Logo" class="logo">
+  </header>
 
   <!-- Khối nội dung chính -->
   <div class="container">
