@@ -1,12 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
-N;CHARSET=utf-8:;Nguyễn Như Tiệp;;;
-FN;CHARSET=utf-8:Nguyễn Như Tiệp
-TITLE;CHARSET=utf-8:Trưởng phòng Khách hàng Bán lẻ
-TEL;TYPE=WORK:(028) 3957 1450
-TEL;TYPE=CELL: 0906 577 986
+N;CHARSET=utf-8:;;;;
+FN;CHARSET=utf-8:
+TITLE;CHARSET=utf-8:Chuyên viên phòng
+TEL;TYPE=WORK:(028) 3957 
+TEL;TYPE=CELL: 
 ORG;CHARSET=utf-8:VCB Sài Thành
-EMAIL;INTERNET:tiepnn.stn@vietcombank.com.vn
+EMAIL;INTERNET:.stn@vietcombank.com.vn
 ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HC
  M;;;;;
 URL:www.vietcombank.com.vn
