@@ -1,217 +1,224 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/webp" href="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp" />
-  <title>Thông tin liên hệ</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/webp"
+      href="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp"/>
+<title>Thông tin liên hệ</title>
 
-  <!-- Google Fonts (Work Sans gần giống Kuro) -->
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+/* ─────────────────── 1.  Biến & Reset ─────────────────── */
+:root{
+  --vcb-green:#009639;
+  --vcb-green-dark:#007f2a;
+  --text:#333;
+  --radius:16px;
+  --shadow:0 8px 20px rgba(0,0,0,.08);
+  --transition:.3s ease;
+  --icon-size:1em;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Work Sans',sans-serif;
+  background:#e6f7ef;
+  color:var(--text);
+  -webkit-tap-highlight-color:transparent;        /* bỏ flash xanh trên iOS */
+}
 
-    body {
-      font-family: 'Work Sans', sans-serif;
-      background-color: #e6f7ef;
-      color: #333;
-    }
+/* ─────────────────── 2.  Banner & Header ─────────────────── */
+.banner{
+  width:100%;height:280px;
+  background:url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyennhutiep.png')
+             center/cover no-repeat;
+}
+.banner-text{
+  text-align:center;padding:20px 10px 0;
+}
+.banner-text h1{font-size:26px;color:#006c3f;font-weight:700;margin-bottom:6px}
+.banner-text h2{font-size:21px;color:var(--vcb-green);font-weight:500}
 
-    /* === Banner === */
-    .banner {
-      width: 100%;
-      height: 280px;
-      background: url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyennhutiep.png') center/cover no-repeat;
-    }
+/* ─────────────────── 3.  Info Card ─────────────────── */
+.info-card{
+  background:#fff;max-width:480px;margin:40px auto 20px;
+  padding:80px 20px 30px;border-radius:var(--radius);box-shadow:var(--shadow);
+  text-align:center;position:relative
+}
+.avatar{
+  width:120px;height:120px;border-radius:50%;object-fit:cover;
+  border:5px solid #fff;position:absolute;top:-30px;left:50%;
+  transform:translateX(-50%);background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.2)
+}
+.info-card h2{margin-top:10px;font-size:22px;color:#006c3f;font-weight:600}
+.info-card p{font-size:15px;margin:6px 0}
 
-    /* === Text dưới banner === */
-    .banner-text-container {
-      text-align: center;
-      padding: 20px 10px 0;
-    }
+/* ─────────────────── 4.  Buttons ─────────────────── */
+.btn{
+  display:inline-block;margin:12px 6px 0;padding:12px 20px;font-weight:600;
+  border-radius:6px;font-size:15px;text-decoration:none;transition:var(--transition)
+}
+.btn-green{background:var(--vcb-green);color:#fff}
+.btn-green:hover{background:var(--vcb-green-dark)}
+.btn-outline{border:2px solid var(--vcb-green);color:var(--vcb-green);background:#fff}
+.btn-outline:hover{background:#f0fdf4}
 
-    .banner-text-container h1 {
-      font-size: 26px;
-      color: #006c3f;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+/* ─────────────────── 5.  Icon (dùng lại cho mọi link bản đồ) ─────────────────── */
+.icon-map{
+  width:var(--icon-size);height:var(--icon-size);vertical-align:-2px;margin-right:5px;
+  fill:currentColor
+}
 
-    .banner-text-container h2 {
-      font-size: 21px;
-      color: #009639;
-      font-weight: 500;
-    }
+/* ─────────────────── 6.  Overlay Popup Danh sách PGD ─────────────────── */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;
+  justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:var(--transition);
+  z-index:9999
+}
+.overlay.show{opacity:1;pointer-events:auto}
+.popup{
+  background:#fff;border-radius:8px;max-width:500px;width:90%;padding:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.2);position:relative
+}
+.popup h3{margin-bottom:10px}
+.btn-close{
+  position:absolute;top:10px;right:10px;font-size:1.4rem;color:#999;cursor:pointer;
+  background:none;border:none
+}
+.btn-close:hover{color:#333}
+.branch-list{list-style:none;margin:0;padding:0}
+.branch-list li{margin:8px 0;font-size:15px}
 
-    /* === Info card === */
-    .info-container {
-      background: white;
-      max-width: 480px;
-      margin: 40px auto 20px;
-      padding: 80px 20px 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      text-align: center;
-      position: relative;
-    }
-
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid white;
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: white;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .info-container h2 {
-      margin-top: 10px;
-      color: #006c3f;
-      font-size: 22px;
-      font-weight: 600;
-    }
-
-    .info-container p {
-      font-size: 15px;
-      margin: 6px 0;
-    }
-
-    .btn {
-      margin: 12px 6px 0;
-      padding: 12px 20px;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 15px;
-      transition: 0.3s;
-      font-family: 'Work Sans', sans-serif;
-    }
-
-    .btn-green {
-      background-color: #009639;
-      color: white;
-    }
-
-    .btn-green:hover {
-      background-color: #007f2a;
-    }
-
-    .btn-outline {
-      border: 2px solid #009639;
-      color: #009639;
-      background-color: white;
-    }
-
-    .btn-outline:hover {
-      background-color: #f0fdf4;
-    }
-
-    #androidHint {
-      font-size: 14px;
-      margin-top: 12px;
-      color: #555;
-    }
-
-    /* === Responsive (mobile) === */
-    @media (max-width: 480px) {
-      .banner-text-container h1 {
-        font-size: 20px;
-      }
-
-      .banner-text-container h2 {
-        font-size: 17px;
-      }
-
-      .info-container {
-        margin: 40px 10px 20px;
-        padding: 70px 15px 25px;
-      }
-
-      .avatar {
-        width: 100px;
-        height: 100px;
-        top: -30px;
-      }
-    }
-  </style>
+/* ─────────────────── 7.  Responsive ─────────────────── */
+@media(max-width:480px){
+  .banner-text h1{font-size:20px}
+  .banner-text h2{font-size:17px}
+  .info-card{margin:40px 10px 20px;padding:70px 15px 25px}
+  .avatar{width:100px;height:100px}
+}
+</style>
 </head>
 <body>
 
-  <!-- Banner -->
-  <div class="banner"></div>
+<!-- ══════════════ Banner & Header ══════════════ -->
+<div class="banner"></div>
 
-  <!-- Text dưới banner -->
-  <div class="banner-text-container">
-    <h2>Ngân hàng TMCP Ngoại thương Việt Nam</h2>
-    <h2><strong>Chi nhánh Sài Thành</strong></h2>
-    
+<div class="banner-text">
+  <h2>Ngân hàng TMCP Ngoại thương Việt Nam</h2>
+  <h2><strong>Chi nhánh Sài Thành</strong></h2>
+</div>
+
+<!-- ══════════════ Info Card ══════════════ -->
+<div class="info-card">
+  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyennhutiep.png"
+       alt="Ảnh đại diện" class="avatar"/>
+  <h2>Lương Anh Vũ</h2>
+  <p>Chuyên viên Công Nghệ Thông Tin</p>
+  <p><strong>Chi nhánh:</strong> Sài Thành</p>
+
+  <!-- Địa chỉ chính (click mở Google Maps) -->
+  <p>
+    <strong>Địa chỉ:</strong>
+    <a href="https://maps.app.goo.gl/B9i75KAVpMb8efwE6" target="_blank" rel="noopener">
+      <!--  SVG icon  -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon-map" viewBox="0 0 16 16">
+        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+      </svg>
+      Số 2A‑B‑C Lý Thường Kiệt, P.Chợ Lớn, TP.HCM
+    </a>
+  </p>
+
+  <!-- Link mở popup danh sách PGD -->
+  <p>
+    <a href="#" id="toggleOverlay" style="color:#555;text-decoration:underline;font-size:14px">
+      Và Các Phòng Giao Dịch Trực Thuộc
+    </a>
+  </p>
+
+  <p>📞 0918 851 232</p>
+  <p>📧 vula.stn@vietcombank.com.vn</p>
+
+  <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
+  <!-- <a ... class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a> -->
+
+  <p id="androidHint" style="display:none;font-size:14px;color:#555">
+    Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
+  </p>
+</div>
+
+<!-- ══════════════ Overlay Popup Danh sách PGD ══════════════ -->
+<div id="overlay" class="overlay">
+  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <button class="btn-close" id="btnClose" aria-label="Đóng">&times;</button>
+    <h3 id="popupTitle">Địa điểm các Phòng Giao Dịch</h3>
+    <ul class="branch-list">
+      <li>
+        <a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-map" viewBox="0 0 16 16">
+            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+          </svg>
+          PGD Bình Thạnh
+        </a>
+      </li>
+      <li><a href="https://maps.app.goo.gl/yX1abDUvjuviDkGSA" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-map" viewBox="0 0 16 16">
+            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+          </svg>
+          PGD Trần Hưng Đạo
+        </a></li>
+      <li><a href="https://maps.app.goo.gl/7b3eCDLPfQFFHhnG9" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-map" viewBox="0 0 16 16">
+            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+          </svg>
+          PGD Ngô Gia Tự
+        </a></li>
+      <li><a href="https://maps.app.goo.gl/4M7Tbp7aRXuAQEYd8" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-map" viewBox="0 0 16 16">
+            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+          </svg>
+          PGD Võ Văn Tần
+        </a></li>
+    </ul>
   </div>
+</div>
 
-  <!-- Info Card -->
-  <div class="info-container">
-    <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyennhutiep.png" alt="Ảnh đại diện" class="avatar" />
-    <h2>Lương Anh Vũ</h2>
-    <p>Chuyên viên Công Nghệ Thông Tin</p>
-    <p><strong>Chi nhánh: Sài Thành </strong>
-    </p>
-    <!-- Địa chỉ chính của chi nhánh, có thể click để mở Google Maps -->
-    <p><strong>Địa chỉ:</strong> 
-      <a href="https://maps.app.goo.gl/B9i75KAVpMb8efwE6" target="_blank">
-        Số 2A - 2B - 2C Lý Thường Kiệt Phường Chợ Lớn TP HCM
-      </a>
-    </p>
-    <p>
-      <span id="toggleAddressList" style="font-size:14px; color:#555; cursor:pointer; text-decoration:underline;">
-        Và Các Phòng Giao Dịch Trực Thuộc
-      </span>
-    </p>
-    <!-- Danh sách các địa điểm (ẩn mặc định) -->
-    <div id="addressList" style="display:none; text-align:left; margin: 10px 0;">
-      <p><strong>Địa điểm các PGD:</strong></p>
-      <ul style="list-style-type: disc; padding-left: 20px; font-size:15px;">
-        <!--li><a href="https://maps.app.goo.gl/B9i75KAVpMb8efwE6" target="_blank">Chi Nhánh Sài Thành</a></li-->
-        <li><a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank">PGD Bình Thạnh</a></li>
-        <li><a href="https://maps.app.goo.gl/yX1abDUvjuviDkGSA" target="_blank">PGD Trần Hưng Đạo</a></li>
-        <li><a href="https://maps.app.goo.gl/7b3eCDLPfQFFHhnG9" target="_blank">PGD Ngô Gia Tự</a></li>
-        <li><a href="https://maps.app.goo.gl/4M7Tbp7aRXuAQEYd8" target="_blank">PGD Võ Văn Tần</a></li>
-      </ul>
-    </div>
-    <p>📞 0918 851 232</p>
-    <p>📧 vula.stn@vietcombank.com.vn</p>
+<!-- ══════════════ JavaScript ══════════════ -->
+<script>
+// 1) Tải vCard tự động cho Android (nếu dùng)
+if(/android/i.test(navigator.userAgent)){
+  const btn=document.getElementById('addContactBtn');
+  if(btn){btn.setAttribute('download','');document.getElementById('androidHint').style.display='block';}
+}
 
-    <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
-    <!--a href="../vcf/nguyennhutiep.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a-->
-    <p id="androidHint" style="display:none;">
-      Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
-    </p>
-  </div>
+// 2) Xử lý Popup PGD
+const overlay      = document.getElementById('overlay');
+const toggleLink   = document.getElementById('toggleOverlay');
+const btnClose     = document.getElementById('btnClose');
 
-  <script>
-    if (/android/i.test(navigator.userAgent)) {
-      document.getElementById('addContactBtn').setAttribute('download','');
-      document.getElementById('androidHint').style.display = 'block';
-    }
-    // Bắt sự kiện click hiển thị/ẩn danh sách địa chỉ
-    document.getElementById('toggleAddressList').onclick = function() {
-      var list = document.getElementById('addressList');
-      if (list.style.display === 'none' || list.style.display === '') {
-        list.style.display = 'block';
-      } else {
-        list.style.display = 'none';
-      }
-    };
-  </script>
+// Hàm mở popup
+function openPopup(e){
+  e.preventDefault();
+  overlay.classList.add('show');
+  document.body.style.overflow='hidden';        // khóa cuộn nền
+}
+// Hàm đóng popup
+function closePopup(){
+  overlay.classList.remove('show');
+  document.body.style.overflow='';              // mở cuộn lại
+}
 
+// Mở / đóng qua sự kiện
+toggleLink.addEventListener('click',openPopup);
+btnClose  .addEventListener('click',closePopup);
+// Click vào vùng mờ ngoài popup => đóng
+overlay.addEventListener('click',e=>{if(e.target===overlay)closePopup();});
+</script>
 </body>
 </html>
