@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VCB NameCard</title>
+  <link rel="icon" type="image/webp" href="logo-vcb60.webp">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      background-color: #d6f5e3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      color: #006c3f;
+    }
+
+    p {
+      margin-bottom: 24px;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 8px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #009639;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #007e2b;
+    }
+
+    .btn-outline {
+      background-color: white;
+      border: 2px solid #009639;
+      color: #009639;
+    }
+
+    .btn-outline:hover {
+      background-color: #f0fdf4;
+    }
+
+    #androidHint {
+      margin-top: 16px;
+      color: #555;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Logo góc trái -->
+  <header>
+    <!-- Thay src này bằng đường link logo thực tế của bạn -->
+    <img src="logo-vcb60.webp" alt="VCB Logo" class="logo">
+  </header>
+
+  <!-- Khối nội dung chính -->
+  <div class="container">
+    <h1>Chào mừng đến với Vietcombank Chi nhánh Sài Thành</h1>
+    <p>Khám phá sản phẩm & dịch vụ – hoặc kết nối ngay với chúng tôi.</p>
+
+    <a href="/product-info.html" class="btn btn-primary">Tìm hiểu sản phẩm & dịch vụ</a>
+    <a href="contact.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
+
+    <p id="androidHint" style="display:none;">
+      Tệp vCard sẽ được tải xuống. Nhấn mở tệp để nhập vào Danh bạ. 
+    </p>
+  </div>
+
+  <script>
+    if (/android/i.test(navigator.userAgent)){
+      document.getElementById('addContactBtn').setAttribute('download','');
+      document.getElementById('androidHint').style.display='block';
+    }
+  </script>
+</body>
+</html>
