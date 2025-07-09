@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sản phẩm & Dịch vụ</title>
-  <link rel="icon" href="Icon-Vietcombank.webp" type="image/webp" />
+  <link rel="icon" type="image/webp" href="Icon-Vietcombank.webp" />
 
   <style>
     body {
@@ -21,7 +21,7 @@
       font-size: 26px;
     }
 
-    .link-container {
+    .btn-container {
       max-width: 500px;
       margin: 40px auto;
       display: flex;
@@ -29,21 +29,21 @@
       gap: 20px;
     }
 
-    .link-box {
-      padding: 20px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-      text-decoration: none;
-      color: #006c3f;
+    .btn {
+      padding: 14px 24px;
+      background-color: #009639;
+      color: white;
+      border: none;
+      border-radius: 8px;
       font-size: 18px;
       font-weight: 600;
+      text-decoration: none;
       transition: all 0.3s ease;
     }
 
-    .link-box:hover {
-      background-color: #f0fdf4;
-      transform: translateY(-2px);
+    .btn:hover {
+      background-color: #007f2a;
+      transform: scale(1.02);
     }
 
     @media (max-width: 480px) {
@@ -51,20 +51,20 @@
         font-size: 22px;
       }
 
-      .link-box {
+      .btn {
         font-size: 16px;
-        padding: 16px;
+        padding: 12px 20px;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Danh mục Khách hàng</h1>
+  <h1>Sản phẩm & Dịch vụ Vietcombank</h1>
 
-  <div class="link-container">
-    <a href="https://vietcombank.com.vn/vi-VN" class="link-box">Dành cho Khách hàng Cá nhân</a>
-    <a href="https://vietcombank.com.vn/vi-VN/To-chuc/Doanh-Nghi%E1%BB%87p" class="link-box">Dành cho Khách hàng Doanh nghiệp</a>
-    <a href="https://vietcombank.com.vn/vi-VN/KHUT" class="link-box">Dành cho Khách hàng Ưu tiên</a>
+  <div class="btn-container">
+    <a href="https://vietcombank.com.vn/vi-VN" class="btn">Dành cho Khách hàng Cá nhân</a>
+    <a href="https://vietcombank.com.vn/vi-VN/To-chuc/Doanh-Nghi%E1%BB%87p" class="btn">Dành cho Khách hàng Doanh nghiệp</a>
+    <a href="https://vietcombank.com.vn/vi-VN/KHUT" class="btn">Dành cho Khách hàng Ưu tiên</a>
   </div>
 </body>
 </html>
