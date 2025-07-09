@@ -1,151 +1,191 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sản phẩm & Dịch vụ</title>
-  <link rel="icon" type="image/webp" href="Icon-Vietcombank.webp" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #e6f7ef;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      overflow-x: hidden; /* Ngăn trang web cuộn ngang ngoài ý muốn */
-    }
-    /* Header cố định trên cùng với logo */
-    .header {
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      background-color: #e6f7ef;
-      z-index: 1000;
-    }
-    .logo {
-      width: 30px;
-      height: auto;
-    }
-    /* Container cho các slide (cuộn ngang có snap) */
-    .slides-container {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;    /* Kích hoạt scroll snap ngang :contentReference[oaicite:6]{index=6} */
-      overscroll-behavior-x: contain;   /* Tránh cuộn quá đà ra khỏi container :contentReference[oaicite:7]{index=7} */
-      -webkit-overflow-scrolling: touch;/* Cuộn mượt trên iOS */
-      margin-top: 60px; /* chừa khoảng trống bên dưới header cố định */
-    }
-    /* Định dạng mỗi slide */
-    .slide {
-      scroll-snap-align: start;  /* Mỗi slide sẽ dừng ở mép bắt đầu khi snap :contentReference[oaicite:8]{index=8} */
-      flex: 0 0 100%;            /* Mỗi phần tử con chiếm 100% chiều rộng container */
-      width: 100%;
-      background-color: #e6f7ef;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    .slide h1, .slide h2 {
-      color: #006c3f;
-      margin: 15px 0;
-    }
-    .slide h1 {
-      font-size: 26px;
-    }
-    .slide h2 {
-      font-size: 24px;
-    }
-    .slide p {
-      color: #006c3f;
-      font-size: 16px;
-      margin: 10px 20px;
-    }
-    /* Định dạng nút trên mỗi slide */
-    .btn-slide {
-      display: inline-block;
-      padding: 14px 24px;
-      background-color: #009639;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 15px;
-      transition: all 0.3s ease;
-    }
-    .btn-slide:hover {
-      background-color: #007f2a;
-      transform: scale(1.02);
-    }
-    /* Đáp ứng trên màn hình nhỏ hơn 480px */
-    @media (max-width: 480px) {
-      .slide h1 { font-size: 22px; margin-top: 10px; }
-      .slide h2 { font-size: 20px; }
-      .btn-slide { font-size: 16px; padding: 12px 20px; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Cuộn Ngang</title>
+  <!-- Tham chiếu đến file CSS bên ngoài -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header cố định với logo góc trái trên cùng -->
-  <div class="header">
-    <img src="Icon-Vietcombank.webp" alt="VCB Logo" class="logo">
-  </div>
+  <!-- Thanh điều hướng cố định đầu trang (TÙY CHỈNH: chỉnh sửa tên và href nếu đổi ID slide) -->
+  <nav class="navbar">
+    <a href="#slide-tong-quan">Tổng quan</a>
+    <a href="#slide-ca-nhan">Cá nhân</a>
+    <a href="#slide-doanh-nghiep">Doanh nghiệp</a>
+    <a href="#slide-uu-tien">Ưu tiên</a>
+  </nav>
 
-  <!-- Container bao các slide nội dung -->
-  <div class="slides-container">
-    <!-- Slide 1: Giới thiệu chung -->
-    <section class="slide intro">
-      <h1><strong>Sản phẩm &amp; Dịch vụ Vietcombank</strong></h1>
-      <p>← Vuốt sang bên để xem các danh mục dịch vụ →</p>
+  <!-- Vùng chứa các slide cuộn ngang -->
+  <main class="slides-container">
+    <!-- Slide 1: Tổng quan -->
+    <section id="slide-tong-quan" class="slide">
+      <!-- Nội dung chính của slide Tổng quan (TÙY CHỈNH: thay đổi nội dung, hình ảnh minh họa) -->
+      <img src="https://via.placeholder.com/800x500.png?text=Hinh+minh+hoa" alt="Hình minh họa" class="illustration">
+      <h2>Tổng quan</h2>
+      <p>Đây là phần giới thiệu tổng quan về sản phẩm hoặc dịch vụ của bạn. (Nội dung mẫu)</p>
+      <!-- Nút "Quay lại đầu trang" để trở về slide đầu tiên -->
+      <button class="back-to-top">Quay lại đầu trang</button>
     </section>
 
-    <!-- Slide 2: Khách hàng Cá nhân -->
-    <section class="slide personal">
-      <!-- Biểu tượng khách hàng cá nhân (SVG) -->
-      <!-- SVG icon from Bootstrap Icons (MIT) -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#009639" viewBox="0 0 16 16">
-        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 
-        8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664
-        C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 
-        1.664z"/>
-      </svg>
-      <h2>Dành cho Khách hàng Cá nhân</h2>
-      <a href="https://vietcombank.com.vn/vi-VN" class="btn-slide">Xem chi tiết</a>
+    <!-- Slide 2: Cá nhân -->
+    <section id="slide-ca-nhan" class="slide">
+      <!-- Nội dung chính của slide Cá nhân -->
+      <img src="https://via.placeholder.com/800x500.png?text=Hinh+minh+hoa" alt="Hình minh họa" class="illustration">
+      <h2>Giải pháp Cá nhân</h2>
+      <p>Giới thiệu các tính năng dành cho khách hàng cá nhân. (Nội dung mẫu)</p>
+      <button class="back-to-top">Quay lại đầu trang</button>
     </section>
 
-    <!-- Slide 3: Khách hàng Doanh nghiệp -->
-    <section class="slide business">
-      <!-- Biểu tượng khách hàng doanh nghiệp (SVG) -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#009639" viewBox="0 0 16 16">
-        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 
-        4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 
-        3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 
-        .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15
-        l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 
-        7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
-      </svg>
-      <h2>Dành cho Khách hàng Doanh nghiệp</h2>
-      <a href="https://vietcombank.com.vn/vi-VN/To-chuc/Doanh-Nghi%E1%BB%87p" class="btn-slide">Xem chi tiết</a>
+    <!-- Slide 3: Doanh nghiệp -->
+    <section id="slide-doanh-nghiep" class="slide">
+      <!-- Nội dung chính của slide Doanh nghiệp -->
+      <img src="https://via.placeholder.com/800x500.png?text=Hinh+minh+hoa" alt="Hình minh họa" class="illustration">
+      <h2>Giải pháp Doanh nghiệp</h2>
+      <p>Giới thiệu các dịch vụ nổi bật cho khối doanh nghiệp. (Nội dung mẫu)</p>
+      <button class="back-to-top">Quay lại đầu trang</button>
     </section>
 
-    <!-- Slide 4: Khách hàng Ưu tiên -->
-    <section class="slide priority">
-      <!-- Biểu tượng khách hàng ưu tiên (SVG) -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#009639" viewBox="0 0 16 16">
-        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 
-        3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 
-        0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 
-        4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 
-        6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 
-        .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 
-        0 0 0-.461 0z"/>
-      </svg>
-      <h2>Dành cho Khách hàng Ưu tiên</h2>
-      <a href="https://vietcombank.com.vn/vi-VN/KHUT" class="btn-slide">Xem chi tiết</a>
+    <!-- Slide 4: Ưu tiên -->
+    <section id="slide-uu-tien" class="slide">
+      <!-- Nội dung chính của slide Ưu tiên -->
+      <img src="https://via.placeholder.com/800x500.png?text=Hinh+minh+hoa" alt="Hình minh họa" class="illustration">
+      <h2>Dịch vụ Ưu tiên</h2>
+      <p>Thông tin về những ưu tiên hoặc ưu đãi đặc biệt. (Nội dung mẫu)</p>
+      <button class="back-to-top">Quay lại đầu trang</button>
     </section>
-  </div>
+  </main>
+
+  <!-- Tham chiếu đến file JavaScript bên ngoài -->
+  <script src="script.js" defer></script>
 </body>
 </html>
+
+/* Reset một số thuộc tính mặc định và cấu hình cuộn mượt */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  scroll-behavior: smooth;  /* Cuộn mượt cho toàn trang */
+}
+
+/* Thanh điều hướng cố định (navbar) */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;                /* Nền trắng (TÙY CHỈNH: có thể đổi màu hoặc độ trong suốt) */
+  border-bottom: 1px solid #ccc;   /* Đường viền mờ bên dưới navbar */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Đổ bóng nhẹ để nổi bật navbar */
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;                /* Cho phép gập dòng nếu màn hình hẹp (các nút điều hướng sẽ xuống dòng) */
+  justify-content: center;
+}
+.navbar a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+.navbar a:hover {
+  background: #eee;
+}
+
+/* Vùng chứa các slide (slides-container) */
+.slides-container {
+  margin-top: 60px;        /* Chừa khoảng trống phía trên để không bị navbar che (TÙY CHỈNH: điều chỉnh khớp chiều cao navbar) */
+  display: flex;
+  overflow-x: scroll;      /* Kích hoạt cuộn ngang */
+  overflow-y: hidden;      /* Ẩn cuộn dọc toàn trang (ngăn cuộn dọc ngoài ý muốn) */
+  scroll-snap-type: x mandatory;  /* Kích hoạt scroll snap ngang, dừng bắt buộc tại mỗi slide */
+  scroll-behavior: smooth; /* Cuộn mượt khi dùng thanh cuộn hoặc nút điều hướng */
+}
+
+/* Định dạng chung cho mỗi slide */
+.slide {
+  position: relative;      /* Tạo context cho nút back-to-top tuyệt đối trong slide */
+  scroll-snap-align: start;/* Mỗi slide sẽ căn vào cạnh trái (bắt đầu) khi dừng */
+  flex: none;              /* Đảm bảo các slide không co lại theo flex container */
+  width: 100vw;            /* Mỗi slide rộng đúng một viewport (màn hình) */
+  min-height: 100vh;       /* Mỗi slide cao ít nhất một màn hình (TÙY CHỈNH: đảm bảo nội dung vừa một trang) */
+  display: flex;
+  flex-direction: column;  /* Xếp nội dung slide theo cột (trên dưới) */
+  align-items: center;
+  justify-content: center; /* Căn giữa nội dung cả chiều ngang và dọc */
+  padding: 1rem;
+}
+
+/* Màu nền minh họa cho từng slide (TÙY CHỈNH: có thể thay đổi màu hoặc dùng hình nền) */
+.slide:nth-of-type(1) { background: #e0f7fa; }  /* Slide 1 - xanh nhạt */
+.slide:nth-of-type(2) { background: #e8f5e9; }  /* Slide 2 - xanh lá nhạt */
+.slide:nth-of-type(3) { background: #fff3e0; }  /* Slide 3 - vàng nhạt */
+.slide:nth-of-type(4) { background: #fce4ec; }  /* Slide 4 - hồng nhạt */
+
+/* Nội dung bên trong slide (hình ảnh minh họa, tiêu đề, đoạn văn) */
+.illustration {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+.slide h2 {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+.slide p {
+  max-width: 80%;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Nút "Quay lại đầu trang" trong mỗi slide */
+.back-to-top {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 0.25rem;
+  background: #333;
+  color: #fff;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.back-to-top:hover {
+  opacity: 1;
+}
+
+// Script xử lý sự kiện cho thanh điều hướng và nút "Quay lại đầu trang"
+document.addEventListener('DOMContentLoaded', function() {
+  // Lấy phần tử slide đầu tiên để dùng cho nút "Quay lại đầu trang"
+  const firstSlide = document.querySelector('.slide');
+
+  // Gắn sự kiện click cho các liên kết điều hướng (cuộn tới slide tương ứng)
+  const navLinks = document.querySelectorAll('.navbar a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();  // Ngăn chặn hành vi mặc định của <a> (không chuyển ngay lập tức)
+      const targetId = this.getAttribute('href').substring(1);    // Lấy ID sau dấu #
+      const targetSlide = document.getElementById(targetId);
+      if (targetSlide) {
+        targetSlide.scrollIntoView({ behavior: 'smooth' });       // Cuộn mượt tới slide đích
+      }
+    });
+  });
+
+  // Gắn sự kiện click cho các nút "Quay lại đầu trang" (cuộn về slide đầu tiên)
+  const backButtons = document.querySelectorAll('.back-to-top');
+  backButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      if (firstSlide) {
+        firstSlide.scrollIntoView({ behavior: 'smooth' });        // Cuộn mượt về đầu (slide đầu tiên)
+      }
+    });
+  });
+});
