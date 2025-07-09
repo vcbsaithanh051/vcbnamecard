@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sản phẩm & Dịch vụ</title>
   <link rel="icon" type="image/webp" href="Icon-Vietcombank.webp" />
-  <header>
-    <!-- Bạn chỉ cần thay src dưới đây thành đường dẫn logo -->
-    <img src="Icon-Vietcombank.webp" alt="VCB Logo" class="logo">
-  </header>
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -18,8 +15,23 @@
       text-align: center;
     }
 
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      position: fixed;
+    }
+
+    .logo {
+      width: 40px; /* Bạn có thể thay đổi 40 → 30 hoặc 50 tùy ý */
+      height: auto;
+    }
+
     h1 {
-      margin-top: 40px;
+      margin-top: 60px; /* Đẩy nội dung xuống dưới logo */
       color: #006c3f;
       font-size: 26px;
     }
@@ -52,24 +64,36 @@
     @media (max-width: 480px) {
       h1 {
         font-size: 22px;
+        margin-top: 50px;
       }
 
       .btn {
         font-size: 16px;
         padding: 12px 20px;
       }
+
+      .logo {
+        width: 30px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Header với logo góc trái -->
+  <div class="header">
+    <img src="Icon-Vietcombank.webp" alt="VCB Logo" class="logo">
+  </div>
+
+  <!-- Tiêu đề -->
   <h1><strong>Sản phẩm & Dịch vụ Vietcombank</strong></h1>
 
+  <!-- Các button -->
   <div class="btn-container">
     <a href="https://vietcombank.com.vn/vi-VN" class="btn">Dành cho Khách hàng Cá nhân</a>
     <a href="https://vietcombank.com.vn/vi-VN/To-chuc/Doanh-Nghi%E1%BB%87p" class="btn">Dành cho Khách hàng Doanh nghiệp</a>
     <a href="https://vietcombank.com.vn/vi-VN/KHUT" class="btn">Dành cho Khách hàng Ưu tiên</a>
   </div>
+
 </body>
-
-
-  
+</html>
