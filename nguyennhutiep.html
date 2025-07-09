@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VCB NameCard</title>
-  <link rel="icon" href="vcb-logo.png" type="image/png">
 
-  <!-- Font nghệ thuật -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <!-- Favicon (logo icon) -->
+  <link rel="icon" href="vcb-logo.png" type="image/png" />
+
+  <!-- Google Fonts: Kuro (via Work Sans as gần giống) -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -22,79 +24,67 @@
       color: #333;
     }
 
-    /* === Banner === */
+    /* === Banner image === */
     .banner {
-      background: url('z6543995508125_b47629561edb0f4025d661838d184499.jpg') center/cover no-repeat;
-      height: 420px;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 40px;
+      width: 100%;
+      height: 280px;
+      background: url('banner.jpg') center/cover no-repeat;
     }
 
-    .banner-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      color: white;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-      animation: fadeInDown 0.6s ease-out;
+    /* === Text below banner === */
+    .banner-text-container {
+      text-align: center;
+      padding: 20px 10px 10px 10px;
+      font-family: 'Work Sans', sans-serif;
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .banner-text-container h1 {
+      font-size: 24px;
+      color: #006c3f;
+      margin-bottom: 6px;
     }
 
-    /* === Avatar === */
-    .avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 5px solid white;
-      object-fit: cover;
-      margin-top: -65px;
-      background-color: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
+    .banner-text-container h2 {
+      font-size: 20px;
+      color: #009639;
+      font-weight: 500;
     }
 
-    .avatar:hover {
-      transform: scale(1.05);
-    }
-
-    /* === Card container === */
+    /* === Info card === */
     .info-container {
       background: white;
       max-width: 480px;
-      margin: 0 auto 30px auto;
-      padding: 80px 30px 30px 30px;
+      margin: 20px auto;
+      padding: 80px 20px 30px 20px;
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      position: relative;
       text-align: center;
+      position: relative;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .info-container h2 {
+      margin-top: 10px;
       color: #006c3f;
-      margin-bottom: 6px;
       font-size: 22px;
     }
 
     .info-container p {
-      margin: 8px 0;
       font-size: 15px;
-    }
-
-    .contact-icon {
-      margin-right: 6px;
-      color: #009639;
+      margin: 6px 0;
     }
 
     .btn {
@@ -104,8 +94,8 @@
       font-weight: 600;
       text-decoration: none;
       display: inline-block;
-      transition: 0.3s;
       font-size: 15px;
+      transition: 0.3s;
     }
 
     .btn-green {
@@ -132,30 +122,52 @@
       margin-top: 12px;
       color: #555;
     }
+
+    /* === Responsive (mobile) === */
+    @media (max-width: 480px) {
+      .banner-text-container h1 {
+        font-size: 20px;
+      }
+
+      .banner-text-container h2 {
+        font-size: 17px;
+      }
+
+      .info-container {
+        margin: 20px 10px;
+        padding: 70px 15px 25px 15px;
+      }
+
+      .avatar {
+        width: 100px;
+        height: 100px;
+        top: -50px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Banner -->
-  <div class="banner">
-    <div class="banner-text">Chào mừng đến với Vietcombank Chi nhánh Sài Thành</div>
+  <!-- Banner Image -->
+  <div class="banner"></div>
+
+  <!-- Text dưới banner -->
+  <div class="banner-text-container">
+    <h1>Ngân hàng TMCP Ngoại thương Việt Nam</h1>
+    <h2>Chi nhánh Sài Thành</h2>
   </div>
 
-  <!-- Container Thông tin -->
+  <!-- Thẻ thông tin -->
   <div class="info-container">
-    <!-- Avatar -->
-    <img src="z6543995514763_b0131da682690fd6cb0b8977b4e849ee.jpg" alt="Ảnh đại diện" class="avatar">
-
-    <!-- Info -->
+    <img src="avatar/nguyennhutiep.png" alt="Ảnh đại diện" class="avatar" />
     <h2>Nguyễn Văn A</h2>
     <p>Chuyên viên Quan hệ khách hàng</p>
     <p><strong>Chi nhánh:</strong> Sài Thành</p>
-    <p><span class="contact-icon">📞</span>0912 345 678</p>
-    <p><span class="contact-icon">📧</span>nguyenvana@vietcombank.com.vn</p>
+    <p>📞 0912 345 678</p>
+    <p>📧 nguyenvana@vietcombank.com.vn</p>
 
     <a href="/product-info.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
     <a href="contact.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
-
     <p id="androidHint" style="display:none;">
       Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
     </p>
@@ -167,6 +179,5 @@
       document.getElementById('androidHint').style.display='block';
     }
   </script>
-
 </body>
 </html>
