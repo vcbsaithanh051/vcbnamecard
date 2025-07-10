@@ -3,28 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preload" href="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-0.png" as="image">
   <title>Sản phẩm Dịch vụ Vietcombank</title>
   <style>
+    /* Base Styles (mobile-first approach) */
     body {
       margin: 0;
-      padding-top: 60px; /* Space for fixed nav bar */
+      padding-top: 60px; /* space for fixed nav bar */
       font-family: Arial, Helvetica, sans-serif;
       font-size: 16px;
       line-height: 1.5;
       color: #000;
       background-color: #fff;
     }
+    /* Fixed Navigation Bar Styles */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: #006734;
+      background: #006734; /* Vietcombank dark green background for nav */
       color: #fff;
       padding: 10px 0;
       text-align: center;
-      z-index: 1000;
+      z-index: 1000; /* ensure nav stays above other content */
     }
     nav ul {
       margin: 0;
@@ -32,6 +33,7 @@
       list-style: none;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap; /* allow menu items to wrap to next line on small screens */
     }
     nav li {
       margin: 5px 15px;
@@ -40,57 +42,186 @@
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      font-size: 14px;
     }
     nav a:hover {
       text-decoration: underline;
     }
+    /* Horizontal Scroll Snap Container */
     .slides-container {
-      display: block; /* Change to block for vertical stacking */
-      overflow-y: auto; /* Enable vertical scrolling */
-      scroll-behavior: smooth;
-      height: calc(100vh - 60px); /* Full viewport height minus nav */
-      scroll-snap-type: y mandatory; /* Snap to vertical sections */
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth; /* smooth scrolling for programmatic scroll */
+      -webkit-overflow-scrolling: touch; /* smoother scrolling on iOS */
+      height: 100%;
     }
+    .slides-container::-webkit-scrollbar {
+      display: none; /* hide horizontal scrollbar for WebKit */
+    }
+    .slides-container {
+      -ms-overflow-style: none;  /* hide scrollbar for IE and Edge */
+      scrollbar-width: none;     /* hide scrollbar for Firefox */
+    }
+    /* Individual Slide Styles */
     .slide {
-      scroll-snap-align: start; /* Snap to the top of each slide */
+      flex: 0 0 100%;           /* each slide takes full viewport width */
+      scroll-snap-align: start; /* snap so that each slide starts at the viewport */
       box-sizing: border-box;
-      padding: 20px;
-      background: #006734;
+      padding: 20px 60px;       /* increased padding for arrow space */
+      padding-top: 20px;        /* Thêm padding-top để tránh nội dung bị che */
+      background: #fff;
+      color: #000;
+      position: relative; /* for positioning navigation arrows */
+      scroll-margin-top: 70px; /* Tăng giá trị để đảm bảo nội dung hiển thị dưới navbar */
+      min-height: calc(100vh - 60px); /* ensure full height minus navbar */
+    }
+    /* Slide 1 (Cover) specific style: dark green background with white text */
+    #slide1 {
+      background: #006734; /* Vietcombank primary green */
       color: #fff;
-      position: relative;
-      min-height: calc(100vh - 60px); /* Full height per slide */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      scroll-margin-top: 60px; /* Offset for fixed nav */
     }
-    .page {
-      width: 794px; /* A4 width in pixels at 96 DPI */
-      height: 1123px; /* A4 height in pixels at 96 DPI */
-      background: #fff;
-      color: #000;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      overflow: auto;
+    /* Image Grid for Slide 1 */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px; /* increased gap for better spacing */
+      max-width: 80%;
+      margin: 30px auto; /* increased margin for more space */
     }
-    .page img {
+    .image-grid img {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
+      max-width: 250px; /* reasonable size for readability */
+      max-height: 200px; /* limit height to prevent oversized images */
+      object-fit: contain; /* preserve aspect ratio without cropping */
+      border: 2px solid #006734;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    h1 {
+    /* Fallback for images that fail to load */
+    .image-grid img[alt]:after {
+      content: attr(alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 150px; /* fixed height for fallback */
+      background: #f0f0f0;
+      color: #006734;
+      font-size: 14px;
+      text-align: center;
+      border: 2px solid #006734;
+      border-radius: 4px;
+    }
+    /* Headings Styles */
+    h1, h2, h3, h4 {
       margin: 0.5em 0;
       font-weight: bold;
-      text-transform: uppercase;
+      text-transform: uppercase; /* headings in uppercase as per design */
     }
+    h1 { font-size: 2em; }   /* largest title (cover page) */
+    h2 { font-size: 1.5em; } /* section titles */
+    h3 { font-size: 1.2em; } /* slide content titles */
+    h4 { font-size: 1.1em; } /* smaller subheadings */
+    /* Section name label (e.g., "KHÁCH HÀNG CÁ NHÂN" on slides) */
+    .section-name {
+      font-weight: bold;
+      color: #006734;      /* use brand green for section labels */
+      margin-bottom: 10px; /* spacing below the label */
+      margin-top: 10px;    /* Đảm bảo section-name có khoảng cách từ trên xuống */
+    }
+    /* List Styles (remove default bullets, use custom symbols) */
+    ul {
+      padding-left: 0;  /* remove default indentation */
+      margin: 0 0 1em 0;
+      list-style: none; /* remove default bullets */
+    }
+    ul li {
+      margin-bottom: 0.5em;
+      position: relative; /* for pseudo-element bullets positioning */
+      padding-left: 20px; /* space for bullets */
+    }
+    ul li::before {
+      content: "› ";             /* arrow symbol for top-level list items */
+      color: #006734;            /* bullet in brand color */
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      width: 15px; /* fixed width for bullet alignment */
+      text-align: right;
+    }
+    ul ul li::before {
+      content: "• ";            /* filled circle for second-level list items */
+      color: #006734;
+      font-weight: bold;
+      left: 0;
+      width: 15px;
+    }
+    ul ul ul li::before {
+      content: "– ";            /* dash for third-level list items */
+      color: #006734;
+      left: 0;
+      width: 15px;
+    }
+    ul li ul {
+      margin-left: 20px;
+    }
+    ul li ul li ul {
+      margin-left: 20px;
+    }
+    /* Contact info list (no bullets, uses icons/emoji for each item) */
+    .contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .contact-info li {
+      margin: 0.5em 0;
+      padding-left: 0; /* no bullets for contact info */
+    }
+    /* "Back to top" button style */
+    .back-to-top {
+      display: block;
+      margin: 40px auto 20px; /* center and space below arrows */
+      padding: 10px 15px;
+      background: #fff;
+      color: #006734; /* green text */
+      border: 2px solid #006734; /* green border */
+      border-radius: 4px;
+      font: inherit;
+      cursor: pointer;
+      text-align: center;
+    }
+    .back-to-top:hover {
+      background: #006734;
+      color: #fff;
+    }
+    /* Content Anchor Styles */
+    .slide a {
+      color: #006734;
+      text-decoration: none;
+    }
+    .slide a:hover {
+      text-decoration: underline;
+    }
+    #slide1 a {
+      color: #fff;
+    }
+    #slide1 a:hover {
+      text-decoration: underline;
+    }
+    /* Navigation Arrows Styles */
     .nav-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: transparent;
-      color: #fff;
-      border: 2px solid #fff;
+      background: transparent; /* transparent background */
+      color: #006734; /* green text */
+      border: 2px solid #006734; /* green border */
       border-radius: 50%;
       width: 40px;
       height: 40px;
@@ -100,12 +231,13 @@
       align-items: center;
       justify-content: center;
       z-index: 10;
-      opacity: 0.5;
+      opacity: 0.5; /* semi-transparent */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
     }
     .nav-arrow:hover {
-      background: #fff;
-      color: #006734;
-      opacity: 1;
+      background: #006734; /* green background on hover */
+      color: #fff; /* white text on hover */
+      opacity: 1; /* fully opaque on hover */
     }
     .nav-arrow-left {
       left: 10px;
@@ -113,16 +245,38 @@
     .nav-arrow-right {
       right: 10px;
     }
+    /* Adjust arrow color for slide1 to ensure visibility */
+    #slide1 .nav-arrow {
+      color: #fff; /* white text for dark background */
+      border: 2px solid #fff; /* white border */
+    }
+    #slide1 .nav-arrow:hover {
+      background: #fff; /* white background on hover */
+      color: #006734; /* green text on hover */
+    }
+    /* Responsive Design for Mobile */
     @media (max-width: 600px) {
-      .page {
-        width: 100%;
-        height: auto;
-        min-height: calc(100vh - 60px);
+      .image-grid {
+        grid-template-columns: 1fr; /* stack images vertically on mobile */
+        max-width: 90%;
+      }
+      .image-grid img {
+        max-width: 100%;
+        max-height: 250px; /* slightly larger height on mobile for readability */
+      }
+      .slide {
+        padding: 30px 20px; /* Tăng padding-top trên mobile để đảm bảo nội dung hiển thị */
+        scroll-margin-top: 80px; /* Tăng giá trị để phù hợp với mobile */
+      }
+      .section-name {
+        margin-top: 10px; /* Đảm bảo section-name có khoảng cách từ trên xuống */
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Fixed Navigation Bar -->
   <nav>
     <ul>
       <li><a href="#slide1" class="nav-link">Thư ngỏ</a></li>
@@ -131,35 +285,26 @@
       <li><a href="#slide15" class="nav-link">Liên hệ</a></li>
     </ul>
   </nav>
+
+  <!-- Slides Container (horizontal scroll wrapper) -->
   <div class="slides-container" id="slidesContainer">
+
+    <!-- Slide 1: Cover Page (Thư ngỏ) -->
     <section id="slide1" class="slide">
-      <div class="page">
-        <img src="images/Thu-ngo-0.jpg" alt="Thư ngỏ trang 1" loading="lazy" onerror="this.src='https://via.placeholder.com/794x1123?text=Trang+1';">
+      <div class="image-grid">
+        <img src="images/Thu-ngo-0.jpg" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+1';">
+        <img src="images/Thu-ngo-1.jpg" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+2';">
+        <img src="images/Thu-ngo-2.jpg" alt="Thư ngỏ hình 3" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+3';">
+        <img src="images/Thu-ngo-3.jpg" alt="Thư ngỏ hình 4" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+4';">
       </div>
+      <h1>Sản phẩm Dịch vụ Vietcombank</h1>
+      <h2><a href="#slide2">Khách hàng cá nhân</a></h2>
+      <h2><a href="#slide8">Khách hàng tổ chức</a></h2>
       <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
     </section>
+
+    <!-- Slide 2: Individual Customers Section Intro -->
     <section id="slide2" class="slide">
-      <div class="page">
-        <img src="images/Thu-ngo-1.jpg" alt="Thư ngỏ trang 2" loading="lazy" onerror="this.src='https://via.placeholder.com/794x1123?text=Trang+2';">
-      </div>
-      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
-      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
-    </section>
-    <section id="slide3" class="slide">
-      <div class="page">
-        <img src="images/Thu-ngo-2.jpg" alt="Thư ngỏ trang 3" loading="lazy" onerror="this.src='https://via.placeholder.com/794x1123?text=Trang+3';">
-      </div>
-      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
-      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
-    </section>
-    <section id="slide4" class="slide">
-      <div class="page">
-        <img src="images/Thu-ngo-3.jpg" alt="Thư ngỏ trang 4" loading="lazy" onerror="this.src='https://via.placeholder.com/794x1123?text=Trang+4';">
-      </div>
-      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
-    </section>
-    <!-- Các slide khác giữ nguyên -->
-    <section id="slide5" class="slide">
       <h2>Khách hàng cá nhân</h2>
       <ul>
         <li>VCB Digibank</li>
@@ -170,7 +315,103 @@
         <li>Nhận kiều hối</li>
         <li>Sản phẩm bảo hiểm</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
     </section>
+
+    <!-- Slide 3: VCB Digibank & VCB Loyalty (Individual Banking Products) -->
+    <section id="slide3" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>VCB Digibank & VCB Loyalty</h3>
+      <p>Đáp ứng mọi nhu cầu tài chính, hỗ trợ thanh toán dịch vụ công, mua sắm, hóa đơn... Các dịch vụ giá trị gia tăng hoàn toàn miễn phí.</p>
+      <ul>
+        <li>0 Phí đăng ký chương trình đổi quà với kho quà tặng đa dạng (ẩm thực, giải trí, mua sắm, du lịch...) ngay trên app</li>
+        <li>0 Phí chuyển tiền</li>
+        <li>0 Phí duy trì dịch vụ</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 4: Credit Cards (Individual) -->
+    <section id="slide4" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>Thẻ tín dụng</h3>
+      <p>Thanh toán tiện lợi với đa dạng hình thức: thanh toán trực tiếp, contactless, mã QR, thanh toán trực tuyến, thanh toán qua ví điện tử (Apple Pay, Samsung Pay, Google Pay...)</p>
+      <p>An toàn và bảo mật với công nghệ chip EMV, xác thực 3D Secure.</p>
+      <p>Trả góp linh hoạt với lãi suất 0%.</p>
+      <ul>
+        <li>Miễn lãi thẻ tín dụng lên đến 55 ngày (tùy từng dòng thẻ)</li>
+        <li>Tính năng hoàn tiền với các dòng thẻ như: Amex Cashplus Platinum, Mastercard World, Visa Platinum, JCB Platinum</li>
+        <li>Tính năng tích lũy dặm bay với Hội viên Bông Sen Vàng (thẻ VCB Vietnam Airlines Platinum Amex; VCB Vietnam Airlines Amex)</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 5: Savings Products (Individual) -->
+    <section id="slide5" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>Các sản phẩm tiết kiệm</h3>
+      <ul>
+        <li>Tiết kiệm trả lãi sau, trả lãi định kỳ, trả lãi trước (đa dạng loại tiền tệ, kỳ hạn linh hoạt)</li>
+        <li>Tiết kiệm tự động: Đáp ứng nhu cầu chuyển tiền tự động từ tài khoản thanh toán sang tài khoản tiết kiệm để hưởng lãi suất cao hơn mà không cần đến ngân hàng.</li>
+        <li>Tiền gửi có kỳ hạn trực tuyến: Mở tài khoản tiền gửi hoàn toàn trực tuyến ngay trên Ngân hàng số VCB Digibank, có cơ chế ưu đãi lãi suất dành cho khách hàng ưu tiên.</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 6: Money Transfer & Remittance (Individual) -->
+    <section id="slide6" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>Chuyển & Nhận tiền</h3>
+      <h4>Nhận tiền:</h4>
+      <ul>
+        <li>Đối tác chi trả kiều hối: MoneyGram, Xoom, VCBR, Ria, TNMonex, UniTeller</li>
+        <li>Hạn mức cao, giao dịch dễ dàng, tiện lợi</li>
+        <li>Quản lý biến động số dư</li>
+      </ul>
+      <h4>Chuyển tiền đi nước ngoài:</h4>
+      <ul>
+        <li>Giao dịch tại bất kỳ kênh nào (tại quầy hoặc trên VCB Digibank)</li>
+        <li>Mức phí cạnh tranh, ưu đãi dành cho khách hàng ưu tiên</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 7: Insurance Products (Individual) -->
+    <section id="slide7" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>Sản phẩm bảo hiểm</h3>
+      <h4>Bảo hiểm bảo vệ & tiết kiệm:</h4>
+      <ul>
+        <li>FWD Phụ nữ hiện đại</li>
+        <li>FWD Con vươn xa 2.0</li>
+        <li>FWD Cả nhà vui khỏe</li>
+        <li>FWD Vững ước mơ</li>
+        <li>FWD Bảo hiểm tai nạn</li>
+        <li>FWD Bảo hiểm sức khỏe trực tuyến</li>
+      </ul>
+      <h4>Bảo hiểm đầu tư:</h4>
+      <ul>
+        <li>FWD Điểm tựa tài chính</li>
+        <li>FWD Đón đầu thay đổi 3.0</li>
+        <li>FWD Nâng tầm vị thế 2.0</li>
+        <li>FWD Sống trọn tương lai</li>
+        <li>FWD Vị thế vững vàng</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 8: Corporate Customers Section Intro -->
     <section id="slide8" class="slide">
       <h2>Khách hàng tổ chức</h2>
       <ul>
@@ -180,7 +421,178 @@
         <li>Ngoại hối & Thị trường vốn</li>
         <li>Tư vấn, Đầu tư & Bảo hiểm</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
     </section>
+
+    <!-- Slide 9: Cash Management (Corporate) -->
+    <section id="slide9" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Thanh toán & Quản lý dòng tiền</h3>
+      <ul>
+        <li><strong>Tài khoản thanh toán:</strong> Đáp ứng mọi nhu cầu thanh toán qua các phương tiện séc, ủy nhiệm chi, ủy nhiệm thu,...</li>
+        <li><strong>Chuyển tiền:</strong>
+          <ul>
+            <li>Chuyển tiền trong nước và quốc tế</li>
+            <li>Nộp ngân sách Nhà nước</li>
+          </ul>
+        </li>
+        <li><strong>Thanh toán điện tử:</strong>
+          <ul>
+            <li>Tài khoản thanh toán thông thường & tài khoản thanh toán chuyên dụng</li>
+            <li>Thẻ doanh nghiệp (Thẻ tín dụng & Thẻ ghi nợ doanh nghiệp)</li>
+          </ul>
+        </li>
+        <li><strong>Gói giao dịch SME:</strong> Gói thiết kế riêng cho doanh nghiệp SME, bao gồm:
+          <ul>
+            <li><strong>Gói SME Tài chính:</strong>
+              <ul>
+                <li>Miễn phí chuyển tiền, trả lương</li>
+                <li>Tặng tài khoản số đẹp (3/4/5 số cuối)</li>
+                <li>Tặng thẻ doanh nghiệp</li>
+                <li>Có thể sử dụng để đảm bảo vay vốn, bảo lãnh, các dịch vụ tài trợ vốn khác</li>
+              </ul>
+            </li>
+            <li><strong>Gói SME Advanced:</strong>
+              <ul>
+                <li>Lãi suất hấp dẫn</li>
+                <li>Phương thức trả lãi đa dạng: đầu kỳ, cuối kỳ, định kỳ</li>
+                <li>Tài khoản tiền gửi có kỳ hạn</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 10: SME Lending (Corporate) -->
+    <section id="slide10" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Cho vay SME</h3>
+      <ul>
+        <li><strong>Cấp tín dụng theo ngành:</strong>
+          <ul>
+            <li>Ngành thương mại dược</li>
+            <li>Ngành thương mại thực phẩm & đồ uống</li>
+            <li>Ngành thương mại trang thiết bị y tế</li>
+          </ul>
+        </li>
+        <li><strong>Vay ngắn hạn:</strong>
+          <ul>
+            <li>Vay ngắn hạn theo hạn mức</li>
+            <li>Vay ngắn hạn từng lần</li>
+            <li>Thấu chi</li>
+          </ul>
+        </li>
+        <li><strong>Vay trung dài hạn:</strong>
+          <ul>
+            <li>Vay đầu tư tài sản cố định</li>
+          </ul>
+        </li>
+        <li>Giải pháp tài trợ trọn gói, lãi suất cạnh tranh</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 11: Guarantees (Corporate) -->
+    <section id="slide11" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Bảo lãnh</h3>
+      <ul>
+        <li><strong>Phát hành bảo lãnh:</strong>
+          <ul>
+            <li>Bảo lãnh dự thầu</li>
+            <li>Bảo lãnh thanh toán</li>
+            <li>Bảo lãnh thực hiện hợp đồng</li>
+            <li>Bảo lãnh hoàn trả tiền ứng trước</li>
+          </ul>
+        </li>
+        <li><strong>Dịch vụ bảo lãnh khác:</strong>
+          <ul>
+            <li>Thông báo bảo lãnh</li>
+            <li>Đòi tiền theo bảo lãnh</li>
+            <li>Xác thực bảo lãnh</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 12: Forex & Capital Markets (Corporate) -->
+    <section id="slide12" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Ngoại hối & Thị trường vốn</h3>
+      <ul>
+        <li><strong>Phái sinh lãi suất:</strong>
+          <ul>
+            <li>Hoán đổi lãi suất một đồng tiền</li>
+            <li>Hoán đổi lãi suất hai đồng tiền</li>
+          </ul>
+        </li>
+        <li>Giao dịch ngoại tệ kỳ hạn</li>
+        <li>Giao dịch ngoại tệ giao ngay</li>
+        <li>Giao dịch quyền chọn</li>
+        <li>Giao dịch hoán đổi</li>
+        <li><strong>Phái sinh giá cả hàng hóa:</strong>
+          <ul>
+            <li>Hợp đồng tương lai giá cả hàng hóa</li>
+            <li>Hợp đồng quyền chọn giá cả hàng hóa</li>
+            <li>Hợp đồng hoán đổi giá cả hàng hóa</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 13: Digital Banking for Enterprises (Corporate) -->
+    <section id="slide13" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Ngân hàng số cho doanh nghiệp</h3>
+      <ul>
+        <li>Giao diện tối ưu, quản lý thông tin hiệu quả với ứng dụng VCB Digibiz</li>
+        <li>Hệ thống tài chính hiện đại: VCB iB@nking, VCB Digibiz, SMS Banking</li>
+        <li>Trải nghiệm mới mẻ với nhiều tiện ích vượt trội</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 14: Advisory, Investment & Custody (Corporate) -->
+    <section id="slide14" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Tư vấn, Đầu tư & Bảo hiểm</h3>
+      <ul>
+        <li><strong>Tư vấn & Ngân hàng lưu ký:</strong>
+          <ul>
+            <li>Dịch vụ tư vấn chuyên nghiệp bởi VCBF</li>
+            <li>Đại lý phát hành chứng khoán</li>
+            <li>Ngân hàng lưu ký</li>
+          </ul>
+        </li>
+        <li><strong>Quỹ mở và Quỹ hưu trí:</strong>
+          <ul>
+            <li>Quản lý danh mục đầu tư (tối đa hóa lợi nhuận doanh nghiệp)</li>
+            <li>Bảo lãnh phát hành chứng khoán</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 15: Contact Information -->
     <section id="slide15" class="slide">
       <h2>Thông tin liên hệ</h2>
       <ul class="contact-info">
@@ -189,46 +601,64 @@
         <li>🌐 www.vietcombank.com.vn</li>
         <li>📍 2A-2B-2C Lý Thường Kiệt, Phường Chợ Lớn, TP.HCM</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
     </section>
-  </div>
+
+  </div> <!-- End of slides-container -->
+
   <script>
+    // JavaScript for navigation, "Back to top" button, and arrow navigation
     document.addEventListener('DOMContentLoaded', function() {
       const container = document.getElementById('slidesContainer');
       const slides = document.querySelectorAll('.slide');
 
+      // Tắt scroll restoration của trình duyệt
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
-      container.scrollTop = 0; // Set initial scroll to top
 
+      // Đặt vị trí cuộn về slide 1 khi tải trang
+      container.scrollLeft = 0;
+
+      // Handle nav bar links click: smooth scroll to target slide
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
           const targetId = this.getAttribute('href').substring(1);
           const targetSlide = document.getElementById(targetId);
           if (targetSlide) {
-            targetSlide.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll to top of slide
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Ensure nav is visible
+            container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
       });
 
+      // Handle "Back to top" button clicks
+      document.querySelectorAll('.back-to-top').forEach(btn => {
+        btn.addEventListener('click', function() {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+
+      // Handle arrow navigation clicks
       document.querySelectorAll('.nav-arrow').forEach(arrow => {
         arrow.addEventListener('click', function() {
           const direction = this.getAttribute('data-direction');
-          let currentScroll = container.scrollTop;
+          let currentScroll = container.scrollLeft;
           let targetSlide;
 
           if (direction === 'next') {
             for (let slide of slides) {
-              if (slide.offsetTop > currentScroll + 1) {
+              if (slide.offsetLeft > currentScroll + 1) {
                 targetSlide = slide;
                 break;
               }
             }
           } else if (direction === 'prev') {
             for (let i = slides.length - 1; i >= 0; i--) {
-              if (slides[i].offsetTop < currentScroll - 1) {
+              if (slides[i].offsetLeft < currentScroll - 1) {
                 targetSlide = slides[i];
                 break;
               }
@@ -236,10 +666,13 @@
           }
 
           if (targetSlide) {
-            targetSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
       });
     });
   </script>
+
+</body>
+</html>
