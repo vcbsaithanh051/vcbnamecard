@@ -1,117 +1,113 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/webp"
-        href="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp"/>
-  <title>Thông tin liên hệ</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thông tin liên hệ</title>
+<link rel="icon" type="image/webp"
+      href="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp"/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --vcb-green: #009639;
-      --vcb-green-dark: #007f2a;
-      --text: #333;
-      --radius: 16px;
-      --shadow: 0 8px 20px rgba(0,0,0,.08);
-      --transition: .3s ease;
-      --icon-size: 1em;
-    }
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {
-      font-family: 'Work Sans', sans-serif;
-      background: #e6f7ef;
-      color: var(--text);
-      -webkit-tap-highlight-color: transparent;
-    }
+<!-- ===== CSS ===== -->
+<style>
+:root{
+  --vcb-green:#009639;
+  --vcb-green-dark:#007f2a;
+  --text:#333;
+  --radius:16px;
+  --shadow:0 8px 20px rgba(0,0,0,.08);
+  --transition:.3s ease;
+  --icon-size:1em;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Work Sans',sans-serif;
+  background:#e6f7ef;
+  color:var(--text);
+  -webkit-tap-highlight-color:transparent;
+}
 
-    .banner {
-      width: 100%; height: 280px;
-      background: url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/.png')
-                  center/cover no-repeat;
-    }
-    .banner-text {
-      text-align: center; padding: 20px 10px 0;
-    }
-    .banner-text h1 {font-size: 26px; color: #006c3f; font-weight: 700; margin-bottom: 6px}
-    .banner-text h2 {font-size: 21px; color: var(--vcb-green); font-weight: 500}
+/* ---------- Banner ---------- */
+.banner{
+  width:100%;height:280px;
+  background:url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/avatar.png')
+            center/cover no-repeat;
+}
+.banner-text{text-align:center;padding:20px 10px 0}
+.banner-text h1{font-size:26px;color:#006c3f;font-weight:700;margin-bottom:6px}
+.banner-text h2{font-size:21px;color:var(--vcb-green);font-weight:500}
 
-    .info-card {
-      background: #fff; max-width: 480px; margin: 40px auto 20px;
-      padding: 80px 20px 30px; border-radius: var(--radius); box-shadow: var(--shadow);
-      text-align: center; position: relative;
-    }
-    .avatar {
-      width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-      border: 5px solid #fff; position: absolute; top: -30px; left: 50%;
-      transform: translateX(-50%); background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.2)
-    }
-    .info-card h2 {margin-top: 10px; font-size: 22px; color: #006c3f; font-weight: 600}
-    .info-card p {font-size: 15px; margin: 6px 0}
+/* ---------- Info Card ---------- */
+.info-card{
+  background:#fff;max-width:480px;margin:40px auto 20px;
+  padding:80px 20px 30px;border-radius:var(--radius);box-shadow:var(--shadow);
+  text-align:center;position:relative
+}
+.avatar{
+  width:120px;height:120px;border-radius:50%;object-fit:cover;
+  border:5px solid #fff;position:absolute;top:-30px;left:50%;
+  transform:translateX(-50%);background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.2)
+}
+.info-card h2{margin-top:10px;font-size:22px;color:#006c3f;font-weight:600}
+.info-card p{font-size:15px;margin:6px 0}
 
-    .btn {
-      display: inline-block; margin: 12px 6px 0; padding: 12px 20px; font-weight: 600;
-      border-radius: 6px; font-size: 15px; text-decoration: none; transition: var(--transition)
-    }
-    .btn-green {background: var(--vcb-green); color: #fff}
-    .btn-green:hover {background: var(--vcb-green-dark)}
-    .btn-outline {border: 2px solid var(--vcb-green); color: var(--vcb-green); background: #fff}
-    .btn-outline:hover {background: #f0fdf4}
+/* ---------- Buttons ---------- */
+.btn{display:inline-block;margin:12px 6px 0;padding:12px 20px;font-weight:600;
+     border-radius:6px;font-size:15px;text-decoration:none;transition:var(--transition)}
+.btn-green{background:var(--vcb-green);color:#fff}
+.btn-green:hover{background:var(--vcb-green-dark)}
+.btn-outline{border:2px solid var(--vcb-green);color:var(--vcb-green);background:#fff}
+.btn-outline:hover{background:#f0fdf4}
 
-    .address-icon-container {
-      display: inline-block; margin-right: 5px;
-    }
-    .icon-address {
-      width: var(--icon-size); height: var(--icon-size); vertical-align: -2px;
-    }
+/* ---------- Icons ---------- */
+.address-icon-container{display:inline-block;margin-right:5px}
+.icon-address{width:var(--icon-size);height:var(--icon-size);vertical-align:-2px}
 
-    .overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center;
-      justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: var(--transition);
-      z-index: 9999;
-    }
-    .overlay.show {opacity: 1; pointer-events: auto;}
-    .popup {
-      background: #fff; border-radius: 8px; max-width: 500px; width: 90%; padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.2); position: relative;
-    }
-    .popup h3 {margin-bottom: 10px}
-    .btn-close {
-      position: absolute; top: 10px; right: 10px; font-size: 1.4rem; color: #999; cursor: pointer;
-      background: none; border: none
-    }
-    .btn-close:hover {color: #333}
-    .branch-list {list-style: none; margin: 0; padding: 0}
-    .branch-list li {margin: 8px 0; font-size: 15px}
+/* ---------- Overlay / Popup ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);
+  display:none;align-items:center;justify-content:center;padding:20px;
+  z-index:9999
+}
+.overlay.show{display:flex}
+.overlay.blur{filter:blur(4px);pointer-events:none}
+.popup{
+  background:#fff;border-radius:8px;max-width:500px;width:90%;padding:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.2);position:relative
+}
+.popup h3{margin-bottom:10px}
+.btn-close{
+  position:absolute;top:10px;right:10px;font-size:1.4rem;color:#999;cursor:pointer;
+  background:none;border:none
+}
+.btn-close:hover{color:#333}
+.branch-list{list-style:none;margin:0;padding:0}
+.branch-list li{margin:8px 0;font-size:15px}
 
-    @media(max-width:480px){
-      .banner-text h1{font-size:20px}
-      .banner-text h2{font-size:17px}
-      .info-card{margin:40px 10px 20px;padding:70px 15px 25px}
-      .avatar{width:100px;height:100px}
-    }
-  </style>
+/* ---------- Responsive ---------- */
+@media(max-width:480px){
+  .banner-text h1{font-size:20px}
+  .banner-text h2{font-size:17px}
+  .info-card{margin:40px 10px 20px;padding:70px 15px 25px}
+  .avatar{width:100px;height:100px}
+}
+</style>
 </head>
 <body>
 
-<!-- Banner -->
+<!-- ===== Banner ===== -->
 <div class="banner"></div>
-
-<!-- Banner text -->
 <div class="banner-text">
   <h2>Ngân hàng TMCP Ngoại thương Việt Nam</h2>
   <h2><strong>Chi nhánh Sài Thành</strong></h2>
 </div>
 
-<!-- Info card -->
+<!-- ===== Info Card ===== -->
 <div class="info-card">
-  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/.png" alt="Ảnh đại diện" class="avatar"/>
+  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/avatar.png" alt="Ảnh đại diện" class="avatar"/>
   <h2>Nguyễn Đức Nhật Phương</h2>
   <p>Trưởng phòng Phòng giao dịch Bình Thạnh</p>
-  <p>
-    <strong>Chi nhánh:</strong>
-    <a href="#" id="branchLink" style="color:#006c3f;text-decoration:underline">Sài Thành</a>
+  <p><strong>Chi nhánh:</strong>
+     <a href="#" data-target="branchPopup" class="open-popup" style="color:#006c3f;text-decoration:underline">Sài Thành</a>
   </p>
   <p>
     <span class="address-icon-container">
@@ -120,14 +116,14 @@
       </svg>
     </span>
     <strong>Địa chỉ:</strong>
-    <a href="https://maps.app.goo.gl/7tQm8pVuuuc2koZ57" target="_blank" rel="noopener">Số 2A-2B-2C Lý Thường Kiệt, P. Chợ Lớn, TP. HCM</a>
+    <a href="https://maps.app.goo.gl/7tQm8pVuuuc2koZ57" target="_blank" rel="noopener">
+      Số 2A‑2B‑2C Lý Thường Kiệt, P. Chợ Lớn, TP.HCM
+    </a>
   </p>
-  <p>
-    <a href="#" id="directSubBranchLink">Và địa chỉ các phòng giao dịch trực thuộc</a>
-  </p>
-  <p>📞 0918 851 232</p>
-  <p>📧 phuongndn.stn@vietcombank.com.vn</p>
-
+  <p><a href="#" data-target="subBranchPopup" class="open-popup" id="directSubBranchLink">
+      Và địa chỉ các phòng giao dịch trực thuộc</a></p>
+  <p>📞 0918 851 232</p>
+  <p>📧 phuongndn.stn@vietcombank.com.vn</p>
   <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
   <a href="../vcf/luonganhvu.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
   <p id="androidHint" style="display:none;font-size:14px;color:#555">
@@ -135,385 +131,113 @@
   </p>
 </div>
 
-<!-- Popup chọn phòng ban -->
-<div id="branchPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="branchPopupTitle">
-    <button class="btn-close" id="branchPopupClose" aria-label="Đóng">×</button>
-    <h3 id="branchPopupTitle">Chi nhánh Sài Thành</h3>
+<!-- ===== Popups ===== -->
+<!-- Popup Chi nhánh -->
+<div id="branchPopup" class="overlay" role="dialog" aria-modal="true">
+  <div class="popup">
+    <button class="btn-close" aria-label="Đóng">&times;</button>
+    <h3>Chi nhánh Sài Thành</h3>
     <ul class="branch-list">
-      <li><a href="#" id="openKHBanLe">Trưởng phòng Khách hàng Bán lẻ</a></li>
-      <li><a href="#" id="openKHDN">Trưởng phòng Khách hàng Doanh nghiệp</a></li>
-      <li><a href="#" id="openQLNo">Trưởng phòng Quản lý Nợ</a></li>
-      <li><a href="#" id="openKeToan">Trưởng phòng Kế toán</a></li>
-      <li><a href="#" id="openDVKH">Trưởng phòng Dịch vụ Khách hàng</a></li>
-      <li><a href="#" id="subBranchLink">Địa chỉ các Phòng giao dịch của Chi nhánh Sài Thành gần đây</a></li>
+      <li><a href="#" data-target="khBanLePopup" class="open-popup">Trưởng phòng Khách hàng Bán lẻ</a></li>
+      <li><a href="#" data-target="khdnPopup"    class="open-popup">Trưởng phòng Khách hàng Doanh nghiệp</a></li>
+      <li><a href="#" data-target="qlNoPopup"    class="open-popup">Trưởng phòng Quản lý Nợ</a></li>
+      <li><a href="#" data-target="keToanPopup"  class="open-popup">Trưởng phòng Kế toán</a></li>
+      <li><a href="#" data-target="dvkhPopup"    class="open-popup">Trưởng phòng Dịch vụ Khách hàng</a></li>
+      <li><a href="#" data-target="subBranchPopup" class="open-popup">Địa chỉ các Phòng giao dịch</a></li>
     </ul>
   </div>
 </div>
 
-<!-- Popup cho Trưởng phòng Khách hàng Bán lẻ -->
-<div id="khBanLePopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="khBanLePopupTitle">
-    <button class="btn-close" id="khBanLePopupClose" aria-label="Đóng">×</button>
-    <h3 id="khBanLePopupTitle">Thông tin Trưởng phòng Khách hàng Bán lẻ</h3>
-    <p><strong>Tên:</strong> Nguyễn Như Tiệp</p>
-    <p><a href="/namecard/nguyennhutiep">Thông tin liên hệ</a></p>
-  </div>
-</div>
+<!-- Các popup Trưởng phòng -->
+<div id="khBanLePopup" class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng KH Bán lẻ</h3><p><strong>Tên:</strong> Nguyễn Như Tiệp</p><p><a href="/namecard/nguyennhutiep">Thông tin liên hệ</a></p></div></div>
+<div id="khdnPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng KH Doanh nghiệp</h3><p><strong>Tên:</strong> Nguyễn Duy Ngọc</p><p><a href="/namecard/nguyenduyngoc">Thông tin liên hệ</a></p></div></div>
+<div id="qlNoPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng Quản lý Nợ</h3><p><strong>Tên:</strong> Nguyễn Minh Quốc</p><p><a href="/namecard/nguyenminhquoc">Thông tin liên hệ</a></p></div></div>
+<div id="keToanPopup" class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng Kế toán</h3><p><strong>Tên:</strong> Lê Thị Ngọc Diệp</p><p><a href="/namecard/lethingocdiep">Thông tin liên hệ</a></p></div></div>
+<div id="dvkhPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng DVKH</h3><p><strong>Tên:</strong> Huỳnh Thị Phi Yến</p><p><a href="/namecard/huynhthiphiyen">Thông tin liên hệ</a></p></div></div>
 
-<!-- Popup cho Trưởng phòng Khách hàng Doanh nghiệp -->
-<div id="khdnPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="khdnPopupTitle">
-    <button class="btn-close" id="khdnPopupClose" aria-label="Đóng">×</button>
-    <h3 id="khdnPopupTitle">Thông tin Trưởng phòng Khách hàng Doanh nghiệp</h3>
-    <p><strong>Tên:</strong> Nguyễn Duy Ngọc</p>
-    <p><a href="/namecard/nguyenduyngoc">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup cho Trưởng phòng Quản lý Nợ -->
-<div id="qlNoPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="qlNoPopupTitle">
-    <button class="btn-close" id="qlNoPopupClose" aria-label="Đóng">×</button>
-    <h3 id="qlNoPopupTitle">Thông tin Trưởng phòng Quản lý Nợ</h3>
-    <p><strong>Tên:</strong> Nguyễn Minh Quốc</p>
-    <p><a href="/namecard/nguyenminhquoc">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup cho Trưởng phòng Kế toán -->
-<div id="keToanPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="keToanPopupTitle">
-    <button class="btn-close" id="keToanPopupClose" aria-label="Đóng">×</button>
-    <h3 id="keToanPopupTitle">Thông tin Trưởng phòng Kế toán</h3>
-    <p><strong>Tên:</strong> Lê Thị Ngọc Diệp</p>
-    <p><a href="/namecard/lethingocdiep">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup cho Trưởng phòng Dịch vụ Khách hàng -->
-<div id="dvkhPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="dvkhPopupTitle">
-    <button class="btn-close" id="dvkhPopupClose" aria-label="Đóng">×</button>
-    <h3 id="dvkhPopupTitle">Thông tin Trưởng phòng Dịch vụ Khách hàng</h3>
-    <p><strong>Tên:</strong> Huỳnh Thị Phi Yến</p>
-    <p><a href="/namecard/huynhthiphiyen">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup lồng: Địa chỉ PGD -->
-<div id="subBranchPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="subBranchPopupTitle">
-    <button class="btn-close" id="subBranchPopupClose" aria-label="Đóng">×</button>
-    <h3 id="subBranchPopupTitle">Địa chỉ các Phòng giao dịch</h3>
+<!-- Popup danh sách PGD -->
+<div id="subBranchPopup" class="overlay" role="dialog" aria-modal="true">
+  <div class="popup">
+    <button class="btn-close" aria-label="Đóng">&times;</button>
+    <h3>Địa chỉ các Phòng giao dịch</h3>
     <ul class="branch-list">
-      <li>
-        <a href="#" id="openPgdBinhThanh">PGD Bình Thạnh</a><br>
-        <a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank" style="font-size:14px;color:#555">
-          Số 136 Nguyễn Gia Trí, Bình Thạnh
-        </a>
-      </li>
-      <li>
-        <a href="#" id="openPgdTranHungDao">PGD Trần Hưng Đạo</a><br>
-        <a href="https://maps.app.goo.gl/yX1abDUvjuviDkGSA" target="_blank" style="font-size:14px;color:#555">
-          823 Trần Hưng Đạo, Q.5
-        </a>
-      </li>
-      <li>
-        <a href="#" id="openPgdNgoGiaTu">PGD Ngô Gia Tự</a><br>
-        <a href="https://maps.app.goo.gl/7b3eCDLPfQFFHhnG9" target="_blank" style="font-size:14px;color:#555">
-          73 Ngô Gia Tự, Q.10
-        </a>
-      </li>
-      <li>
-        <a href="#" id="openPgdVoVanTan">PGD Võ Văn Tần</a><br>
-        <a href="https://maps.app.goo.gl/4M7Tbp7aRXuAQEYd8" target="_blank" style="font-size:14px;color:#555">
-          149 Võ Văn Tần, Q.3
-        </a>
-      </li>
+      <li><a href="#" data-target="pgdBinhThanhPopup" class="open-popup">PGD Bình Thạnh</a><br>
+          <a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank" style="font-size:14px;color:#555">136-138 đường Nguyễn Gia Trí, Phường Thạnh Mỹ Tây, TP. HCM</a></li>
+      <li><a href="#" data-target="pgdTranHungDaoPopup" class="open-popup">PGD Trần Hưng Đạo</a><br>
+          <a href="https://maps.app.goo.gl/yX1abDUvjuviDkGSA" target="_blank" style="font-size:14px;color:#555">821-823 Trần Hưng Đạo, Phường Chợ Quán, TP. HCM</a></li>
+      <li><a href="#" data-target="pgdNgoGiaTuPopup" class="open-popup">PGD Ngô Gia Tự</a><br>
+          <a href="https://maps.app.goo.gl/7b3eCDLPfQFFHhnG9" target="_blank" style="font-size:14px;color:#555">73-75 Ngô Gia Tự, Phường Vườn Lài, TP. HCM</a></li>
+      <li><a href="#" data-target="pgdVoVanTanPopup" class="open-popup">PGD Võ Văn Tần</a><br>
+          <a href="https://maps.app.goo.gl/4M7Tbp7aRXuAQEYd8" target="_blank" style="font-size:14px;color:#555">Tầng trệt toà nhà Estar số 147-149 Võ Văn Tần, Phường Xuân Hoà, TP. HCM</a></li>
     </ul>
   </div>
 </div>
 
-<!-- Popup cho PGD Bình Thạnh -->
-<div id="pgdBinhThanhPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="pgdBinhThanhPopupTitle">
-    <button class="btn-close" id="pgdBinhThanhPopupClose" aria-label="Đóng">×</button>
-    <h3 id="pgdBinhThanhPopupTitle">Thông tin PGD Bình Thạnh</h3>
-    <p><strong>Trưởng phòng:</strong> Nguyễn Đức Nhật Phương</p>
-    <p><a href="/namecard/nguyenducnhatphuong">Thông tin liên hệ</a></p>
-    <p><strong>Phó phòng:</strong> Võ Thị Hồng Thúy</p>
-    <p><a href="/namecard/vothihongthuy">Thông tin liên hệ</a></p>
-  </div>
-</div>
+<!-- Các popup PGD -->
+<div id="pgdBinhThanhPopup"  class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin PGD Bình Thạnh</h3><p><strong>Trưởng phòng:</strong> Nguyễn Đức Nhật Phương</p><p><a href="/namecard/nguyenducnhatphuong">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Võ Thị Hồng Thúy</p><p><a href="/namecard/vothihongthuy">Thông tin liên hệ</a></p></div></div>
+<div id="pgdTranHungDaoPopup" class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin PGD Trần Hưng Đạo</h3><p><strong>Trưởng phòng:</strong> Đỗ Thị Mỹ Phương</p><p><a href="/namecard/dothimyphuong">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Hà Ngô Thị Tuyết</p><p><a href="/namecard/hangothituyet">Thông tin liên hệ</a></p></div></div>
+<div id="pgdNgoGiaTuPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin PGD Ngô Gia Tự</h3><p><strong>Trưởng phòng:</strong> Liêu Thị Kim Chi</p><p><a href="/namecard/lieuthikimchi">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Lê Huy</p><p><a href="/namecard/lehuy">Thông tin liên hệ</a></p></div></div>
+<div id="pgdVoVanTanPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin PGD Võ Văn Tần</h3><p><strong>Trưởng phòng:</strong> Phan Nhất Linh</p><p><a href="/namecard/phannhatlinh">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Trần Thị Diệu Phương</p><p><a href="/namecard/tranthidieuphuong">Thông tin liên hệ</a></p></div></div>
 
-<!-- Popup cho PGD Trần Hưng Đạo -->
-<div id="pgdTranHungDaoPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="pgdTranHungDaoPopupTitle">
-    <button class="btn-close" id="pgdTranHungDaoPopupClose" aria-label="Đóng">×</button>
-    <h3 id="pgdTranHungDaoPopupTitle">Thông tin PGD Trần Hưng Đạo</h3>
-    <p><strong>Trưởng phòng:</strong> Đỗ Thị Mỹ Phương</p>
-    <p><a href="/namecard/dothimyphuong">Thông tin liên hệ</a></p>
-    <p><strong>Phó phòng:</strong> Hà Ngô Thị Tuyết</p>
-    <p><a href="/namecard/hangothituyet">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup cho PGD Ngô Gia Tự -->
-<div id="pgdNgoGiaTuPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="pgdNgoGiaTuPopupTitle">
-    <button class="btn-close" id="pgdNgoGiaTuPopupClose" aria-label="Đóng">×</button>
-    <h3 id="pgdNgoGiaTuPopupTitle">Thông tin PGD Ngô Gia Tự</h3>
-    <p><strong>Trưởng phòng:</strong> Liêu Thị Kim Chi</p>
-    <p><a href="/namecard/lieuthikimchi">Thông tin liên hệ</a></p>
-    <p><strong>Phó phòng:</strong> Lê Huy</p>
-    <p><a href="/namecard/lehuy">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup cho PGD Võ Văn Tần -->
-<div id="pgdVoVanTanPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="pgdVoVanTanPopupTitle">
-    <button class="btn-close" id="pgdVoVanTanPopupClose" aria-label="Đóng">×</button>
-    <h3 id="pgdVoVanTanPopupTitle">Thông tin PGD Võ Văn Tần</h3>
-    <p><strong>Trưởng phòng:</strong> Phan Nhất Linh</p>
-    <p><a href="/namecard/phannhatlinh">Thông tin liên hệ</a></p>
-    <p><strong>Phó phòng:</strong> Trần Thị Diệu Phương</p>
-    <p><a href="/namecard/tranthidieuphuong">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
+<!-- ===== JavaScript ===== -->
 <script>
-  if(/android/i.test(navigator.userAgent)){
-    const btn=document.getElementById('addContactBtn');
-    if(btn){btn.setAttribute('download','');document.getElementById('androidHint').style.display='block';}
+/* ---------- Android vCard xử lý tự động ---------- */
+if(/android/i.test(navigator.userAgent)){
+  const btn=document.getElementById('addContactBtn');
+  if(btn){
+    btn.setAttribute('download','');
+    document.getElementById('androidHint').style.display='block';
   }
+}
 
-  const branchPopup = document.getElementById('branchPopup');
-  const branchLink = document.getElementById('branchLink');
-  const branchPopupClose = document.getElementById('branchPopupClose');
-  branchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  branchPopupClose.addEventListener('click', function() {
-    branchPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  branchPopup.addEventListener('click', function(e) {
-    if (e.target === branchPopup) {
-      branchPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
+/* ---------- Logic Popup Stack ---------- */
+const stack=[];                     // lưu các overlay đang mở
 
-  const subBranchPopup = document.getElementById('subBranchPopup');
-  const subBranchLink = document.getElementById('subBranchLink');
-  const subBranchPopupClose = document.getElementById('subBranchPopupClose');
-  subBranchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.remove('show');
-    subBranchPopup.classList.add('show');
-  });
-  subBranchPopupClose.addEventListener('click', function() {
-    subBranchPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  subBranchPopup.addEventListener('click', function(e) {
-    if (e.target === subBranchPopup) {
-      subBranchPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
+// Mở overlay
+function openOverlay(id){
+  const ov=document.getElementById(id);
+  if(!ov) return;
+  if(stack.length){ stack.at(-1).classList.add('blur'); }
+  ov.classList.add('show');
+  stack.push(ov);
+  document.body.style.overflow='hidden';
+}
 
-  const directSubBranchLink = document.getElementById('directSubBranchLink');
-  directSubBranchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    subBranchPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
+// Đóng overlay trên cùng
+function closeTopOverlay(){
+  if(!stack.length) return;
+  const ov=stack.pop();
+  ov.classList.remove('show','blur');
+  if(stack.length){
+    stack.at(-1).classList.remove('blur');
+  }else{
+    document.body.style.overflow='';
+  }
+}
 
-  const openKHBanLe = document.getElementById('openKHBanLe');
-  const khBanLePopup = document.getElementById('khBanLePopup');
-  const khBanLePopupClose = document.getElementById('khBanLePopupClose');
-  openKHBanLe.addEventListener('click', function(e) {
+/* ---------- Gán sự kiện ---------- */
+// a) Mở popup: bất kỳ phần tử có class open-popup + data-target
+document.querySelectorAll('.open-popup').forEach(el=>{
+  el.addEventListener('click',e=>{
     e.preventDefault();
-    branchPopup.classList.remove('show');
-    khBanLePopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
+    openOverlay(el.dataset.target);
   });
-  khBanLePopupClose.addEventListener('click', function() {
-    khBanLePopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  khBanLePopup.addEventListener('click', function(e) {
-    if (e.target === khBanLePopup) {
-      khBanLePopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
+});
 
-  const openKHDN = document.getElementById('openKHDN');
-  const khdnPopup = document.getElementById('khdnPopup');
-  const khdnPopupClose = document.getElementById('khdnPopupClose');
-  openKHDN.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.remove('show');
-    khdnPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
+// b) Nút đóng (×)
+document.querySelectorAll('.btn-close').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    closeTopOverlay();
   });
-  khdnPopupClose.addEventListener('click', function() {
-    khdnPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  khdnPopup.addEventListener('click', function(e) {
-    if (e.target === khdnPopup) {
-      khdnPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
+});
 
-  const openQLNo = document.getElementById('openQLNo');
-  const qlNoPopup = document.getElementById('qlNoPopup');
-  const qlNoPopupClose = document.getElementById('qlNoPopupClose');
-  openQLNo.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.remove('show');
-    qlNoPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
+// c) Click ra ngoài khung popup để đóng popup trên cùng
+document.querySelectorAll('.overlay').forEach(ov=>{
+  ov.addEventListener('click',e=>{
+    if(e.target===ov) closeTopOverlay();
   });
-  qlNoPopupClose.addEventListener('click', function() {
-    qlNoPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  qlNoPopup.addEventListener('click', function(e) {
-    if (e.target === qlNoPopup) {
-      qlNoPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
-
-  const openKeToan = document.getElementById('openKeToan');
-  const keToanPopup = document.getElementById('keToanPopup');
-  const keToanPopupClose = document.getElementById('keToanPopupClose');
-  openKeToan.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.remove('show');
-    keToanPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  keToanPopupClose.addEventListener('click', function() {
-    keToanPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  keToanPopup.addEventListener('click', function(e) {
-    if (e.target === keToanPopup) {
-      keToanPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
-
-  const openDVKH = document.getElementById('openDVKH');
-  const dvkhPopup = document.getElementById('dvkhPopup');
-  const dvkhPopupClose = document.getElementById('dvkhPopupClose');
-  openDVKH.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.remove('show');
-    dvkhPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  dvkhPopupClose.addEventListener('click', function() {
-    dvkhPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  dvkhPopup.addEventListener('click', function(e) {
-    if (e.target === dvkhPopup) {
-      dvkhPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
-
-  const openPgdBinhThanh = document.getElementById('openPgdBinhThanh');
-  const pgdBinhThanhPopup = document.getElementById('pgdBinhThanhPopup');
-  const pgdBinhThanhPopupClose = document.getElementById('pgdBinhThanhPopupClose');
-  openPgdBinhThanh.addEventListener('click', function(e) {
-    e.preventDefault();
-    subBranchPopup.classList.remove('show');
-    pgdBinhThanhPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  pgdBinhThanhPopupClose.addEventListener('click', function() {
-    pgdBinhThanhPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  pgdBinhThanhPopup.addEventListener('click', function(e) {
-    if (e.target === pgdBinhThanhPopup) {
-      pgdBinhThanhPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
-
-  const openPgdTranHungDao = document.getElementById('openPgdTranHungDao');
-  const pgdTranHungDaoPopup = document.getElementById('pgdTranHungDaoPopup');
-  const pgdTranHungDaoPopupClose = document.getElementById('pgdTranHungDaoPopupClose');
-  openPgdTranHungDao.addEventListener('click', function(e) {
-    e.preventDefault();
-    subBranchPopup.classList.remove('show');
-    pgdTranHungDaoPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  pgdTranHungDaoPopupClose.addEventListener('click', function() {
-    pgdTranHungDaoPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  pgdTranHungDaoPopup.addEventListener('click', function(e) {
-    if (e.target === pgdTranHungDaoPopup) {
-      pgdTranHungDaoPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
-
-  const openPgdNgoGiaTu = document.getElementById('openPgdNgoGiaTu');
-  const pgdNgoGiaTuPopup = document.getElementById('pgdNgoGiaTuPopup');
-  const pgdNgoGiaTuPopupClose = document.getElementById('pgdNgoGiaTuPopupClose');
-  openPgdNgoGiaTu.addEventListener('click', function(e) {
-    e.preventDefault();
-    subBranchPopup.classList.remove('show');
-    pgdNgoGiaTuPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  pgdNgoGiaTuPopupClose.addEventListener('click', function() {
-    pgdNgoGiaTuPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  pgdNgoGiaTuPopup.addEventListener('click', function(e) {
-    if (e.target === pgdNgoGiaTuPopup) {
-      pgdNgoGiaTuPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
-
-  const openPgdVoVanTan = document.getElementById('openPgdVoVanTan');
-  const pgdVoVanTanPopup = document.getElementById('pgdVoVanTanPopup');
-  const pgdVoVanTanPopupClose = document.getElementById('pgdVoVanTanPopupClose');
-  openPgdVoVanTan.addEventListener('click', function(e) {
-    e.preventDefault();
-    subBranchPopup.classList.remove('show');
-    pgdVoVanTanPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  pgdVoVanTanPopupClose.addEventListener('click', function() {
-    pgdVoVanTanPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  pgdVoVanTanPopup.addEventListener('click', function(e) {
-    if (e.target === pgdVoVanTanPopup) {
-      pgdVoVanTanPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
+});
 </script>
-
 </body>
 </html>
