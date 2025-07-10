@@ -101,6 +101,21 @@
       border-radius: 4px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+    /* Fallback for images that fail to load */
+    .image-grid img[alt]:after {
+      content: attr(alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 150px; /* fixed height for fallback */
+      background: #f0f0f0;
+      color: #006734;
+      font-size: 14px;
+      text-align: center;
+      border: 2px solid #006734;
+      border-radius: 4px;
+    }
     /* Headings Styles */
     h1, h2, h3, h4 {
       margin: 0.5em 0;
@@ -270,10 +285,10 @@
     <!-- Slide 1: Cover Page (Thư ngỏ) -->
     <section id="slide1" class="slide">
       <div class="image-grid">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-0.png" alt="Thư ngỏ">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-1.png" alt="Thư ngỏ">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-2.png" alt="Thư ngỏ">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-3.png" alt="Thư ngỏ">
+        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-0.png" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Thư+ngỏ+hình+1';">
+        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-1.png" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Thư+ngỏ+hình+2';">
+        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-2.png" alt="Thư ngỏ hình 3" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Thư+ngỏ+hình+3';">
+        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-3.png" alt="Thư ngỏ hình 4" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Thư+ngỏ+hình+4';">
       </div>
       <h1>Sản phẩm Dịch vụ Vietcombank</h1>
       <h2><a href="#slide2">Khách hàng cá nhân</a></h2>
