@@ -2,232 +2,508 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/webp"
-        href="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp"/>
-  <title>Thông tin liên hệ</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sản phẩm Dịch vụ Vietcombank</title>
   <style>
-    :root
-
- {
-      --vcb-green: #009639;
-      --vcb-green-dark: #007f2a;
-      --text: #333;
-      --radius: 16px;
-      --shadow: 0 8px 20px rgba(0,0,0,.08);
-      --transition: .3s ease;
-      --icon-size: 1em;
-    }
-    * {margin: 0; padding: 0; box-sizing: border-box;}
+    /* Base Styles (mobile-first approach) */
     body {
-      font-family: 'Work Sans', sans-serif;
-      background: #e6f7ef;
-      color: var(--text);
-      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding-top: 60px; /* space for fixed nav bar; adjust if nav bar height changes */
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #000;
+      background-color: #fff;
     }
-
-    .banner {
-      width: 100%; height: 280px;
-      background: url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyennhutiep.png')
-                  center/cover no-repeat;
+    /* Fixed Navigation Bar Styles */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #006734; /* Vietcombank dark green background for nav */
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000; /* ensure nav stays above other content */
     }
-    .banner-text {
-      text-align: center; padding: 20px 10px 0;
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* allow menu items to wrap to next line on small screens */
     }
-    .banner-text h1 {font-size: 26px; color: #006c3f; font-weight: 700; margin-bottom: 6px}
-    .banner-text h2 {font-size: 21px; color: var(--vcb-green); font-weight: 500}
-
-    .info-card {
-      background: #fff; max-width: 480px; margin: 40px auto 20px;
-      padding: 80px 20px 30px; border-radius: var(--radius); box-shadow: var(--shadow);
-      text-align: center; position: relative;
+    nav li {
+      margin: 5px 15px;
     }
-    .avatar {
-      width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-      border: 5px solid #fff; position: absolute; top: -30px; left: 50%;
-      transform: translateX(-50%); background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.2)
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
     }
-    .info-card h2 {margin-top: 10px; font-size: 22px; color: #006c3f; font-weight: 600}
-    .info-card p {font-size: 15px; margin: 6px 0}
-
-    .btn {
-      display: inline-block; margin: 12px 6px 0; padding: 12px 20px; font-weight: 600;
-      border-radius: 6px; font-size: 15px; text-decoration: none; transition: var(--transition)
+    nav a:hover {
+      text-decoration: underline;
     }
-    .btn-green {background: var(--vcb-green); color: #fff}
-    .btn-green:hover {background: var(--vcb-green-dark)}
-    .btn-outline {border: 2px solid var(--vcb-green); color: var(--vcb-green); background: #fff}
-    .btn-outline:hover {background: #f0fdf4}
-
-    .icon-address {
-      width: var(--icon-size); height: var(--icon-size); vertical-align: -2px; margin-right: 5px;
-      fill: currentColor
+    /* Horizontal Scroll Snap Container */
+    .slides-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth; /* smooth scrolling for programmatic scroll */
+      -webkit-overflow-scrolling: touch; /* smoother scrolling on iOS */
+      height: 100%;
     }
-
-    .overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center;
-      justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: var(--transition);
-      z-index: 9999;
+    .slides-container::-webkit-scrollbar {
+      display: none; /* hide horizontal scrollbar for WebKit */
     }
-    .overlay.show {opacity: 1; pointer-events: auto;}
-    .popup {
-      background: #fff; border-radius: 8px; max-width: 500px; width: 90%; padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.2); position: relative;
+    .slides-container {
+      -ms-overflow-style: none;  /* hide scrollbar for IE and Edge */
+      scrollbar-width: none;     /* hide scrollbar for Firefox */
     }
-    .popup h3 {margin-bottom: 10px}
-    .btn-close {
-      position: absolute; top: 10px; right: 10px; font-size: 1.4rem; color: #999; cursor: pointer;
-      background: none; border: none
+    /* Individual Slide Styles */
+    .slide {
+      flex: 0 0 100%;           /* each slide takes full viewport width */
+      scroll-snap-align: start; /* snap so that each slide starts at the viewport */
+      box-sizing: border-box;
+      padding: 20px;
+      /* Default slide background and text color */
+      background: #fff;
+      color: #000;
     }
-    .btn-close:hover {color: #333}
-    .branch-list {list-style: none; margin: 0; padding: 0}
-    .branch-list li {margin: 8px 0; font-size: 15px}
-
-    @media(max-width:480px){
-      .banner-text h1{font-size:20px}
-      .banner-text h2{font-size:17px}
-      .info-card{margin:40px 10px 20px;padding:70px 15px 25px}
-      .avatar{width:100px;height:100px}
+    /* Slide 1 (Cover) specific style: dark green background with white text */
+    #slide1 {
+      background: #006734; /* Vietcombank primary green */
+      color: #fff;
+    }
+    /* Headings Styles */
+    h1, h2, h3, h4 {
+      margin: 0.5em 0;
+      font-weight: bold;
+      text-transform: uppercase; /* headings in uppercase as per design */
+    }
+    /* Adjust heading font sizes for hierarchy (mobile-first sizing) */
+    h1 { font-size: 2em; }   /* largest title (cover page) */
+    h2 { font-size: 1.5em; } /* section titles */
+    h3 { font-size: 1.2em; } /* slide content titles */
+    h4 { font-size: 1.1em; } /* smaller subheadings */
+    /* Section name label (e.g., "KHÁCH HÀNG CÁ NHÂN" on slides) */
+    .section-name {
+      font-weight: bold;
+      color: #006734;      /* use brand green for section labels */
+      margin-bottom: 10px; /* spacing below the label */
+    }
+    /* List Styles (remove default bullets, use custom symbols) */
+    ul {
+      padding-left: 0;  /* remove default indentation */
+      margin: 0 0 1em 0;
+      list-style: none; /* remove default bullets */
+    }
+    ul li {
+      margin-bottom: 0.5em;
+      position: relative; /* for pseudo-element bullets positioning */
+    }
+    /* Bullet symbols for list items at different nesting levels */
+    ul li::before {
+      content: "› ";             /* arrow symbol for top-level list items */
+      color: #006734;            /* bullet in brand color */
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    ul ul li::before {
+      content: "• ";            /* filled circle for second-level list items */
+      color: #006734;
+      font-weight: bold;
+      left: 0;
+    }
+    ul ul ul li::before {
+      content: "– ";            /* dash for third-level list items */
+      color: #006734;
+      left: 0;
+    }
+    /* Indentation for nested lists */
+    ul li ul {
+      margin-left: 1.5em;
+    }
+    ul li ul li ul {
+      margin-left: 1.5em;
+    }
+    /* Contact info list (no bullets, uses icons/emoji for each item) */
+    .contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .contact-info li {
+      margin: 0.5em 0;
+    }
+    /* "Back to top" button style */
+    .back-to-top {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #006734;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .back-to-top:hover {
+      background: #00582a;
+    }
+    /* Content Anchor Styles */
+    .slide a {
+      color: #006734;
+      text-decoration: none;
+    }
+    .slide a:hover {
+      text-decoration: underline;
+    }
+    /* Ensure links on dark slide1 remain visible (white text) */
+    #slide1 a {
+      color: #fff;
+    }
+    #slide1 a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-<!-- Banner -->
-<div class="banner"></div>
-
-<!-- Banner text -->
-<div class="banner-text">
-  <h2>Ngân hàng TMCP Ngoại thương Việt Nam</h2>
-  <h2><strong>Chi nhánh Sài Thành</strong></h2>
-</div>
-
-<!-- Info card -->
-<div class="info-card">
-  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyennhutiep.png" alt="Ảnh đại diện" class="avatar"/>
-  <h2>Lương Anh Vũ</h2>
-  <p>Chuyên viên Công Nghệ Thông Tin</p>
-  <p>
-    <strong>Chi nhánh:</strong>
-    <a href="#" id="branchLink" style="color:#006c3f;text-decoration:underline">Sài Thành</a>
-  </p>
-  <p><svg class="icon-address" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><strong>Địa chỉ:</strong><a href="https://maps.app.goo.gl/B9i75KAVpMb8efwE6" target="_blank" rel="noopener">Số 2A-B-C Lý Thường Kiệt, P.Chợ Lớn, TP.HCM</a></p>
-  <p>
-    <a href="#" id="directSubBranchLink">Và địa chỉ các phòng giao dịch trực thuộc</a>
-  </p>
-  <p>📞 0918 851 232</p>
-  <p>📧 vula.stn@vietcombank.com.vn</p>
-
-  <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
-  <a href="../vcf/luonganhvu.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
-  <p id="androidHint" style="display:none;font-size:14px;color:#555">
-    Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
-  </p>
-</div>
-
-<!-- Popup chọn phòng ban -->
-<div id="branchPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="branchPopupTitle">
-    <button class="btn-close" id="branchPopupClose" aria-label="Đóng">×</button>
-    <h3 id="branchPopupTitle">Chi nhánh Sài Thành – Chọn phòng</h3>
-    <ul class="branch-list">
-      <li><a href="#">Trưởng phòng Khách hàng Bán lẻ</a></li>
-      <li><a href="#">Trưởng phòng Khách hàng Doanh nghiệp</a></li>
-      <li><a href="#">Trưởng phòng Quản lý Nợ</a></li>
-      <li><a href="#">Trưởng phòng Kế toán</a></li>
-      <li><a href="#">Trưởng phòng Dịch vụ Khách hàng</a></li>
-      <li><a href="#" id="subBranchLink">Địa chỉ các Phòng giao dịch</a></li>
+  <!-- Fixed Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#slide1" class="nav-link">Sản phẩm & Dịch vụ VCB</a></li>
+      <li><a href="#slide2" class="nav-link">Khách hàng cá nhân</a></li>
+      <li><a href="#slide8" class="nav-link">Khách hàng tổ chức</a></li>
+      <li><a href="#slide15" class="nav-link">Liên hệ</a></li>
     </ul>
-  </div>
-</div>
+  </nav>
 
-<!-- Popup lồng: Địa chỉ PGD -->
-<div id="subBranchPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="subBranchPopupTitle">
-    <button class="btn-close" id="subBranchPopupClose" aria-label="Đóng">×</button>
-    <h3 id="subBranchPopupTitle">Địa chỉ các Phòng giao dịch</h3>
-    <ul class="branch-list">
-      <li>
-        <a href="#">PGD Bình Thạnh</a><br>
-        <a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank" style="font-size:14px;color:#555">
-          Số 1 Điện Biên Phủ, Bình Thạnh
-        </a>
-      </li>
-      <li>
-        <a href="#">PGD Trần Hưng Đạo</a><br>
-        <a href="https://maps.app.goo.gl/yX1abDUvjuviDkGSA" target="_blank" style="font-size:14px;color:#555">
-          456 Trần Hưng Đạo, Q.5
-        </a>
-      </li>
-      <li>
-        <a href="#">PGD Ngô Gia Tự</a><br>
-        <a href="https://maps.app.goo.gl/7b3eCDLPfQFFHhnG9" target="_blank" style="font-size:14px;color:#555">
-          123 Ngô Gia Tự, Q.10
-        </a>
-      </li>
-      <li>
-        <a href="#">PGD Võ Văn Tần</a><br>
-        <a href="https://maps.app.goo.gl/4M7Tbp7aRXuAQEYd8" target="_blank" style="font-size:14px;color:#555">
-          78 Võ Văn Tần, Q.3
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+  <!-- Slides Container (horizontal scroll wrapper) -->
+  <div class="slides-container" id="slidesContainer">
 
-<script>
-  if(/android/i.test(navigator.userAgent)){
-    const btn=document.getElementById('addContactBtn');
-    if(btn){btn.setAttribute('download','');document.getElementById('androidHint').style.display='block';}
-  }
+    <!-- Slide 1: Cover Page -->
+    <section id="slide1" class="slide">
+      <!-- TODO: Replace "Vietcombank" text with official logo image if available -->
+      <h1>Sản phẩm Dịch vụ Vietcombank</h1>
+      <!-- Quick links to personal and corporate slides -->
+      <h2><a href="#slide2">Khách hàng cá nhân</a></h2>
+      <h2><a href="#slide8">Khách hàng tổ chức</a></h2>
+    </section>
 
-  const branchPopup = document.getElementById('branchPopup');
-  const branchLink = document.getElementById('branchLink');
-  const branchPopupClose = document.getElementById('branchPopupClose');
-  branchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  branchPopupClose.addEventListener('click', function() {
-    branchPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  branchPopup.addEventListener('click', function(e) {
-    if (e.target === branchPopup) {
-      branchPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
+    <!-- Slide 2: Individual Customers Section Intro -->
+    <section id="slide2" class="slide">
+      <h2>Khách hàng cá nhân</h2>
+      <ul>
+        <li>VCB Digibank</li>
+        <li>VCB Loyalty</li>
+        <li>Thẻ tín dụng</li>
+        <li>Các sản phẩm tiết kiệm</li>
+        <li>Chuyển tiền nước ngoài</li>
+        <li>Nhận kiều hối</li>
+        <li>Sản phẩm bảo hiểm</li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
 
-  const subBranchPopup = document.getElementById('subBranchPopup');
-  const subBranchLink = document.getElementById('subBranchLink');
-  const subBranchPopupClose = document.getElementById('subBranchPopupClose');
-  subBranchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.remove('show');
-    subBranchPopup.classList.add('show');
-  });
-  subBranchPopupClose.addEventListener('click', function() {
-    subBranchPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  subBranchPopup.addEventListener('click', function(e) {
-    if (e.target === subBranchPopup) {
-      subBranchPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
+    <!-- Slide 3: VCB Digibank & VCB Loyalty (Individual Banking Products) -->
+    <section id="slide3" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>VCB Digibank & VCB Loyalty</h3>
+      <p>Đáp ứng mọi nhu cầu tài chính, hỗ trợ thanh toán dịch vụ công, mua sắm, hóa đơn... Các dịch vụ giá trị gia tăng hoàn toàn miễn phí.</p>
+      <ul>
+        <li>0 Phí đăng ký chương trình đổi quà với kho quà tặng đa dạng (ẩm thực, giải trí, mua sắm, du lịch...) ngay trên app</li>
+        <li>0 Phí chuyển tiền</li>
+        <li>0 Phí duy trì dịch vụ</li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
 
-  const directSubBranchLink = document.getElementById('directSubBranchLink');
-  directSubBranchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    subBranchPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-</script>
+    <!-- Slide 4: Credit Cards (Individual) -->
+    <section id="slide4" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>Thẻ tín dụng</h3>
+      <p>Thanh toán tiện lợi với đa dạng hình thức: thanh toán trực tiếp, contactless, mã QR, thanh toán trực tuyến, thanh toán qua ví điện tử (Apple Pay, Samsung Pay, Google Pay...)</p>
+      <p>An toàn và bảo mật với công nghệ chip EMV, xác thực 3D Secure.</p>
+      <p>Trả góp linh hoạt với lãi suất 0%.</p>
+      <ul>
+        <li>Miễn lãi thẻ tín dụng lên đến 55 ngày (tùy từng dòng thẻ)</li>
+        <li>Tính năng hoàn tiền với các dòng thẻ như: Amex Cashplus Platinum, Mastercard World, Visa Platinum, JCB Platinum</li>
+        <li>Tính năng tích lũy dặm bay với Hội viên Bông Sen Vàng (thẻ VCB Vietnam Airlines Platinum Amex; VCB Vietnam Airlines Amex)</li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 5: Savings Products (Individual) -->
+    <section id="slide5" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>Các sản phẩm tiết kiệm</h3>
+      <ul>
+        <li>Tiết kiệm trả lãi sau, trả lãi định kỳ, trả lãi trước (đa dạng loại tiền tệ, kỳ hạn linh hoạt)</li>
+        <li>Tiết kiệm tự động: Đáp ứng nhu cầu chuyển tiền tự động từ tài khoản thanh toán sang tài khoản tiết kiệm để hưởng lãi suất cao hơn mà không cần đến ngân hàng.</li>
+        <li>Tiền gửi có kỳ hạn trực tuyến: Mở tài khoản tiền gửi hoàn toàn trực tuyến ngay trên Ngân hàng số VCB Digibank, có cơ chế ưu đãi lãi suất dành cho khách hàng ưu tiên.</li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 6: Money Transfer & Remittance (Individual) -->
+    <section id="slide6" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>Chuyển & Nhận tiền</h3>
+      <!-- Sub-section: Receiving Money (Inbound) -->
+      <h4>Nhận tiền:</h4>
+      <ul>
+        <li>Đối tác chi trả kiều hối: MoneyGram, Xoom, VCBR, Ria, TNMonex, UniTeller <!-- TODO: Replace with partner logos if available --></li>
+        <li>Hạn mức cao, giao dịch dễ dàng, tiện lợi</li>
+        <li>Quản lý biến động số dư</li>
+      </ul>
+      <!-- Sub-section: Sending Money (Outbound) -->
+      <h4>Chuyển tiền đi nước ngoài:</h4>
+      <ul>
+        <li>Giao dịch tại bất kỳ kênh nào (tại quầy hoặc trên VCB Digibank)</li>
+        <li>Mức phí cạnh tranh, ưu đãi dành cho khách hàng ưu tiên</li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 7: Insurance Products (Individual) -->
+    <section id="slide7" class="slide">
+      <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
+      <h3>Sản phẩm bảo hiểm</h3>
+      <!-- Insurance categories and products -->
+      <h4>Bảo hiểm bảo vệ & tiết kiệm:</h4>
+      <ul>
+        <li>FWD Phụ nữ hiện đại</li>
+        <li>FWD Con vươn xa 2.0</li>
+        <li>FWD Cả nhà vui khỏe</li>
+        <li>FWD Vững ước mơ</li>
+        <li>FWD Bảo hiểm tai nạn</li>
+        <li>FWD Bảo hiểm sức khỏe trực tuyến</li>
+      </ul>
+      <h4>Bảo hiểm đầu tư:</h4>
+      <ul>
+        <li>FWD Điểm tựa tài chính</li>
+        <li>FWD Đón đầu thay đổi 3.0</li>
+        <li>FWD Nâng tầm vị thế 2.0</li>
+        <li>FWD Sống trọn tương lai</li>
+        <li>FWD Vị thế vững vàng</li>
+      </ul>
+      <!-- Tagline "Chung niềm tin, vững tương lai" was in design, omitted here for brevity -->
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 8: Corporate Customers Section Intro -->
+    <section id="slide8" class="slide">
+      <h2>Khách hàng tổ chức</h2>
+      <ul>
+        <li>Thanh toán & Quản lý dòng tiền</li>
+        <li>Cho vay SME</li>
+        <li>Bảo lãnh</li>
+        <li>Ngoại hối & Thị trường vốn</li>
+        <li>Tư vấn, Đầu tư & Bảo hiểm</li>
+        <!-- "Ngân hàng số" for doanh nghiệp is covered later but not listed in this intro -->
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 9: Cash Management (Corporate) -->
+    <section id="slide9" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Thanh toán & Quản lý dòng tiền</h3>
+      <ul>
+        <li><strong>Tài khoản thanh toán:</strong> Đáp ứng mọi nhu cầu thanh toán qua các phương tiện séc, ủy nhiệm chi, ủy nhiệm thu,...</li>
+        <li><strong>Chuyển tiền:</strong>
+          <ul>
+            <li>Chuyển tiền trong nước và quốc tế</li>
+            <li>Nộp ngân sách Nhà nước</li>
+          </ul>
+        </li>
+        <li><strong>Thanh toán điện tử:</strong>
+          <ul>
+            <li>Tài khoản thanh toán thông thường & tài khoản thanh toán chuyên dụng</li>
+            <li>Thẻ doanh nghiệp (Thẻ tín dụng & Thẻ ghi nợ doanh nghiệp)</li>
+          </ul>
+        </li>
+        <li><strong>Gói giao dịch SME:</strong> Gói thiết kế riêng cho doanh nghiệp SME, bao gồm:
+          <ul>
+            <li><strong>Gói SME Tài chính:</strong>
+              <ul>
+                <li>Miễn phí chuyển tiền, trả lương</li>
+                <li>Tặng tài khoản số đẹp (3/4/5 số cuối)</li>
+                <li>Tặng thẻ doanh nghiệp</li>
+                <li>Có thể sử dụng để đảm bảo vay vốn, bảo lãnh, các dịch vụ tài trợ vốn khác</li>
+              </ul>
+            </li>
+            <li><strong>Gói SME Advanced:</strong>
+              <ul>
+                <li>Lãi suất hấp dẫn</li>
+                <li>Phương thức trả lãi đa dạng: đầu kỳ, cuối kỳ, định kỳ</li>
+                <li>Tài khoản tiền gửi có kỳ hạn</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 10: SME Lending (Corporate) -->
+    <section id="slide10" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Cho vay SME</h3>
+      <ul>
+        <li><strong>Cấp tín dụng theo ngành:</strong>
+          <ul>
+            <li>Ngành thương mại dược</li>
+            <li>Ngành thương mại thực phẩm & đồ uống</li>
+            <li>Ngành thương mại trang thiết bị y tế</li>
+          </ul>
+        </li>
+        <li><strong>Vay ngắn hạn:</strong>
+          <ul>
+            <li>Vay ngắn hạn theo hạn mức</li>
+            <li>Vay ngắn hạn từng lần</li>
+            <li>Thấu chi</li>
+          </ul>
+        </li>
+        <li><strong>Vay trung dài hạn:</strong>
+          <ul>
+            <li>Vay đầu tư tài sản cố định</li>
+          </ul>
+        </li>
+        <li>Giải pháp tài trợ trọn gói, lãi suất cạnh tranh</li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 11: Guarantees (Corporate) -->
+    <section id="slide11" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Bảo lãnh</h3>
+      <ul>
+        <li><strong>Phát hành bảo lãnh:</strong>
+          <ul>
+            <li>Bảo lãnh dự thầu</li>
+            <li>Bảo lãnh thanh toán</li>
+            <li>Bảo lãnh thực hiện hợp đồng</li>
+            <li>Bảo lãnh hoàn trả tiền ứng trước</li>
+          </ul>
+        </li>
+        <li><strong>Dịch vụ bảo lãnh khác:</strong>
+          <ul>
+            <li>Thông báo bảo lãnh</li>
+            <li>Đòi tiền theo bảo lãnh</li>
+            <li>Xác thực bảo lãnh</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 12: Forex & Capital Markets (Corporate) -->
+    <section id="slide12" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Ngoại hối & Thị trường vốn</h3>
+      <ul>
+        <li><strong>Phái sinh lãi suất:</strong>
+          <ul>
+            <li>Hoán đổi lãi suất một đồng tiền</li>
+            <li>Hoán đổi lãi suất hai đồng tiền</li>
+          </ul>
+        </li>
+        <li>Giao dịch ngoại tệ kỳ hạn</li>
+        <li>Giao dịch ngoại tệ giao ngay</li>
+        <li>Giao dịch quyền chọn</li>
+        <li>Giao dịch hoán đổi</li>
+        <li><strong>Phái sinh giá cả hàng hóa:</strong>
+          <ul>
+            <li>Hợp đồng tương lai giá cả hàng hóa</li>
+            <li>Hợp đồng quyền chọn giá cả hàng hóa</li>
+            <li>Hợp đồng hoán đổi giá cả hàng hóa</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 13: Digital Banking for Enterprises (Corporate) -->
+    <section id="slide13" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Ngân hàng số cho doanh nghiệp</h3>
+      <ul>
+        <li>Giao diện tối ưu, quản lý thông tin hiệu quả với ứng dụng VCB Digibiz</li>
+        <li>Hệ thống tài chính hiện đại: VCB iB@nking, VCB Digibiz, SMS Banking</li>
+        <li>Trải nghiệm mới mẻ với nhiều tiện ích vượt trội</li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 14: Advisory, Investment & Custody (Corporate) -->
+    <section id="slide14" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Tư vấn, Đầu tư & Bảo hiểm</h3>
+      <ul>
+        <li><strong>Tư vấn & Ngân hàng lưu ký:</strong>
+          <ul>
+            <li>Dịch vụ tư vấn chuyên nghiệp bởi VCBF</li>
+            <li>Đại lý phát hành chứng khoán</li>
+            <li>Ngân hàng lưu ký</li>
+          </ul>
+        </li>
+        <li><strong>Quỹ mở và Quỹ hưu trí:</strong>
+          <ul>
+            <li>Quản lý danh mục đầu tư (tối đa hóa lợi nhuận doanh nghiệp)</li>
+            <li>Bảo lãnh phát hành chứng khoán</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 15: Contact Information -->
+    <section id="slide15" class="slide">
+      <h2>Thông tin liên hệ</h2>
+      <ul class="contact-info">
+        <li>📞 0985 231 012</li>
+        <li>✉️ yenhtp.stn@vietcombank.com.vn</li>
+        <li>🌐 www.vietcombank.com.vn</li>
+        <li>📍 2A-2B-2C Lý Thường Kiệt, Phường Chợ Lớn, TP.HCM</li>
+      </ul>
+      <!-- Bạn có thể thay thế các emoji trên bằng biểu tượng hình ảnh tương ứng nếu cần -->
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+  </div> <!-- End of slides-container -->
+
+  <script>
+    // JavaScript for navigation and "Back to top" button functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('slidesContainer');
+      // Handle nav bar links click: smooth scroll to target slide
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetSlide = document.getElementById(targetId);
+          if (targetSlide) {
+            // Scroll the slides container to the target slide's left position
+            container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+          }
+        });
+      });
+      // Handle "Back to top" button clicks: scroll back to the first slide
+      document.querySelectorAll('.back-to-top').forEach(btn => {
+        btn.addEventListener('click', function() {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
