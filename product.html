@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sản phẩm Dịch vụ Vietcombank</title>
   <style>
-    /* Base Styles (mobile-first approach) */
+    /* Base Styles */
     body {
       margin: 0;
-      padding-top: 60px; /* space for fixed nav bar */
+      padding-top: 60px; /* Space for fixed nav bar */
       font-family: Arial, Helvetica, sans-serif;
       font-size: 16px;
       line-height: 1.5;
       color: #000;
       background-color: #fff;
+      overscroll-behavior: none; /* Prevent unwanted scroll effects */
     }
+
     /* Fixed Navigation Bar Styles */
     nav {
       position: fixed;
@@ -25,7 +27,7 @@
       color: #fff;
       padding: 10px 0;
       text-align: center;
-      z-index: 1000; /* ensure nav stays above other content */
+      z-index: 1000; /* Ensure nav stays above other content */
     }
     nav ul {
       margin: 0;
@@ -33,7 +35,7 @@
       list-style: none;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap; /* allow menu items to wrap to next line on small screens */
+      flex-wrap: wrap; /* Allow menu items to wrap on small screens */
     }
     nav li {
       margin: 5px 15px;
@@ -47,122 +49,141 @@
     nav a:hover {
       text-decoration: underline;
     }
-    /* Horizontal Scroll Snap Container */
-    .slides-container {
+
+    /* Image Container */
+    .image-container {
+      width: 100%;
+      background: #006734; /* Vietcombank green background */
+      padding: 20px 0;
       display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth; /* smooth scrolling for programmatic scroll */
-      -webkit-overflow-scrolling: touch; /* smoother scrolling on iOS */
-      height: 100%;
+      justify-content: center;
+      overflow-y: auto; /* Enable vertical scrolling */
+      scroll-behavior: smooth; /* Smooth vertical scrolling */
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
-    .slides-container::-webkit-scrollbar {
-      display: none; /* hide horizontal scrollbar for WebKit */
-    }
-    .slides-container {
-      -ms-overflow-style: none;  /* hide scrollbar for IE and Edge */
-      scrollbar-width: none;     /* hide scrollbar for Firefox */
-    }
-    /* Individual Slide Styles */
-    .slide {
-      flex: 0 0 100%;           /* each slide takes full viewport width */
-      scroll-snap-align: start; /* snap so that each slide starts at the viewport */
-      box-sizing: border-box;
-      padding: 20px 60px;       /* increased padding for arrow space */
-      padding-top: 20px;        /* Thêm padding-top để tránh nội dung bị che */
-      background: #fff;
-      color: #000;
-      position: relative; /* for positioning navigation arrows */
-      scroll-margin-top: 70px; /* Tăng giá trị để đảm bảo nội dung hiển thị dưới navbar */
-      min-height: calc(100vh - 60px); /* ensure full height minus navbar */
-    }
-    /* Slide 1 (Cover) specific style: dark green background with white text */
-    #slide1 {
-      background: #006734; /* Vietcombank primary green */
-      color: #fff;
+
+    /* Image Grid for A4-sized images */
+    .image-grid {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-    }
-    /* Image Grid for Slide 1 */
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px; /* increased gap for better spacing */
-      max-width: 80%;
-      margin: 30px auto; /* increased margin for more space */
+      gap: 5px; /* Minimal gap between images */
+      max-width: 595px; /* A4 width in pixels at 72 DPI */
+      width: 100%;
+      padding: 10px;
     }
     .image-grid img {
       width: 100%;
-      max-width: 250px; /* reasonable size for readability */
-      max-height: 200px; /* limit height to prevent oversized images */
-      object-fit: contain; /* preserve aspect ratio without cropping */
-      border: 2px solid #006734;
+      max-width: 595px; /* A4 width: 210mm ≈ 595px at 72 DPI */
+      height: auto; /* Maintain aspect ratio */
+      max-height: 842px; /* A4 height: 297mm ≈ 842px at 72 DPI */
+      object-fit: contain;
+      border: 2px solid #fff;
       border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
-    /* Fallback for images that fail to load */
     .image-grid img[alt]:after {
       content: attr(alt);
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: 150px; /* fixed height for fallback */
+      height: 842px; /* A4 height for fallback */
       background: #f0f0f0;
       color: #006734;
-      font-size: 14px;
+      font-size: 16px;
       text-align: center;
-      border: 2px solid #006734;
+      border: 2px solid #fff;
       border-radius: 4px;
     }
+
+    /* Slides Container */
+    .slides-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+    .slides-container::-webkit-scrollbar {
+      display: none;
+    }
+    .slides-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Slide Styles */
+    .slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      box-sizing: border-box;
+      padding: 20px 60px;
+      background: #fff;
+      color: #000;
+      position: relative;
+      min-height: calc(100vh - 60px);
+      scroll-margin-top: 60px; /* Match navbar height */
+    }
+
+    /* Intro Slide */
+    #intro-slide {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
     /* Headings Styles */
     h1, h2, h3, h4 {
       margin: 0.5em 0;
       font-weight: bold;
-      text-transform: uppercase; /* headings in uppercase as per design */
+      text-transform: uppercase;
     }
-    h1 { font-size: 2em; }   /* largest title (cover page) */
-    h2 { font-size: 1.5em; } /* section titles */
-    h3 { font-size: 1.2em; } /* slide content titles */
-    h4 { font-size: 1.1em; } /* smaller subheadings */
-    /* Section name label (e.g., "KHÁCH HÀNG CÁ NHÂN" on slides) */
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.5em; }
+    h3 { font-size: 1.2em; }
+    h4 { font-size: 1.1em; }
+
+    /* Section name label */
     .section-name {
       font-weight: bold;
-      color: #006734;      /* use brand green for section labels */
-      margin-bottom: 10px; /* spacing below the label */
-      margin-top: 10px;    /* Đảm bảo section-name có khoảng cách từ trên xuống */
+      color: #006734;
+      margin-bottom: 10px;
+      margin-top: 0; /* Ensure no extra top margin */
     }
-    /* List Styles (remove default bullets, use custom symbols) */
+
+    /* List Styles */
     ul {
-      padding-left: 0;  /* remove default indentation */
+      padding-left: 0;
       margin: 0 0 1em 0;
-      list-style: none; /* remove default bullets */
+      list-style: none;
     }
     ul li {
       margin-bottom: 0.5em;
-      position: relative; /* for pseudo-element bullets positioning */
-      padding-left: 20px; /* space for bullets */
+      position: relative;
+      padding-left: 20px;
     }
     ul li::before {
-      content: "› ";             /* arrow symbol for top-level list items */
-      color: #006734;            /* bullet in brand color */
+      content: "› ";
+      color: #006734;
       font-weight: bold;
       position: absolute;
       left: 0;
-      width: 15px; /* fixed width for bullet alignment */
+      width: 15px;
       text-align: right;
     }
     ul ul li::before {
-      content: "• ";            /* filled circle for second-level list items */
+      content: "• ";
       color: #006734;
       font-weight: bold;
       left: 0;
       width: 15px;
     }
     ul ul ul li::before {
-      content: "– ";            /* dash for third-level list items */
+      content: "– ";
       color: #006734;
       left: 0;
       width: 15px;
@@ -173,7 +194,8 @@
     ul li ul li ul {
       margin-left: 20px;
     }
-    /* Contact info list (no bullets, uses icons/emoji for each item) */
+
+    /* Contact info list */
     .contact-info {
       list-style: none;
       padding: 0;
@@ -181,16 +203,17 @@
     }
     .contact-info li {
       margin: 0.5em 0;
-      padding-left: 0; /* no bullets for contact info */
+      padding-left: 0;
     }
-    /* "Back to top" button style */
+
+    /* Back to top button */
     .back-to-top {
       display: block;
-      margin: 40px auto 20px; /* center and space below arrows */
+      margin: 40px auto 20px;
       padding: 10px 15px;
       background: #fff;
-      color: #006734; /* green text */
-      border: 2px solid #006734; /* green border */
+      color: #006734;
+      border: 2px solid #006734;
       border-radius: 4px;
       font: inherit;
       cursor: pointer;
@@ -200,6 +223,7 @@
       background: #006734;
       color: #fff;
     }
+
     /* Content Anchor Styles */
     .slide a {
       color: #006734;
@@ -208,20 +232,21 @@
     .slide a:hover {
       text-decoration: underline;
     }
-    #slide1 a {
-      color: #fff;
+    #intro-slide a {
+      color: #006734;
     }
-    #slide1 a:hover {
+    #intro-slide a:hover {
       text-decoration: underline;
     }
-    /* Navigation Arrows Styles */
+
+    /* Navigation Arrows */
     .nav-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: transparent; /* transparent background */
-      color: #006734; /* green text */
-      border: 2px solid #006734; /* green border */
+      background: transparent;
+      color: #006734;
+      border: 2px solid #006734;
       border-radius: 50%;
       width: 40px;
       height: 40px;
@@ -231,13 +256,13 @@
       align-items: center;
       justify-content: center;
       z-index: 10;
-      opacity: 0.5; /* semi-transparent */
+      opacity: 0.5;
       transition: background 0.3s, color 0.3s, opacity 0.3s;
     }
     .nav-arrow:hover {
-      background: #006734; /* green background on hover */
-      color: #fff; /* white text on hover */
-      opacity: 1; /* fully opaque on hover */
+      background: #006734;
+      color: #fff;
+      opacity: 1;
     }
     .nav-arrow-left {
       left: 10px;
@@ -245,58 +270,52 @@
     .nav-arrow-right {
       right: 10px;
     }
-    /* Adjust arrow color for slide1 to ensure visibility */
-    #slide1 .nav-arrow {
-      color: #fff; /* white text for dark background */
-      border: 2px solid #fff; /* white border */
-    }
-    #slide1 .nav-arrow:hover {
-      background: #fff; /* white background on hover */
-      color: #006734; /* green text on hover */
-    }
-    /* Responsive Design for Mobile */
+
+    /* Responsive Design */
     @media (max-width: 600px) {
       .image-grid {
-        grid-template-columns: 1fr; /* stack images vertically on mobile */
         max-width: 90%;
+        gap: 3px; /* Even smaller gap on mobile */
       }
       .image-grid img {
         max-width: 100%;
-        max-height: 250px; /* slightly larger height on mobile for readability */
+        max-height: 594px; /* A4 height scaled for mobile */
       }
       .slide {
-        padding: 30px 20px; /* Tăng padding-top trên mobile để đảm bảo nội dung hiển thị */
-        scroll-margin-top: 80px; /* Tăng giá trị để phù hợp với mobile */
+        padding: 20px;
+        scroll-margin-top: 60px;
       }
-      .section-name {
-        margin-top: 10px; /* Đảm bảo section-name có khoảng cách từ trên xuống */
+      .section-name, h2, h3, h4 {
+        margin-top: 0; /* Ensure content starts at top on mobile */
       }
     }
   </style>
 </head>
 <body>
-
   <!-- Fixed Navigation Bar -->
   <nav>
     <ul>
-      <li><a href="#slide1" class="nav-link">Thư ngỏ</a></li>
+      <li><a href="#intro-slide" class="nav-link">Thư ngỏ</a></li>
       <li><a href="#slide2" class="nav-link">Khách hàng cá nhân</a></li>
       <li><a href="#slide8" class="nav-link">Khách hàng tổ chức</a></li>
       <li><a href="#slide15" class="nav-link">Liên hệ</a></li>
     </ul>
   </nav>
 
+  <!-- Image Container (A4-sized images) -->
+  <div class="image-container">
+    <div class="image-grid">
+      <img src="images/Thu-ngo-0.jpg" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/595x842?text=Thư+ngỏ+hình+1';">
+      <img src="images/Thu-ngo-1.jpg" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/595x842?text=Thư+ngỏ+hình+2';">
+      <img src="images/Thu-ngo-2.jpg" alt="Thư ngỏ hình 3" loading="lazy" onerror="this.src='https://via.placeholder.com/595x842?text=Thư+ngỏ+hình+3';">
+      <img src="images/Thu-ngo-3.jpg" alt="Thư ngỏ hình 4" loading="lazy" onerror="this.src='https://via.placeholder.com/595x842?text=Thư+ngỏ+hình+4';">
+    </div>
+  </div>
+
   <!-- Slides Container (horizontal scroll wrapper) -->
   <div class="slides-container" id="slidesContainer">
-
-    <!-- Slide 1: Cover Page (Thư ngỏ) -->
-    <section id="slide1" class="slide">
-      <div class="image-grid">
-        <img src="images/Thu-ngo-0.jpg" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+1';">
-        <img src="images/Thu-ngo-1.jpg" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+2';">
-        <img src="images/Thu-ngo-2.jpg" alt="Thư ngỏ hình 3" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+3';">
-        <img src="images/Thu-ngo-3.jpg" alt="Thư ngỏ hình 4" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+4';">
-      </div>
+    <!-- Intro Slide -->
+    <section id="intro-slide" class="slide">
       <h1>Sản phẩm Dịch vụ Vietcombank</h1>
       <h2><a href="#slide2">Khách hàng cá nhân</a></h2>
       <h2><a href="#slide8">Khách hàng tổ chức</a></h2>
@@ -604,24 +623,23 @@
       <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
-
-  </div> <!-- End of slides-container -->
+  </div>
 
   <script>
-    // JavaScript for navigation, "Back to top" button, and arrow navigation
     document.addEventListener('DOMContentLoaded', function() {
       const container = document.getElementById('slidesContainer');
       const slides = document.querySelectorAll('.slide');
 
-      // Tắt scroll restoration của trình duyệt
+      // Disable browser scroll restoration
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
 
-      // Đặt vị trí cuộn về slide 1 khi tải trang
+      // Set initial scroll to intro slide
       container.scrollLeft = 0;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Handle nav bar links click: smooth scroll to target slide
+      // Handle nav bar links click
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -673,6 +691,5 @@
       });
     });
   </script>
-
 </body>
 </html>
