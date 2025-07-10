@@ -60,8 +60,7 @@
     .btn-outline:hover {background: #f0fdf4}
 
     .address-icon-container {
-      display: inline-block;
-      margin-right: 5px;
+      display: inline-block; margin-right: 5px;
     }
     .icon-address {
       width: var(--icon-size); height: var(--icon-size); vertical-align: -2px;
@@ -435,139 +434,6 @@
     }
   });
 
-<!-- Popup lồng: Địa chỉ PGD -->
-<div id="subBranchPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="subBranchPopupTitle">
-    <button class="btn-close" id="subBranchPopupClose" aria-label="Đóng">×</button>
-    <h3 id="subBranchPopupTitle">Địa chỉ các Phòng giao dịch</h3>
-    <ul class="branch-list">
-      <li>
-        <a href="#" id="openPgdBinhThanh">PGD Bình Thạnh</a><br>
-        <a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank" style="font-size:14px;color:#555">
-          Số 1 Điện Biên Phủ, Bình Thạnh
-        </a>
-      </li>
-      <li>
-        <a href="#" id="openPgdTranHungDao">PGD Trần Hưng Đạo</a><br>
-        <a href="https://maps.app.goo.gl/yX1abDUvjuviDkGSA" target="_blank" style="font-size:14px;color:#555">
-          456 Trần Hưng Đạo, Q.5
-        </a>
-      </li>
-      <li>
-        <a href="#" id="openPgdNgoGiaTu">PGD Ngô Gia Tự</a><br>
-        <a href="https://maps.app.goo.gl/7b3eCDLPfQFFHhnG9" target="_blank" style="font-size:14px;color:#555">
-          123 Ngô Gia Tự, Q.10
-        </a>
-      </li>
-      <li>
-        <a href="#" id="openPgdVoVanTan">PGD Võ Văn Tần</a><br>
-        <a href="https://maps.app.goo.gl/4M7Tbp7aRXuAQEYd8" target="_blank" style="font-size:14px;color:#555">
-          78 Võ Văn Tần, Q.3
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<!-- Popup cho PGD Bình Thạnh -->
-<div id="pgdBinhThanhPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="pgdBinhThanhPopupTitle">
-    <button class="btn-close" id="pgdBinhThanhPopupClose" aria-label="Đóng">×</button>
-    <h3 id="pgdBinhThanhPopupTitle">Thông tin PGD Bình Thạnh</h3>
-    <p><strong>Trưởng phòng:</strong> Nguyễn Đức Nhật Phương</p>
-    <p><a href="/contact/nguyenducnhatphuong.html">Thông tin liên hệ</a></p>
-    <p><strong>Phó phòng:</strong> Trần Văn An</p>
-    <p><a href="/contact/tranvanan.html">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup cho PGD Trần Hưng Đạo -->
-<div id="pgdTranHungDaoPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="pgdTranHungDaoPopupTitle">
-    <button class="btn-close" id="pgdTranHungDaoPopupClose" aria-label="Đóng">×</button>
-    <h3 id="pgdTranHungDaoPopupTitle">Thông tin PGD Trần Hưng Đạo</h3>
-    <p><strong>Trưởng phòng:</strong> Lê Thị Minh Châu</p>
-    <p><a href="/contact/lethiminhchau.html">Thông tin liên hệ</a></p>
-    <p><strong>Phó phòng:</strong> Phạm Quốc Hùng</p>
-    <p><a href="/contact/phamquochung.html">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup cho PGD Ngô Gia Tự -->
-<div id="pgdNgoGiaTuPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="pgdNgoGiaTuPopupTitle">
-    <button class="btn-close" id="pgdNgoGiaTuPopupClose" aria-label="Đóng">×</button>
-    <h3 id="pgdNgoGiaTuPopupTitle">Thông tin PGD Ngô Gia Tự</h3>
-    <p><strong>Trưởng phòng:</strong> Nguyễn Văn Bình</p>
-    <p><a href="/contact/nguyenvanbinh.html">Thông tin liên hệ</a></p>
-    <p><strong>Phó phòng:</strong> Hoàng Thị Mai</p>
-    <p><a href="/contact/hoangthimai.html">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<!-- Popup cho PGD Võ Văn Tần -->
-<div id="pgdVoVanTanPopup" class="overlay">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="pgdVoVanTanPopupTitle">
-    <button class="btn-close" id="pgdVoVanTanPopupClose" aria-label="Đóng">×</button>
-    <h3 id="pgdVoVanTanPopupTitle">Thông tin PGD Võ Văn Tần</h3>
-    <p><strong>Trưởng phòng:</strong> Đỗ Thị Thanh Hương</p>
-    <p><a href="/contact/dothithanhhuong.html">Thông tin liên hệ</a></p>
-    <p><strong>Phó phòng:</strong> Võ Minh Tuấn</p>
-    <p><a href="/contact/vominhtuan.html">Thông tin liên hệ</a></p>
-  </div>
-</div>
-
-<script>
-  if(/android/i.test(navigator.userAgent)){
-    const btn=document.getElementById('addContactBtn');
-    if(btn){btn.setAttribute('download','');document.getElementById('androidHint').style.display='block';}
-  }
-
-  const branchPopup = document.getElementById('branchPopup');
-  const branchLink = document.getElementById('branchLink');
-  const branchPopupClose = document.getElementById('branchPopupClose');
-  branchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-  branchPopupClose.addEventListener('click', function() {
-    branchPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  branchPopup.addEventListener('click', function(e) {
-    if (e.target === branchPopup) {
-      branchPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
-
-  const subBranchPopup = document.getElementById('subBranchPopup');
-  const subBranchLink = document.getElementById('subBranchLink');
-  const subBranchPopupClose = document.getElementById('subBranchPopupClose');
-  subBranchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    branchPopup.classList.remove('show');
-    subBranchPopup.classList.add('show');
-  });
-  subBranchPopupClose.addEventListener('click', function() {
-    subBranchPopup.classList.remove('show');
-    document.body.style.overflow = '';
-  });
-  subBranchPopup.addEventListener('click', function(e) {
-    if (e.target === subBranchPopup) {
-      subBranchPopup.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  });
-
-  const directSubBranchLink = document.getElementById('directSubBranchLink');
-  directSubBranchLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    subBranchPopup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });
-
   const openPgdBinhThanh = document.getElementById('openPgdBinhThanh');
   const pgdBinhThanhPopup = document.getElementById('pgdBinhThanhPopup');
   const pgdBinhThanhPopupClose = document.getElementById('pgdBinhThanhPopupClose');
@@ -609,21 +475,21 @@
   });
 
   const openPgdNgoGiaTu = document.getElementById('openPgdNgoGiaTu');
-  const pgdNgogiaTuPopup = document.getElementById('pgdNgoGiaTuPopup');
+  const pgdNgoGiaTuPopup = document.getElementById('pgdNgoGiaTuPopup');
   const pgdNgoGiaTuPopupClose = document.getElementById('pgdNgoGiaTuPopupClose');
   openPgdNgoGiaTu.addEventListener('click', function(e) {
     e.preventDefault();
     subBranchPopup.classList.remove('show');
-    pgdNgogiaTuPopup.classList.add('show');
+    pgdNgoGiaTuPopup.classList.add('show');
     document.body.style.overflow = 'hidden';
   });
   pgdNgoGiaTuPopupClose.addEventListener('click', function() {
-    pgdNgogiaTuPopup.classList.remove('show');
+    pgdNgoGiaTuPopup.classList.remove('show');
     document.body.style.overflow = '';
   });
-  pgdNgogiaTuPopup.addEventListener('click', function(e) {
-    if (e.target === pgdNgogiaTuPopup) {
-      pgdNgogiaTuPopup.classList.remove('show');
+  pgdNgoGiaTuPopup.addEventListener('click', function(e) {
+    if (e.target === pgdNgoGiaTuPopup) {
+      pgdNgoGiaTuPopup.classList.remove('show');
       document.body.style.overflow = '';
     }
   });
