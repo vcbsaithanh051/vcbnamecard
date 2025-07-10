@@ -69,10 +69,11 @@
       scroll-snap-align: start; /* snap so that each slide starts at the viewport */
       box-sizing: border-box;
       padding: 20px 60px;       /* increased padding for arrow space */
+      padding-top: 20px;        /* Thêm padding-top để tránh nội dung bị che */
       background: #fff;
       color: #000;
       position: relative; /* for positioning navigation arrows */
-      scroll-margin-top: 60px; /* ensure top content is visible below navbar */
+      scroll-margin-top: 70px; /* Tăng giá trị để đảm bảo nội dung hiển thị dưới navbar */
       min-height: calc(100vh - 60px); /* ensure full height minus navbar */
     }
     /* Slide 1 (Cover) specific style: dark green background with white text */
@@ -131,6 +132,7 @@
       font-weight: bold;
       color: #006734;      /* use brand green for section labels */
       margin-bottom: 10px; /* spacing below the label */
+      margin-top: 10px;    /* Đảm bảo section-name có khoảng cách từ trên xuống */
     }
     /* List Styles (remove default bullets, use custom symbols) */
     ul {
@@ -263,7 +265,11 @@
         max-height: 250px; /* slightly larger height on mobile for readability */
       }
       .slide {
-        padding: 20px 40px; /* reduce padding for mobile */
+        padding: 30px 20px; /* Tăng padding-top trên mobile để đảm bảo nội dung hiển thị */
+        scroll-margin-top: 80px; /* Tăng giá trị để phù hợp với mobile */
+      }
+      .section-name {
+        margin-top: 10px; /* Đảm bảo section-name có khoảng cách từ trên xuống */
       }
     }
   </style>
@@ -286,10 +292,10 @@
     <!-- Slide 1: Cover Page (Thư ngỏ) -->
     <section id="slide1" class="slide">
       <div class="image-grid">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-0.png" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+1';">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-1.png" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+2';">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-2.png" alt="Thư ngỏ hình 3" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+3';">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-3.png" alt="Thư ngỏ hình 4" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+4';">
+        <img src="https://github.com/vcbsaithanh051/vcbnamecard/blob/8fa93a9cc9dc905276933d556d24cd36ee33859b/images/Thu-ngo-0.jpg" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+1';">
+        <img src="https://github.com/vcbsaithanh051/vcbnamecard/blob/8fa93a9cc9dc905276933d556d24cd36ee33859b/images/Thu-ngo-1.jpg" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+2';">
+        <img src="https://github.com/vcbsaithanh051/vcbnamecard/blob/8fa93a9cc9dc905276933d556d24cd36ee33859b/images/Thu-ngo-2.jpg" alt="Thư ngỏ hình 3" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+3';">
+        <img src="https://github.com/vcbsaithanh051/vcbnamecard/blob/8fa93a9cc9dc905276933d556d24cd36ee33859b/images/Thu-ngo-3.jpg" alt="Thư ngỏ hình 4" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+4';">
       </div>
       <h1>Sản phẩm Dịch vụ Vietcombank</h1>
       <h2><a href="#slide2">Khách hàng cá nhân</a></h2>
@@ -607,6 +613,14 @@
       const container = document.getElementById('slidesContainer');
       const slides = document.querySelectorAll('.slide');
 
+      // Tắt scroll restoration của trình duyệt
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      // Đặt vị trí cuộn về slide 1 khi tải trang
+      container.scrollLeft = 0;
+
       // Handle nav bar links click: smooth scroll to target slide
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -620,7 +634,7 @@
         });
       });
 
-      // Handle "Back to top" button clicks: scroll back to the first slide
+      // Handle "Back to top" button clicks
       document.querySelectorAll('.back-to-top').forEach(btn => {
         btn.addEventListener('click', function() {
           container.scrollTo({ left: 0, behavior: 'smooth' });
@@ -636,7 +650,6 @@
           let targetSlide;
 
           if (direction === 'next') {
-            // Find the next slide
             for (let slide of slides) {
               if (slide.offsetLeft > currentScroll + 1) {
                 targetSlide = slide;
@@ -644,7 +657,6 @@
               }
             }
           } else if (direction === 'prev') {
-            // Find the previous slide
             for (let i = slides.length - 1; i >= 0; i--) {
               if (slides[i].offsetLeft < currentScroll - 1) {
                 targetSlide = slides[i];
