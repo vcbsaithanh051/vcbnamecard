@@ -133,7 +133,7 @@
       color: #000;
       position: relative;
       min-height: calc(100vh - 60px);
-      scroll-margin-top: 60px; /* Match navbar height */
+      scroll-margin-top: 80px; /* Increased to account for navbar on mobile */
     }
 
     /* Intro Slide */
@@ -147,7 +147,7 @@
 
     /* Headings Styles */
     h1, h2, h3, h4 {
-      margin: 0.5em 0;
+      margin: 0; /* Remove all margins to ensure content starts at top */
       font-weight: bold;
       text-transform: uppercase;
     }
@@ -289,6 +289,18 @@
 
     /* Responsive Design */
     @media (max-width: 600px) {
+      body {
+        padding-top: 50px; /* Adjust for smaller navbar height on mobile */
+      }
+      nav {
+        padding: 8px 0;
+      }
+      nav li {
+        margin: 5px 10px;
+      }
+      nav a {
+        font-size: 12px;
+      }
       .image-grid {
         max-width: 90%;
         gap: 3px; /* Even smaller gap on mobile */
@@ -298,11 +310,12 @@
         max-height: 594px; /* A4 height scaled for mobile */
       }
       .slide {
-        padding: 20px;
-        scroll-margin-top: 60px;
+        padding: 15px;
+        scroll-margin-top: 60px; /* Adjusted for mobile navbar */
+        margin-top: 0; /* Ensure no extra margin */
       }
-      .section-name, h2, h3, h4 {
-        margin-top: 0; /* Ensure content starts at top on mobile */
+      .section-name, h1, h2, h3, h4, p, ul {
+        margin-top: 0; /* Remove top margin to ensure content starts at top */
       }
     }
   </style>
@@ -479,8 +492,254 @@
             <li>Thẻ doanh nghiệp (Thẻ tín dụng & Thẻ ghi nợ doanh nghiệp)</li>
           </ul>
         </li>
-        <li><strong>Gói giao dịch SME:</strong> Gói thiết kế riêng cho宣言
+        <li><strong>Gói giao dịch SME:</strong> Gói thiết kế riêng cho doanh nghiệp SME, bao gồm:
+          <ul>
+            <li><strong>Gói SME Tài chính:</strong>
+              <ul>
+                <li>Miễn phí chuyển tiền, trả lương</li>
+                <li>Tặng tài khoản số đẹp (3/4/5 số cuối)</li>
+                <li>Tặng thẻ doanh nghiệp</li>
+                <li>Có thể sử dụng để đảm bảo vay vốn, bảo lãnh, các dịch vụ tài trợ vốn khác</li>
+              </ul>
+            </li>
+            <li><strong>Gói SME Advanced:</strong>
+              <ul>
+                <li>Lãi suất hấp dẫn</li>
+                <li>Phương thức trả lãi đa dạng: đầu kỳ, cuối kỳ, định kỳ</li>
+                <li>Tài khoản tiền gửi có kỳ hạn</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
 
-System: Tôi đã tích hợp favicon từ mã bạn cung cấp và thêm các liên kết cho các mục trong slide "Khách hàng cá nhân" và "Khách hàng tổ chức". Trong phần Liên hệ (slide 15), tôi đã thêm các liên kết `tel:`, `mailto:`, và Google Maps, đồng thời đảm bảo website là một liên kết. Các thay đổi đảm bảo favicon hiển thị đúng và các chức năng cuộn slide, hiển thị hình ảnh chỉ ở trang đầu, và căn chỉnh slide lên đầu vẫn hoạt động như yêu cầu trước đó.
+    <!-- Slide 10: SME Lending (Corporate) -->
+    <section id="slide10" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Cho vay SME</h3>
+      <ul>
+        <li><strong>Cấp tín dụng theo ngành:</strong>
+          <ul>
+            <li>Ngành thương mại dược</li>
+            <li>Ngành thương mại thực phẩm & đồ uống</li>
+            <li>Ngành thương mại trang thiết bị y tế</li>
+          </ul>
+        </li>
+        <li><strong>Vay ngắn hạn:</strong>
+          <ul>
+            <li>Vay ngắn hạn theo hạn mức</li>
+            <li>Vay ngắn hạn từng lần</li>
+            <li>Thấu chi</li>
+          </ul>
+        </li>
+        <li><strong>Vay trung dài hạn:</strong>
+          <ul>
+            <li>Vay đầu tư tài sản cố định</li>
+          </ul>
+        </li>
+        <li>Giải pháp tài trợ trọn gói, lãi suất cạnh tranh</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
 
-Bạn có thể sao chép mã này vào file HTML và kiểm tra. Nếu cần thêm điều chỉnh hoặc hỗ trợ, hãy cho tôi biết!
+    <!-- Slide 11: Guarantees (Corporate) -->
+    <section id="slide11" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Bảo lãnh</h3>
+      <ul>
+        <li><strong>Phát hành bảo lãnh:</strong>
+          <ul>
+            <li>Bảo lãnh dự thầu</li>
+            <li>Bảo lãnh thanh toán</li>
+            <li>Bảo lãnh thực hiện hợp đồng</li>
+            <li>Bảo lãnh hoàn trả tiền ứng trước</li>
+          </ul>
+        </li>
+        <li><strong>Dịch vụ bảo lãnh khác:</strong>
+          <ul>
+            <li>Thông báo bảo lãnh</li>
+            <li>Đòi tiền theo bảo lãnh</li>
+            <li>Xác thực bảo lãnh</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 12: Forex & Capital Markets (Corporate) -->
+    <section id="slide12" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Ngoại hối & Thị trường vốn</h3>
+      <ul>
+        <li><strong>Phái sinh lãi suất:</strong>
+          <ul>
+            <li>Hoán đổi lãi suất một đồng tiền</li>
+            <li>Hoán đổi lãi suất hai đồng tiền</li>
+          </ul>
+        </li>
+        <li>Giao dịch ngoại tệ kỳ hạn</li>
+        <li>Giao dịch ngoại tệ giao ngay</li>
+        <li>Giao dịch quyền chọn</li>
+        <li>Giao dịch hoán đổi</li>
+        <li><strong>Phái sinh giá cả hàng hóa:</strong>
+          <ul>
+            <li>Hợp đồng tương lai giá cả hàng hóa</li>
+            <li>Hợp đồng quyền chọn giá cả hàng hóa</li>
+            <li>Hợp đồng hoán đổi giá cả hàng hóa</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 13: Digital Banking for Enterprises (Corporate) -->
+    <section id="slide13" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Ngân hàng số cho doanh nghiệp</h3>
+      <ul>
+        <li>Giao diện tối ưu, quản lý thông tin hiệu quả với ứng dụng VCB Digibiz</li>
+        <li>Hệ thống tài chính hiện đại: VCB iB@nking, VCB Digibiz, SMS Banking</li>
+        <li>Trải nghiệm mới mẻ với nhiều tiện ích vượt trội</li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 14: Advisory, Investment & Custody (Corporate) -->
+    <section id="slide14" class="slide">
+      <div class="section-name">KHÁCH HÀNG TỔ CHỨC</div>
+      <h3>Tư vấn, Đầu tư & Bảo hiểm</h3>
+      <ul>
+        <li><strong>Tư vấn & Ngân hàng lưu ký:</strong>
+          <ul>
+            <li>Dịch vụ tư vấn chuyên nghiệp bởi VCBF</li>
+            <li>Đại lý phát hành chứng khoán</li>
+            <li>Ngân hàng lưu ký</li>
+          </ul>
+        </li>
+        <li><strong>Quỹ mở và Quỹ hưu trí:</strong>
+          <ul>
+            <li>Quản lý danh mục đầu tư (tối đa hóa lợi nhuận doanh nghiệp)</li>
+            <li>Bảo lãnh phát hành chứng khoán</li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+
+    <!-- Slide 15: Contact Information -->
+    <section id="slide15" class="slide">
+      <h2>Thông tin liên hệ</h2>
+      <ul class="contact-info">
+        <li><a href="tel:+0985231012">📞 0985 231 012</a></li>
+        <li><a href="mailto:yenhtp.stn@vietcombank.com.vn">✉️ yenhtp.stn@vietcombank.com.vn</a></li>
+        <li><a href="https://www.vietcombank.com.vn" target="_blank">🌐 www.vietcombank.com.vn</a></li>
+        <li><a href="https://maps.app.goo.gl/7tQm8pVuuuc2koZ57" target="_blank">📍 2A-2B-2C Lý Thường Kiệt, Phường Chợ Lớn, TP.HCM</a></li>
+      </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('slidesContainer');
+      const slides = document.querySelectorAll('.slide');
+      const imageContainer = document.getElementById('imageContainer');
+
+      // Disable browser scroll restoration
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      // Set initial scroll to intro slide and show images
+      container.scrollLeft = 0;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      imageContainer.classList.remove('hidden');
+
+      // Function to toggle image container visibility
+      function toggleImageContainer() {
+        const currentScroll = container.scrollLeft;
+        const introSlide = document.getElementById('intro-slide');
+        if (Math.abs(currentScroll - introSlide.offsetLeft) < 1) {
+          imageContainer.classList.remove('hidden');
+        } else {
+          imageContainer.classList.add('hidden');
+        }
+        // Ensure page scrolls to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Handle scroll to toggle image visibility and ensure top alignment
+      container.addEventListener('scroll', toggleImageContainer);
+
+      // Handle nav bar links click
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetSlide = document.getElementById(targetId);
+          if (targetSlide) {
+            container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+            setTimeout(toggleImageContainer, 300); // Wait for scroll to complete
+          }
+        });
+      });
+
+      // Handle "Back to top" button clicks
+      document.querySelectorAll('.back-to-top').forEach(btn => {
+        btn.addEventListener('click', function() {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+          setTimeout(() => {
+            imageContainer.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, 300);
+        });
+      });
+
+      // Handle arrow navigation clicks
+      document.querySelectorAll('.nav-arrow').forEach(arrow => {
+        arrow.addEventListener('click', function() {
+          const direction = this.getAttribute('data-direction');
+          let currentScroll = container.scrollLeft;
+          let targetSlide;
+
+          if (direction === 'next') {
+            for (let slide of slides) {
+              if (slide.offsetLeft > currentScroll + 1) {
+                targetSlide = slide;
+                break;
+              }
+            }
+          } else if (direction === 'prev') {
+            for (let i = slides.length - 1; i >= 0; i--) {
+              if (slides[i].offsetLeft < currentScroll - 1) {
+                targetSlide = slides[i];
+                break;
+              }
+            }
+          }
+
+          if (targetSlide) {
+            container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+            setTimeout(toggleImageContainer, 300); // Wait for scroll to complete
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
