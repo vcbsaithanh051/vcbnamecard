@@ -3,496 +3,532 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Favicon -->
-  <link rel="icon" type="image/webp"
-        href="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp" />
-  <title>Thông tin liên hệ</title>
-  
-  <!-- Styles (consider moving to a separate CSS file for maintainability) -->
+  <title>Thông tin liên hệ - Vietcombank Chi nhánh Sài Thành</title>
+  <!-- Favicon (biểu tượng trang) - có thể thay bằng data URI hoặc link cục bộ -->
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/vi/8/85/Vietcombank_Logo.png" />
+  <!-- Styles: CSS nội bộ (không dùng file .css ngoài) -->
   <style>
-    /* Root variables and base styles */
+    /* Định nghĩa các biến màu và thông số thiết kế dùng chung */
     :root {
-      --vcb-green: #009639;
-      --vcb-green-dark: #007f2a;
-      --text: #333;
-      --radius: 16px;
-      --shadow: 0 8px 20px rgba(0,0,0,.08);
-      --transition: .3s ease;
-      --icon-size: 1em;
+      --vcb-green: #009639;        /* Màu xanh đặc trưng Vietcombank */
+      --vcb-green-dark: #007f2a;  /* Màu xanh đậm hơn (dùng cho chữ hoặc hover) */
+      --text: #333;               /* Màu chữ chính (xám đen) */
+      --radius: 16px;             /* Bo góc chung cho thẻ card, popup */
+      --shadow: 0 8px 20px rgba(0,0,0,0.08); /* Đổ bóng nhẹ cho card, popup */
+      --transition: 0.3s ease;    /* Thời gian chuyển tiếp cho hiệu ứng */
+      --icon-size: 1em;           /* Kích thước biểu tượng icon (tương đương cỡ chữ) */
     }
+    /* CSS reset cơ bản */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    /* Style chung cho trang */
     body {
-      font-family: 'Work Sans', sans-serif;
-      background: #e6f7ef;
+      font-family: "Work Sans", sans-serif;  /* Font chữ (có thể thay thế bằng font khác có sẵn) */
+      background: #e6f7ef;                   /* Màu nền trang nhẹ (xanh nhạt) */
       color: var(--text);
-      -webkit-tap-highlight-color: transparent;
+      line-height: 1.5;
+      -webkit-tap-highlight-color: transparent; /* Bỏ highlight trên mobile khi chạm */
     }
-    
-    /* Banner section styles */
-    .banner {
-      width: 100%;
-      height: 280px;
-      /* Background image for the banner (update URL to actual image file) */
-      background: url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/avatar.png')
-                  center/cover no-repeat;
+    #main-content {
+      max-width: 800px;    /* Độ rộng tối đa của nội dung chính */
+      margin: 0 auto;      /* Căn giữa nội dung chính */
+      padding: 20px 16px;  /* Khoảng cách hai bên nội dung */
     }
-    .banner-text {
+    /* Thẻ tiêu đề chính của trang */
+    h1 {
+      font-size: 1.5rem;
+      color: var(--vcb-green-dark);
       text-align: center;
-      padding: 20px 10px 0;
+      margin-bottom: 1.5rem;
     }
-    .banner-text h1 {
-      font-size: 26px;
-      color: #006c3f;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .banner-text h2 {
-      font-size: 21px;
-      color: var(--vcb-green);
-      font-weight: 500;
-    }
-    
-    /* Contact info card styles */
-    .info-card {
+    /* Card thông tin liên hệ (dùng cho cả thông tin chính và các popup) */
+    .card {
+      display: flex;
+      align-items: flex-start;      /* Căn các mục con lên trên cùng (avatar và text) */
       background: #fff;
-      max-width: 480px;
-      margin: 40px auto 20px;
-      padding: 80px 20px 30px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      text-align: center;
-      position: relative;
+      padding: 16px;
+      margin-bottom: 1.5rem;        /* Khoảng cách bên dưới mỗi card */
     }
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid #fff;
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    .card img.avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;          /* Bo tròn ảnh avatar */
+      object-fit: cover;           /* Ảnh vừa khung, không méo tỷ lệ */
+      margin-right: 16px;          /* Khoảng cách giữa ảnh và nội dung text */
+      flex-shrink: 0;              /* Không co nhỏ ảnh khi card thu hẹp */
     }
-    .info-card h2 {
-      margin-top: 10px;
-      font-size: 22px;
-      color: #006c3f;
-      font-weight: 600;
+    .card-text {
+      flex: 1;                    /* Cho phần text chiếm hết chiều rộng còn lại */
     }
-    .info-card p {
-      font-size: 15px;
-      margin: 6px 0;
+    .card-text h2 {
+      font-size: 1.1rem;
+      color: var(--vcb-green-dark);
+      margin-bottom: 4px;
     }
-    
-    /* Button styles */
-    .btn {
-      display: inline-block;
-      margin: 12px 6px 0;
-      padding: 12px 20px;
-      font-weight: 600;
-      border-radius: 6px;
-      font-size: 15px;
-      text-decoration: none;
-      transition: var(--transition);
+    .card-text p.position {
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 8px;
     }
-    .btn-green {
-      background: var(--vcb-green);
-      color: #fff;
-    }
-    .btn-green:hover {
-      background: var(--vcb-green-dark);
-    }
-    .btn-outline {
-      border: 2px solid var(--vcb-green);
-      color: var(--vcb-green);
-      background: #fff;
-    }
-    .btn-outline:hover {
-      background: #f0fdf4;
-    }
-    
-    /* Address icon (location pin) styles */
-    .address-icon-container {
-      display: inline-block;
-      margin-right: 5px;
-    }
-    .icon-address {
-      width: var(--icon-size);
-      height: var(--icon-size);
-      vertical-align: -2px;
-    }
-    
-    /* Overlay and popup styles */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: var(--transition);
-      z-index: 9999;
-    }
-    .overlay.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .popup {
-      background: #fff;
-      border-radius: 8px;
-      max-width: 500px;
-      width: 90%;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.2);
-      position: relative;
-    }
-    .popup h3 {
-      margin-bottom: 10px;
-    }
-    .btn-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1.4rem;
-      color: #999;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-    .btn-close:hover {
-      color: #333;
-    }
-    .branch-list {
+    .card-text ul.contact-info {
       list-style: none;
-      margin: 0;
       padding: 0;
     }
-    .branch-list li {
-      margin: 8px 0;
-      font-size: 15px;
+    .card-text ul.contact-info li {
+      margin-bottom: 4px; /* khoảng cách giữa các dòng thông tin */
     }
-    
-    /* Responsive adjustments for small screens */
-    @media(max-width: 480px) {
-      .banner-text h1 { font-size: 20px; }
-      .banner-text h2 { font-size: 17px; }
-      .info-card {
-        margin: 40px 10px 20px;
-        padding: 70px 15px 25px;
+    .card-text ul.contact-info li:last-child {
+      margin-bottom: 0;
+    }
+    /* Định dạng icon và nhãn (Địa chỉ, Email, Điện thoại) trong danh sách thông tin liên hệ */
+    .contact-info .icon {
+      width: var(--icon-size);
+      height: var(--icon-size);
+      margin-right: 6px;
+      vertical-align: -0.125em;   /* Đẩy nhẹ icon xuống để cân đối với chữ */
+      fill: currentColor;
+      color: var(--vcb-green);    /* Mặc định icon màu xanh thương hiệu */
+    }
+    .contact-info strong {
+      color: var(--text);
+    }
+    /* Danh sách các liên hệ (Trưởng phòng, PGD) ở trang chính */
+    .contacts-list h2 {
+      font-size: 1.1rem;
+      color: var(--vcb-green-dark);
+      border-left: 4px solid var(--vcb-green);
+      padding-left: 8px;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .contacts-list ul {
+      list-style: none;
+      padding: 0;
+    }
+    .contacts-list li {
+      margin: 8px 0;
+    }
+    .contacts-list a {
+      color: var(--vcb-green);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+    .contacts-list a:hover {
+      color: var(--vcb-green-dark);
+      text-decoration: underline;
+    }
+    /* Popup overlay toàn màn hình */
+    .popup {
+      display: none;           /* Ẩn popup mặc định */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);        /* Nền tối mờ phía sau popup */
+      backdrop-filter: blur(4px);         /* Hiệu ứng làm mờ nền */
+      -webkit-backdrop-filter: blur(4px); /* Hiệu ứng mờ cho các trình duyệt WebKit */
+      z-index: 9999;
+      overflow-y: auto;        /* Nếu nội dung quá cao, cho phép cuộn dọc trong popup */
+    }
+    .popup-content {
+      position: relative;
+      max-width: 90%;
+      margin: 60px auto;       /* Cách lề trên một đoạn để popup nội dung không dính sát mép trên */
+    }
+    .popup .card {
+      margin-bottom: 0;        /* Bỏ margin dưới của card trong popup */
+    }
+    .popup .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 1.2rem;
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      /* Tăng vùng nhấn cho nút đóng */
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      border-radius: 50%;
+      transition: background-color var(--transition);
+    }
+    .popup .close-btn:hover {
+      background-color: rgba(0,0,0,0.1);
+    }
+    /* Responsive: trên màn hình nhỏ (mobile) hiển thị card theo cột */
+    @media (max-width: 600px) {
+      .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
-      .avatar {
-        width: 100px;
-        height: 100px;
+      .card img.avatar {
+        margin: 0 0 12px 0; /* ảnh dưới cùng, thêm khoảng cách dưới ảnh */
+      }
+      .card-text {
+        text-align: center;
+      }
+      .card-text ul.contact-info strong {
+        /* Trên mobile có thể để nhãn đậm cùng màu icon cho nổi bật */
+        color: var(--vcb-green-dark);
       }
     }
   </style>
 </head>
 <body>
-  <!-- Banner section -->
-  <div class="banner"></div>
-  <!-- Banner text section -->
-  <div class="banner-text">
-    <h2>Ngân hàng TMCP Ngoại thương Việt Nam</h2>
-    <h2><strong>Chi nhánh Sài Thành</strong></h2>
-  </div>
-  
-  <!-- Contact Info Card section -->
-  <div class="info-card">
-    <!-- Avatar image -->
-    <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/avatar.png"
-         alt="Ảnh đại diện" class="avatar" />
-    <!-- Lưu ý: Cập nhật đường dẫn ảnh đại diện cho đúng tên file nếu khác -->
-    <!-- Name and position -->
-    <h2>Lương Anh Vũ</h2>
-    <p>Chuyên viên Công Nghệ Thông Tin</p>
-    <!-- Branch name and link -->
-    <p>
-      <strong>Chi nhánh:</strong>
-      <a href="#" id="branchLink" style="color:#006c3f;text-decoration:underline">Sài Thành</a>
-    </p>
-    <!-- Address line with icon and Google Maps link -->
-    <p>
-      <span class="address-icon-container">
-        <svg class="icon-address" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path fill="#006c3f" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-        </svg>
-      </span>
-      <strong>Địa chỉ:</strong>
-      <a href="https://maps.app.goo.gl/7tQm8pVuuuc2koZ57" target="_blank" rel="noopener">
-        Số 2A-2B-2C Lý Thường Kiệt, P. Chợ Lớn, TP. HCM
-      </a>
-    </p>
-    <!-- Link to open sub-branches list directly -->
-    <p>
-      <a href="#" id="directSubBranchLink">Và địa chỉ các phòng giao dịch trực thuộc</a>
-    </p>
-    <!-- Contact information (phone and email) -->
-    <p>📞 0918 851 232</p>
-    <p>📧 vula.stn@vietcombank.com.vn</p>
-    
-    <!-- Action buttons -->
-    <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
-    <a href="../vcf/luonganhvu.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
-    <p id="androidHint" style="display:none;font-size:14px;color:#555">
-      Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
-    </p>
-  </div>
-  
-  <!-- Overlay Popups -->
-  <!-- Branch selection Popup (Chi nhánh Sài Thành) -->
-  <div id="branchPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="branchPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="branchPopupClose" aria-label="Đóng">×</button>
-      <h3 id="branchPopupTitle">Chi nhánh Sài Thành</h3>
-      <ul class="branch-list">
-        <li><a href="#" id="openKHBanLe">Trưởng phòng Khách hàng Bán lẻ</a></li>
-        <li><a href="#" id="openKHDN">Trưởng phòng Khách hàng Doanh nghiệp</a></li>
-        <li><a href="#" id="openQLNo">Trưởng phòng Quản lý Nợ</a></li>
-        <li><a href="#" id="openKeToan">Trưởng phòng Kế toán</a></li>
-        <li><a href="#" id="openDVKH">Trưởng phòng Dịch vụ Khách hàng</a></li>
-        <li><a href="#" id="subBranchLink">Địa chỉ các Phòng giao dịch của Chi nhánh Sài Thành gần đây</a></li>
-      </ul>
-    </div>
-  </div>
-  
-  <!-- Department Chief Popups (Trưởng phòng các bộ phận) -->
-  <!-- Popup: Trưởng phòng Khách hàng Bán lẻ -->
-  <div id="khBanLePopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="khBanLePopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="khBanLePopupClose" aria-label="Đóng">×</button>
-      <h3 id="khBanLePopupTitle">Thông tin Trưởng phòng Khách hàng Bán lẻ</h3>
-      <p><strong>Tên:</strong> Nguyễn Như Tiệp</p>
-      <p><a href="/namecard/nguyennhutiep">Thông tin liên hệ</a></p>
-    </div>
-  </div>
-  <!-- Popup: Trưởng phòng Khách hàng Doanh nghiệp -->
-  <div id="khdnPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="khdnPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="khdnPopupClose" aria-label="Đóng">×</button>
-      <h3 id="khdnPopupTitle">Thông tin Trưởng phòng Khách hàng Doanh nghiệp</h3>
-      <p><strong>Tên:</strong> Nguyễn Duy Ngọc</p>
-      <p><a href="/namecard/nguyenduyngoc">Thông tin liên hệ</a></p>
-    </div>
-  </div>
-  <!-- Popup: Trưởng phòng Quản lý Nợ -->
-  <div id="qlNoPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="qlNoPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="qlNoPopupClose" aria-label="Đóng">×</button>
-      <h3 id="qlNoPopupTitle">Thông tin Trưởng phòng Quản lý Nợ</h3>
-      <p><strong>Tên:</strong> Nguyễn Minh Quốc</p>
-      <p><a href="/namecard/nguyenminhquoc">Thông tin liên hệ</a></p>
-    </div>
-  </div>
-  <!-- Popup: Trưởng phòng Kế toán -->
-  <div id="keToanPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="keToanPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="keToanPopupClose" aria-label="Đóng">×</button>
-      <h3 id="keToanPopupTitle">Thông tin Trưởng phòng Kế toán</h3>
-      <p><strong>Tên:</strong> Lê Thị Ngọc Diệp</p>
-      <p><a href="/namecard/lethingocdiep">Thông tin liên hệ</a></p>
-    </div>
-  </div>
-  <!-- Popup: Trưởng phòng Dịch vụ Khách hàng -->
-  <div id="dvkhPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="dvkhPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="dvkhPopupClose" aria-label="Đóng">×</button>
-      <h3 id="dvkhPopupTitle">Thông tin Trưởng phòng Dịch vụ Khách hàng</h3>
-      <p><strong>Tên:</strong> Huỳnh Thị Phi Yến</p>
-      <p><a href="/namecard/huynhthiphiyen">Thông tin liên hệ</a></p>
-    </div>
-  </div>
-  
-  <!-- Sub-branch (PGD) list Popup -->
-  <div id="subBranchPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="subBranchPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="subBranchPopupClose" aria-label="Đóng">×</button>
-      <h3 id="subBranchPopupTitle">Địa chỉ các Phòng giao dịch</h3>
-      <ul class="branch-list">
+  <main id="main-content">
+    <!-- Tiêu đề chính của trang -->
+    <h1>Ngân hàng Vietcombank - Chi nhánh Sài Thành</h1>
+
+    <!-- Thông tin cá nhân chính của chi nhánh (Giám đốc chi nhánh) -->
+    <section class="main-contact">
+      <div class="card">
+        <!-- Avatar: thay bằng đường dẫn hoặc data URI ảnh thực tế của người liên hệ -->
+        <img src="avatar-branchmanager.jpg" alt="Ảnh đại diện Giám đốc chi nhánh" class="avatar" />
+        <div class="card-text">
+          <h2>Trần Thị Mỹ Thắm</h2>
+          <p class="position">Giám đốc Chi nhánh Sài Thành</p>
+          <ul class="contact-info">
+            <li>
+              <!-- Icon vị trí (địa chỉ) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              <strong>Địa chỉ:</strong> 2A-2B-2C Lý Thường Kiệt, P.12, Quận 5, TP.HCM
+            </li>
+            <li>
+              <!-- Icon email -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+              <strong>Email:</strong> saithanh@vietcombank.com.vn
+            </li>
+            <li>
+              <!-- Icon điện thoại -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              <strong>Điện thoại:</strong> (028) 3957 3378
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Danh sách các Trưởng phòng (thuộc chi nhánh) -->
+    <section class="contacts-list">
+      <h2>Các Trưởng phòng</h2>
+      <ul>
         <li>
-          <a href="#" id="openPgdBinhThanh">PGD Bình Thạnh</a><br>
-          <a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank"
-             style="font-size:14px;color:#555">
-            Số 136 Nguyễn Gia Trí, Bình Thạnh
+          <a href="#" class="open-popup" data-target="popup-retail">
+            Trưởng phòng Bán lẻ – Nguyễn Văn An
           </a>
         </li>
         <li>
-          <a href="#" id="openPgdTranHungDao">PGD Trần Hưng Đạo</a><br>
-          <a href="https://maps.app.goo.gl/yX1abDUvjuviDkGSA" target="_blank"
-             style="font-size:14px;color:#555">
-            823 Trần Hưng Đạo, Q.5
+          <a href="#" class="open-popup" data-target="popup-corporate">
+            Trưởng phòng Doanh nghiệp – Trần Thị Bình
           </a>
         </li>
         <li>
-          <a href="#" id="openPgdNgoGiaTu">PGD Ngô Gia Tự</a><br>
-          <a href="https://maps.app.goo.gl/7b3eCDLPfQFFHhnG9" target="_blank"
-             style="font-size:14px;color:#555">
-            73 Ngô Gia Tự, Q.10
+          <a href="#" class="open-popup" data-target="popup-accounting">
+            Trưởng phòng Kế toán – Lê Văn Cường
           </a>
         </li>
         <li>
-          <a href="#" id="openPgdVoVanTan">PGD Võ Văn Tần</a><br>
-          <a href="https://maps.app.goo.gl/4M7Tbp7aRXuAQEYd8" target="_blank"
-             style="font-size:14px;color:#555">
-            149 Võ Văn Tần, Q.3
+          <a href="#" class="open-popup" data-target="popup-customer">
+            Trưởng phòng Dịch vụ Khách hàng – Phạm Thị Dung
           </a>
         </li>
       </ul>
+    </section>
+
+    <!-- Danh sách các Phòng Giao dịch trực thuộc -->
+    <section class="contacts-list">
+      <h2>Các Phòng Giao dịch trực thuộc</h2>
+      <ul>
+        <li>
+          <a href="#" class="open-popup" data-target="popup-binhthanh">
+            Trưởng PGD Bình Thạnh – Nguyễn Thị Hương
+          </a>
+        </li>
+        <li>
+          <a href="#" class="open-popup" data-target="popup-tranhungdao">
+            Trưởng PGD Trần Hưng Đạo – Phan Văn Long
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Popup thông tin Trưởng phòng Bán lẻ -->
+  <div class="popup" id="popup-retail" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button type="button" class="close-btn" onclick="closePopup()">&times;</button>
+      <div class="card">
+        <img src="avatar-retail.jpg" alt="Ảnh đại diện Trưởng phòng Bán lẻ" class="avatar" />
+        <div class="card-text">
+          <h2>Nguyễn Văn An</h2>
+          <p class="position">Trưởng phòng Bán lẻ</p>
+          <ul class="contact-info">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              <strong>Địa chỉ:</strong> 2A-2B-2C Lý Thường Kiệt, Q.5, TP.HCM
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+              <strong>Email:</strong> nguyenvana@vietcombank.com.vn
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              <strong>Điện thoại:</strong> (028) 3957 3379
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  
-  <!-- Sub-branch (PGD) detail Popups -->
-  <!-- Popup: PGD Bình Thạnh -->
-  <div id="pgdBinhThanhPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="pgdBinhThanhPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="pgdBinhThanhPopupClose" aria-label="Đóng">×</button>
-      <h3 id="pgdBinhThanhPopupTitle">Thông tin PGD Bình Thạnh</h3>
-      <p><strong>Trưởng phòng:</strong> Nguyễn Đức Nhật Phương</p>
-      <p><a href="/namecard/nguyenducnhatphuong">Thông tin liên hệ</a></p>
-      <p><strong>Phó phòng:</strong> Võ Thị Hồng Thúy</p>
-      <p><a href="/namecard/vothihongthuy">Thông tin liên hệ</a></p>
+
+  <!-- Popup thông tin Trưởng phòng Doanh nghiệp -->
+  <div class="popup" id="popup-corporate" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button type="button" class="close-btn" onclick="closePopup()">&times;</button>
+      <div class="card">
+        <img src="avatar-corporate.jpg" alt="Ảnh đại diện Trưởng phòng Doanh nghiệp" class="avatar" />
+        <div class="card-text">
+          <h2>Trần Thị Bình</h2>
+          <p class="position">Trưởng phòng Doanh nghiệp</p>
+          <ul class="contact-info">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              <strong>Địa chỉ:</strong> 2A-2B-2C Lý Thường Kiệt, Q.5, TP.HCM
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+              <strong>Email:</strong> tranthib@vietcombank.com.vn
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              <strong>Điện thoại:</strong> (028) 3957 3381
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- Popup: PGD Trần Hưng Đạo -->
-  <div id="pgdTranHungDaoPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="pgdTranHungDaoPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="pgdTranHungDaoPopupClose" aria-label="Đóng">×</button>
-      <h3 id="pgdTranHungDaoPopupTitle">Thông tin PGD Trần Hưng Đạo</h3>
-      <p><strong>Trưởng phòng:</strong> Đỗ Thị Mỹ Phương</p>
-      <p><a href="/namecard/dothimyphuong">Thông tin liên hệ</a></p>
-      <p><strong>Phó phòng:</strong> Hà Ngô Thị Tuyết</p>
-      <p><a href="/namecard/hangothituyet">Thông tin liên hệ</a></p>
+
+  <!-- Popup thông tin Trưởng phòng Kế toán -->
+  <div class="popup" id="popup-accounting" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button type="button" class="close-btn" onclick="closePopup()">&times;</button>
+      <div class="card">
+        <img src="avatar-accounting.jpg" alt="Ảnh đại diện Trưởng phòng Kế toán" class="avatar" />
+        <div class="card-text">
+          <h2>Lê Văn Cường</h2>
+          <p class="position">Trưởng phòng Kế toán</p>
+          <ul class="contact-info">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              <strong>Địa chỉ:</strong> 2A-2B-2C Lý Thường Kiệt, Q.5, TP.HCM
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+              <strong>Email:</strong> levanc@vietcombank.com.vn
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              <strong>Điện thoại:</strong> (028) 3957 3382
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- Popup: PGD Ngô Gia Tự -->
-  <div id="pgdNgoGiaTuPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="pgdNgoGiaTuPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="pgdNgoGiaTuPopupClose" aria-label="Đóng">×</button>
-      <h3 id="pgdNgoGiaTuPopupTitle">Thông tin PGD Ngô Gia Tự</h3>
-      <p><strong>Trưởng phòng:</strong> Liêu Thị Kim Chi</p>
-      <p><a href="/namecard/lieuthikimchi">Thông tin liên hệ</a></p>
-      <p><strong>Phó phòng:</strong> Lê Huy</p>
-      <p><a href="/namecard/lehuy">Thông tin liên hệ</a></p>
+
+  <!-- Popup thông tin Trưởng phòng Dịch vụ Khách hàng -->
+  <div class="popup" id="popup-customer" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button type="button" class="close-btn" onclick="closePopup()">&times;</button>
+      <div class="card">
+        <img src="avatar-customer.jpg" alt="Ảnh đại diện Trưởng phòng Dịch vụ Khách hàng" class="avatar" />
+        <div class="card-text">
+          <h2>Phạm Thị Dung</h2>
+          <p class="position">Trưởng phòng Dịch vụ Khách hàng</p>
+          <ul class="contact-info">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              <strong>Địa chỉ:</strong> 2A-2B-2C Lý Thường Kiệt, Q.5, TP.HCM
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+              <strong>Email:</strong> phamthid@vietcombank.com.vn
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              <strong>Điện thoại:</strong> (028) 3957 3383
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- Popup: PGD Võ Văn Tần -->
-  <div id="pgdVoVanTanPopup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="pgdVoVanTanPopupTitle">
-    <div class="popup">
-      <button class="btn-close" id="pgdVoVanTanPopupClose" aria-label="Đóng">×</button>
-      <h3 id="pgdVoVanTanPopupTitle">Thông tin PGD Võ Văn Tần</h3>
-      <p><strong>Trưởng phòng:</strong> Phan Nhất Linh</p>
-      <p><a href="/namecard/phannhatlinh">Thông tin liên hệ</a></p>
-      <p><strong>Phó phòng:</strong> Trần Thị Diệu Phương</p>
-      <p><a href="/namecard/tranthidieuphuong">Thông tin liên hệ</a></p>
+
+  <!-- Popup thông tin PGD Bình Thạnh -->
+  <div class="popup" id="popup-binhthanh" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button type="button" class="close-btn" onclick="closePopup()">&times;</button>
+      <div class="card">
+        <img src="avatar-binhthanh.jpg" alt="Ảnh đại diện Trưởng PGD Bình Thạnh" class="avatar" />
+        <div class="card-text">
+          <h2>Nguyễn Thị Hương</h2>
+          <p class="position">Giám đốc Phòng Giao dịch Bình Thạnh</p>
+          <ul class="contact-info">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              <strong>Địa chỉ:</strong> 136-138 Nguyễn Gia Trí, P.25, Quận Bình Thạnh, TP.HCM
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+              <strong>Email:</strong> pgd.binhthanh@vietcombank.com.vn
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              <strong>Điện thoại:</strong> (028) 3512 3456
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  
-  <!-- Scripts (consider moving to a separate JS file for maintainability) -->
+
+  <!-- Popup thông tin PGD Trần Hưng Đạo -->
+  <div class="popup" id="popup-tranhungdao" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button type="button" class="close-btn" onclick="closePopup()">&times;</button>
+      <div class="card">
+        <img src="avatar-tranhungdao.jpg" alt="Ảnh đại diện Trưởng PGD Trần Hưng Đạo" class="avatar" />
+        <div class="card-text">
+          <h2>Phan Văn Long</h2>
+          <p class="position">Giám đốc Phòng Giao dịch Trần Hưng Đạo</p>
+          <ul class="contact-info">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              <strong>Địa chỉ:</strong> 821-823 Trần Hưng Đạo, P.1, Quận 5, TP.HCM
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+              <strong>Email:</strong> pgd.tranhungdao@vietcombank.com.vn
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon" aria-hidden="true">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              <strong>Điện thoại:</strong> (028) 3853 9702
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: JavaScript nội bộ (không dùng file .js ngoài) -->
   <script>
-    // On Android devices, trigger download for vCard and show hint text
-    if (/android/i.test(navigator.userAgent)) {
-      const addContactBtn = document.getElementById('addContactBtn');
-      if (addContactBtn) {
-        // Add 'download' attribute to prompt saving the file
-        addContactBtn.setAttribute('download', '');
-        document.getElementById('androidHint').style.display = 'block';
+    // Mảng dùng làm stack lưu các popup đang mở (theo thứ tự mở)
+    const openPopups = [];
+
+    // Hàm mở popup theo id
+    function openPopup(popupId) {
+      const popupEl = document.getElementById(popupId);
+      if (!popupEl) return;
+      // Nếu đã có popup khác đang mở, ẩn popup đó trước khi mở popup mới
+      if (openPopups.length > 0) {
+        const currentOpenId = openPopups[openPopups.length - 1];
+        const currentOpenEl = document.getElementById(currentOpenId);
+        if (currentOpenEl) currentOpenEl.style.display = 'none';
+      }
+      // Hiển thị popup mới (dùng flex để căn giữa nội dung)
+      popupEl.style.display = 'flex';
+      // Thêm popup mới vào stack
+      openPopups.push(popupId);
+      // Nếu mở popup đầu tiên, khóa cuộn nền trang
+      if (openPopups.length === 1) {
+        document.body.style.overflow = 'hidden';
       }
     }
-    
-    // Get references to main overlay elements
-    const branchPopup = document.getElementById('branchPopup');
-    const subBranchPopup = document.getElementById('subBranchPopup');
-    
-    // Event listener to open branch selection popup
-    const branchLink = document.getElementById('branchLink');
-    branchLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Open the branch selection overlay (Chi nhánh Sài Thành)
-      branchPopup.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    });
-    
-    // Event listener to open sub-branch list popup directly
-    const directSubBranchLink = document.getElementById('directSubBranchLink');
-    directSubBranchLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      // If branch popup is open, close it first
-      branchPopup.classList.remove('show');
-      // Open the sub-branch list overlay (Danh sách PGD)
-      subBranchPopup.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    });
-    
-    // Event listeners for opening department popups from branch popup
-    const branchOverlayTriggers = [
-      { triggerId: 'openKHBanLe', targetId: 'khBanLePopup' },
-      { triggerId: 'openKHDN', targetId: 'khdnPopup' },
-      { triggerId: 'openQLNo', targetId: 'qlNoPopup' },
-      { triggerId: 'openKeToan', targetId: 'keToanPopup' },
-      { triggerId: 'openDVKH', targetId: 'dvkhPopup' },
-      { triggerId: 'subBranchLink', targetId: 'subBranchPopup' } // opens sub-branch list
-    ];
-    branchOverlayTriggers.forEach(item => {
-      const triggerElem = document.getElementById(item.triggerId);
-      triggerElem.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Close the branch selection overlay before opening the target
-        branchPopup.classList.remove('show');
-        // Open the target overlay (department or sub-branch list)
-        document.getElementById(item.targetId).classList.add('show');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-    
-    // Event listeners for opening PGD detail popups from sub-branch list popup
-    const subBranchOverlayTriggers = [
-      { triggerId: 'openPgdBinhThanh', targetId: 'pgdBinhThanhPopup' },
-      { triggerId: 'openPgdTranHungDao', targetId: 'pgdTranHungDaoPopup' },
-      { triggerId: 'openPgdNgoGiaTu', targetId: 'pgdNgoGiaTuPopup' },
-      { triggerId: 'openPgdVoVanTan', targetId: 'pgdVoVanTanPopup' }
-    ];
-    subBranchOverlayTriggers.forEach(item => {
-      const triggerElem = document.getElementById(item.triggerId);
-      triggerElem.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Close the sub-branch list overlay before opening the PGD detail
-        subBranchPopup.classList.remove('show');
-        // Open the target PGD detail overlay
-        document.getElementById(item.targetId).classList.add('show');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-    
-    // Event listeners to close popups when clicking on the overlay background
-    document.querySelectorAll('.overlay').forEach(function(overlay) {
-      overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) {
-          // Close the overlay if click is outside the popup content
-          overlay.classList.remove('show');
-          document.body.style.overflow = '';
-        }
-      });
-    });
-    
-    // Event listeners for all close (×) buttons in popups
-    document.querySelectorAll('.btn-close').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        const overlay = btn.closest('.overlay');
-        // Close the overlay popup
-        if (overlay) {
-          overlay.classList.remove('show');
-        }
-        // Re-enable scrolling on body (no overlay shown)
+
+    // Hàm đóng popup (đóng popup trên cùng của stack)
+    function closePopup() {
+      if (openPopups.length === 0) return;
+      // Lấy id popup trên cùng và loại khỏi stack
+      const popupId = openPopups.pop();
+      const popupEl = document.getElementById(popupId);
+      if (popupEl) popupEl.style.display = 'none';
+      // Nếu sau khi đóng vẫn còn popup trước đó trong stack, hiện lại popup đó
+      if (openPopups.length > 0) {
+        const prevPopupId = openPopups[openPopups.length - 1];
+        const prevPopupEl = document.getElementById(prevPopupId);
+        if (prevPopupEl) prevPopupEl.style.display = 'flex';
+      } else {
+        // Nếu không còn popup nào mở, mở khóa cuộn trang chính
         document.body.style.overflow = '';
+      }
+    }
+
+    // Gắn sự kiện click cho tất cả các liên kết mở popup
+    document.querySelectorAll('.open-popup').forEach(function(trigger) {
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = trigger.getAttribute('data-target');
+        if (targetId) {
+          openPopup(targetId);
+        }
       });
     });
   </script>
