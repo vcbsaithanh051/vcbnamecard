@@ -105,30 +105,37 @@
     ul li {
       margin-bottom: 0.5em;
       position: relative; /* for pseudo-element bullets positioning */
+      padding-left: 20px; /* space for bullets */
     }
+    /* Bullet symbols for list items at different nesting levels */
     ul li::before {
       content: "› ";             /* arrow symbol for top-level list items */
       color: #006734;            /* bullet in brand color */
       font-weight: bold;
       position: absolute;
       left: 0;
+      width: 15px; /* fixed width for bullet alignment */
+      text-align: right;
     }
     ul ul li::before {
       content: "• ";            /* filled circle for second-level list items */
       color: #006734;
       font-weight: bold;
       left: 0;
+      width: 15px;
     }
     ul ul ul li::before {
       content: "– ";            /* dash for third-level list items */
       color: #006734;
       left: 0;
+      width: 15px;
     }
+    /* Indentation for nested lists */
     ul li ul {
-      margin-left: 1.5em;
+      margin-left: 20px;
     }
     ul li ul li ul {
-      margin-left: 1.5em;
+      margin-left: 20px;
     }
     /* Contact info list (no bullets, uses icons/emoji for each item) */
     .contact-info {
@@ -138,6 +145,7 @@
     }
     .contact-info li {
       margin: 0.5em 0;
+      padding-left: 0; /* no bullets for contact info */
     }
     /* "Back to top" button style */
     .back-to-top {
@@ -555,7 +563,6 @@
           const targetSlide = document.getElementById(targetId);
           if (targetSlide) {
             container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
-            // Ensure top of slide is visible by scrolling the window
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
