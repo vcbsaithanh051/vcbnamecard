@@ -88,15 +88,15 @@
     .image-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      gap: 15px; /* increased gap for better spacing */
       max-width: 80%;
-      margin: 20px auto;
+      margin: 30px auto; /* increased margin for more space */
     }
     .image-grid img {
       width: 100%;
-      max-width: 300px;
-      height: auto;
-      object-fit: cover;
+      max-width: 250px; /* reasonable size for readability */
+      max-height: 200px; /* limit height to prevent oversized images */
+      object-fit: contain; /* preserve aspect ratio without cropping */
       border: 2px solid #006734;
       border-radius: 4px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -260,6 +260,7 @@
       }
       .image-grid img {
         max-width: 100%;
+        max-height: 250px; /* slightly larger height on mobile for readability */
       }
       .slide {
         padding: 20px 40px; /* reduce padding for mobile */
@@ -285,10 +286,10 @@
     <!-- Slide 1: Cover Page (Thư ngỏ) -->
     <section id="slide1" class="slide">
       <div class="image-grid">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-0.png" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Thư+ngỏ+hình+1';">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-1.png" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Thư+ngỏ+hình+2';">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-2.png" alt="Thư ngỏ hình 3" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Thư+ngỏ+hình+3';">
-        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-3.png" alt="Thư ngỏ hình 4" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Thư+ngỏ+hình+4';">
+        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-0.png" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+1';">
+        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-1.png" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+2';">
+        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-2.png" alt="Thư ngỏ hình 3" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+3';">
+        <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/images/Thu-ngo-3.png" alt="Thư ngỏ hình 4" loading="lazy" onerror="this.src='https://via.placeholder.com/250x150?text=Thư+ngỏ+hình+4';">
       </div>
       <h1>Sản phẩm Dịch vụ Vietcombank</h1>
       <h2><a href="#slide2">Khách hàng cá nhân</a></h2>
