@@ -8,7 +8,7 @@
     /* Base Styles (mobile-first approach) */
     body {
       margin: 0;
-      padding-top: 60px; /* space for fixed nav bar; adjust if nav bar height changes */
+      padding-top: 60px; /* space for fixed nav bar */
       font-family: Arial, Helvetica, sans-serif;
       font-size: 16px;
       line-height: 1.5;
@@ -68,10 +68,12 @@
       flex: 0 0 100%;           /* each slide takes full viewport width */
       scroll-snap-align: start; /* snap so that each slide starts at the viewport */
       box-sizing: border-box;
-      padding: 20px;
-      /* Default slide background and text color */
+      padding: 20px 60px;       /* increased padding for arrow space */
       background: #fff;
       color: #000;
+      position: relative; /* for positioning navigation arrows */
+      scroll-margin-top: 60px; /* ensure top content is visible below navbar */
+      min-height: calc(100vh - 60px); /* ensure full height minus navbar */
     }
     /* Slide 1 (Cover) specific style: dark green background with white text */
     #slide1 {
@@ -84,7 +86,6 @@
       font-weight: bold;
       text-transform: uppercase; /* headings in uppercase as per design */
     }
-    /* Adjust heading font sizes for hierarchy (mobile-first sizing) */
     h1 { font-size: 2em; }   /* largest title (cover page) */
     h2 { font-size: 1.5em; } /* section titles */
     h3 { font-size: 1.2em; } /* slide content titles */
@@ -105,7 +106,6 @@
       margin-bottom: 0.5em;
       position: relative; /* for pseudo-element bullets positioning */
     }
-    /* Bullet symbols for list items at different nesting levels */
     ul li::before {
       content: "› ";             /* arrow symbol for top-level list items */
       color: #006734;            /* bullet in brand color */
@@ -124,7 +124,6 @@
       color: #006734;
       left: 0;
     }
-    /* Indentation for nested lists */
     ul li ul {
       margin-left: 1.5em;
     }
@@ -142,18 +141,20 @@
     }
     /* "Back to top" button style */
     .back-to-top {
-      display: inline-block;
-      margin-top: 20px;
+      display: block;
+      margin: 40px auto 20px; /* center and space below arrows */
       padding: 10px 15px;
-      background: #006734;
-      color: #fff;
-      border: none;
+      background: #fff;
+      color: #006734; /* green text */
+      border: 2px solid #006734; /* green border */
       border-radius: 4px;
       font: inherit;
       cursor: pointer;
+      text-align: center;
     }
     .back-to-top:hover {
-      background: #00582a;
+      background: #006734;
+      color: #fff;
     }
     /* Content Anchor Styles */
     .slide a {
@@ -163,12 +164,51 @@
     .slide a:hover {
       text-decoration: underline;
     }
-    /* Ensure links on dark slide1 remain visible (white text) */
     #slide1 a {
       color: #fff;
     }
     #slide1 a:hover {
       text-decoration: underline;
+    }
+    /* Navigation Arrows Styles */
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent; /* transparent background */
+      color: #006734; /* green text */
+      border: 2px solid #006734; /* green border */
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      opacity: 0.5; /* semi-transparent */
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+    .nav-arrow:hover {
+      background: #006734; /* green background on hover */
+      color: #fff; /* white text on hover */
+      opacity: 1; /* fully opaque on hover */
+    }
+    .nav-arrow-left {
+      left: 10px;
+    }
+    .nav-arrow-right {
+      right: 10px;
+    }
+    /* Adjust arrow color for slide1 to ensure visibility */
+    #slide1 .nav-arrow {
+      color: #fff; /* white text for dark background */
+      border: 2px solid #fff; /* white border */
+    }
+    #slide1 .nav-arrow:hover {
+      background: #fff; /* white background on hover */
+      color: #006734; /* green text on hover */
     }
   </style>
 </head>
@@ -189,11 +229,11 @@
 
     <!-- Slide 1: Cover Page -->
     <section id="slide1" class="slide">
-      <!-- TODO: Replace "Vietcombank" text with official logo image if available -->
       <h1>Sản phẩm Dịch vụ Vietcombank</h1>
-      <!-- Quick links to personal and corporate slides -->
       <h2><a href="#slide2">Khách hàng cá nhân</a></h2>
       <h2><a href="#slide8">Khách hàng tổ chức</a></h2>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
+      <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
     <!-- Slide 2: Individual Customers Section Intro -->
@@ -208,6 +248,8 @@
         <li>Nhận kiều hối</li>
         <li>Sản phẩm bảo hiểm</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -221,6 +263,8 @@
         <li>0 Phí chuyển tiền</li>
         <li>0 Phí duy trì dịch vụ</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -236,6 +280,8 @@
         <li>Tính năng hoàn tiền với các dòng thẻ như: Amex Cashplus Platinum, Mastercard World, Visa Platinum, JCB Platinum</li>
         <li>Tính năng tích lũy dặm bay với Hội viên Bông Sen Vàng (thẻ VCB Vietnam Airlines Platinum Amex; VCB Vietnam Airlines Amex)</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -248,6 +294,8 @@
         <li>Tiết kiệm tự động: Đáp ứng nhu cầu chuyển tiền tự động từ tài khoản thanh toán sang tài khoản tiết kiệm để hưởng lãi suất cao hơn mà không cần đến ngân hàng.</li>
         <li>Tiền gửi có kỳ hạn trực tuyến: Mở tài khoản tiền gửi hoàn toàn trực tuyến ngay trên Ngân hàng số VCB Digibank, có cơ chế ưu đãi lãi suất dành cho khách hàng ưu tiên.</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -255,19 +303,19 @@
     <section id="slide6" class="slide">
       <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
       <h3>Chuyển & Nhận tiền</h3>
-      <!-- Sub-section: Receiving Money (Inbound) -->
       <h4>Nhận tiền:</h4>
       <ul>
-        <li>Đối tác chi trả kiều hối: MoneyGram, Xoom, VCBR, Ria, TNMonex, UniTeller <!-- TODO: Replace with partner logos if available --></li>
+        <li>Đối tác chi trả kiều hối: MoneyGram, Xoom, VCBR, Ria, TNMonex, UniTeller</li>
         <li>Hạn mức cao, giao dịch dễ dàng, tiện lợi</li>
         <li>Quản lý biến động số dư</li>
       </ul>
-      <!-- Sub-section: Sending Money (Outbound) -->
       <h4>Chuyển tiền đi nước ngoài:</h4>
       <ul>
         <li>Giao dịch tại bất kỳ kênh nào (tại quầy hoặc trên VCB Digibank)</li>
         <li>Mức phí cạnh tranh, ưu đãi dành cho khách hàng ưu tiên</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -275,7 +323,6 @@
     <section id="slide7" class="slide">
       <div class="section-name">KHÁCH HÀNG CÁ NHÂN</div>
       <h3>Sản phẩm bảo hiểm</h3>
-      <!-- Insurance categories and products -->
       <h4>Bảo hiểm bảo vệ & tiết kiệm:</h4>
       <ul>
         <li>FWD Phụ nữ hiện đại</li>
@@ -293,7 +340,8 @@
         <li>FWD Sống trọn tương lai</li>
         <li>FWD Vị thế vững vàng</li>
       </ul>
-      <!-- Tagline "Chung niềm tin, vững tương lai" was in design, omitted here for brevity -->
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -306,8 +354,9 @@
         <li>Bảo lãnh</li>
         <li>Ngoại hối & Thị trường vốn</li>
         <li>Tư vấn, Đầu tư & Bảo hiểm</li>
-        <!-- "Ngân hàng số" for doanh nghiệp is covered later but not listed in this intro -->
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -349,6 +398,8 @@
           </ul>
         </li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -378,6 +429,8 @@
         </li>
         <li>Giải pháp tài trợ trọn gói, lãi suất cạnh tranh</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -402,6 +455,8 @@
           </ul>
         </li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -428,6 +483,8 @@
           </ul>
         </li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -440,6 +497,8 @@
         <li>Hệ thống tài chính hiện đại: VCB iB@nking, VCB Digibiz, SMS Banking</li>
         <li>Trải nghiệm mới mẻ với nhiều tiện ích vượt trội</li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -462,6 +521,8 @@
           </ul>
         </li>
       </ul>
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
+      <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
@@ -474,16 +535,18 @@
         <li>🌐 www.vietcombank.com.vn</li>
         <li>📍 2A-2B-2C Lý Thường Kiệt, Phường Chợ Lớn, TP.HCM</li>
       </ul>
-      <!-- Bạn có thể thay thế các emoji trên bằng biểu tượng hình ảnh tương ứng nếu cần -->
+      <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
       <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
   </div> <!-- End of slides-container -->
 
   <script>
-    // JavaScript for navigation and "Back to top" button functionality
+    // JavaScript for navigation, "Back to top" button, and arrow navigation
     document.addEventListener('DOMContentLoaded', function() {
       const container = document.getElementById('slidesContainer');
+      const slides = document.querySelectorAll('.slide');
+
       // Handle nav bar links click: smooth scroll to target slide
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -491,15 +554,50 @@
           const targetId = this.getAttribute('href').substring(1);
           const targetSlide = document.getElementById(targetId);
           if (targetSlide) {
-            // Scroll the slides container to the target slide's left position
             container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+            // Ensure top of slide is visible by scrolling the window
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
       });
+
       // Handle "Back to top" button clicks: scroll back to the first slide
       document.querySelectorAll('.back-to-top').forEach(btn => {
         btn.addEventListener('click', function() {
           container.scrollTo({ left: 0, behavior: 'smooth' });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+
+      // Handle arrow navigation clicks
+      document.querySelectorAll('.nav-arrow').forEach(arrow => {
+        arrow.addEventListener('click', function() {
+          const direction = this.getAttribute('data-direction');
+          let currentScroll = container.scrollLeft;
+          let targetSlide;
+
+          if (direction === 'next') {
+            // Find the next slide
+            for (let slide of slides) {
+              if (slide.offsetLeft > currentScroll + 1) {
+                targetSlide = slide;
+                break;
+              }
+            }
+          } else if (direction === 'prev') {
+            // Find the previous slide
+            for (let i = slides.length - 1; i >= 0; i--) {
+              if (slides[i].offsetLeft < currentScroll - 1) {
+                targetSlide = slides[i];
+                break;
+              }
+            }
+          }
+
+          if (targetSlide) {
+            container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         });
       });
     });
