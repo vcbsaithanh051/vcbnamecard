@@ -60,6 +60,14 @@
       overflow-y: auto; /* Enable vertical scrolling */
       scroll-behavior: smooth; /* Smooth vertical scrolling */
       -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      transition: opacity 0.3s ease; /* Smooth transition for show/hide */
+    }
+    .image-container.hidden {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
     }
 
     /* Image Grid for A4-sized images */
@@ -178,7 +186,7 @@
     ul ul li::before {
       content: "• ";
       color: #006734;
-      font-weight: bold;
+      font-weight bold;
       left: 0;
       width: 15px;
     }
@@ -302,8 +310,8 @@
     </ul>
   </nav>
 
-  <!-- Image Container (A4-sized images) -->
-  <div class="image-container">
+  <!-- Image Container (A4-sized images, shown only on intro slide) -->
+  <div class="image-container" id="imageContainer">
     <div class="image-grid">
       <img src="images/Thu-ngo-0.jpg" alt="Thư ngỏ hình 1" loading="lazy" onerror="this.src='https://via.placeholder.com/595x842?text=Thư+ngỏ+hình+1';">
       <img src="images/Thu-ngo-1.jpg" alt="Thư ngỏ hình 2" loading="lazy" onerror="this.src='https://via.placeholder.com/595x842?text=Thư+ngỏ+hình+2';">
@@ -629,15 +637,31 @@
     document.addEventListener('DOMContentLoaded', function() {
       const container = document.getElementById('slidesContainer');
       const slides = document.querySelectorAll('.slide');
+      const imageContainer = document.getElementById('imageContainer');
 
       // Disable browser scroll restoration
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
 
-      // Set initial scroll to intro slide
+      // Set initial scroll to intro slide and show images
       container.scrollLeft = 0;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      imageContainer.classList.remove('hidden');
+
+      // Function to toggle image container visibility
+      function toggleImageContainer() {
+        const currentScroll = container.scrollLeft;
+        const introSlide = document.getElementById('intro-slide');
+        if (Math.abs(currentScroll - introSlide.offsetLeft) < 1) {
+          imageContainer.classList.remove('hidden');
+        } else {
+          imageContainer.classList.add('hidden');
+        }
+      }
+
+      // Handle scroll to toggle image visibility
+      container.addEventListener('scroll', toggleImageContainer);
 
       // Handle nav bar links click
       document.querySelectorAll('.nav-link').forEach(link => {
@@ -648,6 +672,7 @@
           if (targetSlide) {
             container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(toggleImageContainer, 300); // Wait for scroll to complete
           }
         });
       });
@@ -657,6 +682,7 @@
         btn.addEventListener('click', function() {
           container.scrollTo({ left: 0, behavior: 'smooth' });
           window.scrollTo({ top: 0, behavior: 'smooth' });
+          setTimeout(() => imageContainer.classList.remove('hidden'), 300);
         });
       });
 
@@ -686,6 +712,7 @@
           if (targetSlide) {
             container.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(toggleImageContainer, 300); // Wait for scroll to complete
           }
         });
       });
