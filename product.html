@@ -79,6 +79,27 @@
     #slide1 {
       background: #006734; /* Vietcombank primary green */
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Image Grid for Slide 1 */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      max-width: 80%;
+      margin: 20px auto;
+    }
+    .image-grid img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: cover;
+      border: 2px solid #006734;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     /* Headings Styles */
     h1, h2, h3, h4 {
@@ -107,7 +128,6 @@
       position: relative; /* for pseudo-element bullets positioning */
       padding-left: 20px; /* space for bullets */
     }
-    /* Bullet symbols for list items at different nesting levels */
     ul li::before {
       content: "› ";             /* arrow symbol for top-level list items */
       color: #006734;            /* bullet in brand color */
@@ -130,7 +150,6 @@
       left: 0;
       width: 15px;
     }
-    /* Indentation for nested lists */
     ul li ul {
       margin-left: 20px;
     }
@@ -218,6 +237,19 @@
       background: #fff; /* white background on hover */
       color: #006734; /* green text on hover */
     }
+    /* Responsive Design for Mobile */
+    @media (max-width: 600px) {
+      .image-grid {
+        grid-template-columns: 1fr; /* stack images vertically on mobile */
+        max-width: 90%;
+      }
+      .image-grid img {
+        max-width: 100%;
+      }
+      .slide {
+        padding: 20px 40px; /* reduce padding for mobile */
+      }
+    }
   </style>
 </head>
 <body>
@@ -225,7 +257,7 @@
   <!-- Fixed Navigation Bar -->
   <nav>
     <ul>
-      <li><a href="#slide1" class="nav-link">Sản phẩm & Dịch vụ VCB</a></li>
+      <li><a href="#slide1" class="nav-link">Thư ngỏ</a></li>
       <li><a href="#slide2" class="nav-link">Khách hàng cá nhân</a></li>
       <li><a href="#slide8" class="nav-link">Khách hàng tổ chức</a></li>
       <li><a href="#slide15" class="nav-link">Liên hệ</a></li>
@@ -235,13 +267,18 @@
   <!-- Slides Container (horizontal scroll wrapper) -->
   <div class="slides-container" id="slidesContainer">
 
-    <!-- Slide 1: Cover Page -->
+    <!-- Slide 1: Cover Page (Thư ngỏ) -->
     <section id="slide1" class="slide">
+      <div class="image-grid">
+        <img src="images/Thu-ngo-0.png" alt="Thư ngỏ hình 1">
+        <img src="images/Thu-ngo-1.png" alt="Thư ngỏ hình 2">
+        <img src="images/Thu-ngo-2.png" alt="Thư ngỏ hình 3">
+        <img src="images/Thu-ngo-3.png" alt="Thư ngỏ hình 4">
+      </div>
       <h1>Sản phẩm Dịch vụ Vietcombank</h1>
       <h2><a href="#slide2">Khách hàng cá nhân</a></h2>
       <h2><a href="#slide8">Khách hàng tổ chức</a></h2>
       <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
-      <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
     <!-- Slide 2: Individual Customers Section Intro -->
@@ -258,7 +295,6 @@
       </ul>
       <button class="nav-arrow nav-arrow-left" data-direction="prev">❮</button>
       <button class="nav-arrow nav-arrow-right" data-direction="next">❯</button>
-      <button class="back-to-top">Quay lại trang đầu</button>
     </section>
 
     <!-- Slide 3: VCB Digibank & VCB Loyalty (Individual Banking Products) -->
