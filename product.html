@@ -26,7 +26,7 @@
       width: 100%;
       background: #006734; /* Vietcombank dark green background for nav */
       color: #fff;
-      padding: 10px 0;
+      padding: 8px 0; /* Reduced padding for mobile */
       text-align: center;
       z-index: 1000; /* Ensure nav stays above other content */
     }
@@ -39,13 +39,13 @@
       flex-wrap: wrap; /* Allow menu items to wrap on small screens */
     }
     nav li {
-      margin: 5px 15px;
+      margin: 5px 10px;
     }
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 12px; /* Smaller font for mobile */
     }
     nav a:hover {
       text-decoration: underline;
@@ -133,7 +133,7 @@
       color: #000;
       position: relative;
       min-height: calc(100vh - 60px);
-      scroll-margin-top: 80px; /* Increased to account for navbar on mobile */
+      scroll-margin-top: 80px; /* Increased to account for navbar */
     }
 
     /* Intro Slide */
@@ -292,27 +292,18 @@
       body {
         padding-top: 50px; /* Adjust for smaller navbar height on mobile */
       }
-      nav {
-        padding: 8px 0;
-      }
-      nav li {
-        margin: 5px 10px;
-      }
-      nav a {
-        font-size: 12px;
+      .slide {
+        padding: 60px 15px 15px; /* Increased top padding to push content down */
+        scroll-margin-top: 60px; /* Adjusted for mobile navbar */
+        margin-top: 0; /* Ensure no extra margin */
       }
       .image-grid {
         max-width: 90%;
-        gap: 3px; /* Even smaller gap on mobile */
+        gap: 3px; /* Smaller gap on mobile */
       }
       .image-grid img {
         max-width: 100%;
         max-height: 594px; /* A4 height scaled for mobile */
-      }
-      .slide {
-        padding: 15px;
-        scroll-margin-top: 60px; /* Adjusted for mobile navbar */
-        margin-top: 0; /* Ensure no extra margin */
       }
       .section-name, h1, h2, h3, h4, p, ul {
         margin-top: 0; /* Remove top margin to ensure content starts at top */
