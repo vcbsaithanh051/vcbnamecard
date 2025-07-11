@@ -1,31 +1,44 @@
 ```html
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Redirect to Namecard</title>
-       <meta http-equiv="refresh" content="0;url=https://saithanh051.netlify.app/namecard/trandung">
-       <script>
-           // Thử chuyển hướng trực tiếp
-           window.location.href = "https://saithanh051.netlify.app/namecard/trandung";
-           // Hiển thị thông báo sau 2 giây nếu chuyển hướng không hoạt động
-           setTimeout(() => {
-               document.getElementById("manual-instructions").style.display = "block";
-           }, 2000);
-       </script>
-       <style>
-           body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-           #manual-instructions { display: none; color: #d32f2f; }
-           a { color: #1976d2; text-decoration: none; font-weight: bold; }
-           a:hover { text-decoration: underline; }
-       </style>
-   </head>
-   <body>
-       <p>Đang chuyển hướng đến trang danh thiếp...</p>
-       <p id="manual-instructions">
-           Nếu không tự động chuyển hướng, hãy <a href="https://saithanh051.netlify.app/namecard/trandung" target="_blank">nhấn vào đây</a> hoặc sao chép liên kết và mở trong trình duyệt (Chrome, Safari, v.v.).
-       </p>
-   </body>
-   </html>
-   ```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect to Namecard</title>
+    <script>
+        // Thử mở trong Chrome (Android) hoặc Safari (iOS)
+        const url = "https://saithanh051.netlify.app/namecard/trandung";
+        const isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        if (isAndroid) {
+            // Thử URL scheme cho Chrome trên Android
+            window.location.href = "googlechrome://" + url.replace("https://", "");
+        } else if (isIOS) {
+            // Thử URL scheme cho Safari trên iOS
+            window.location.href = "x-safari-" + url;
+        } else {
+            // Fallback: chuyển hướng thông thường
+            window.location.href = url;
+        }
+
+        // Hiển thị hướng dẫn thủ công sau 2 giây nếu không chuyển hướng
+        setTimeout(() => {
+            document.getElementById("manual-instructions").style.display = "block";
+        }, 2000);
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        #manual-instructions { display: none; color: #d32f2f; }
+        a { color: #1976d2; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <p>Đang chuyển hướng đến trang danh thiếp...</p>
+    <p id="manual-instructions">
+        Nếu không tự động chuyển hướng, hãy <a href="https://saithanh051.netlify.app/namecard/trandung" target="_blank">nhấn vào đây</a> hoặc sao chép liên kết và mở trong trình duyệt (Chrome, Safari, v.v.).
+    </p>
+</body>
+</html>
+```
