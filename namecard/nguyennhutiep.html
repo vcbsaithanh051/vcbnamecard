@@ -179,10 +179,10 @@ body{
 
 <!-- ===== JavaScript ===== -->
 <script>
-/* ---------- Android vCard xử lý tự động và xử lý Zalo với Intent ---------- */
+/* ---------- Android vCard xử lý tự động và Zalo trên Android/iOS ---------- */
 const addContactBtn = document.getElementById('addContactBtn');
 if (addContactBtn) {
-  // Kiểm tra User Agent để phát hiện Zalo
+  // Kiểm tra User Agent để phát hiện Zalo và hệ điều hành
   const isZalo = /Zalo/i.test(navigator.userAgent);
   const isAndroid = /android/i.test(navigator.userAgent);
   const isIOS = /iPhone|iPad/i.test(navigator.userAgent);
@@ -203,14 +203,18 @@ if (addContactBtn) {
   } else if (isZalo && isIOS) {
     // Xử lý cho iOS trong Zalo
     addContactBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const vcfUrl = addContactBtn.href;
-      // Thử mở trong trình duyệt mặc định trên iOS
+      e.preventDefault(); // Ngăn hành vi tải mặc định trong Zalo
+      const vcfUrl = addContactBtn.href; // Lấy URL của file vCard
+      // Thử chuyển hướng trước
       window.location.href = vcfUrl;
-      // Fallback: Hiển thị thông báo
+      // Thử mở trong tab mới nếu chuyển hướng không hoạt động
       setTimeout(() => {
-        alert('Nếu file không tải trong Safari, vui lòng mở liên kết này trong Safari để tải file vCard.');
-      }, 1000);
+        window.open(vcfUrl, '_blank');
+        // Fallback: Hiển thị thông báo hướng dẫn
+        setTimeout(() => {
+          alert('Nếu file không tải trong Safari, vui lòng sao chép liên kết và mở trong Safari để tải file vCard.');
+        }, 1000);
+      }, 500);
     });
   } else if (isAndroid) {
     // Xử lý cho Android ngoài Zalo (như mã gốc)
