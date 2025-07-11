@@ -186,12 +186,16 @@ if (addContactBtn) {
   const isZalo = /Zalo/i.test(navigator.userAgent);
 
   if (isZalo) {
-    // Nếu đang ở trong Zalo, điều hướng liên kết đến trình duyệt bên ngoài
+    // Nếu đang trong Zalo, điều hướng liên kết đến trình duyệt bên ngoài
     addContactBtn.addEventListener('click', (e) => {
       e.preventDefault(); // Ngăn hành vi tải mặc định trong Zalo
       const vcfUrl = addContactBtn.href; // Lấy URL của file vCard
-      // Mở liên kết trong trình duyệt bên ngoài
-      window.open(vcfUrl, '_system'); // '_system' yêu cầu trình duyệt hệ thống
+      // Chuyển hướng trực tiếp đến URL để mở trong trình duyệt mặc định
+      window.location.href = vcfUrl;
+      // Hiển thị thông báo hướng dẫn (fallback)
+      setTimeout(() => {
+        alert('Nếu file không tải trong trình duyệt, vui lòng mở liên kết này trong Chrome hoặc Safari để tải file vCard.');
+      }, 500);
     });
   } else if (/android/i.test(navigator.userAgent)) {
     // Xử lý cho Android (như mã gốc)
@@ -201,7 +205,6 @@ if (addContactBtn) {
 }
 
 /* ---------- Logic Popup Stack ---------- */
-// (Giữ nguyên phần mã xử lý popup stack và các sự kiện khác như trong mã gốc)
 const stack = [];
 function openOverlay(id) {
   const ov = document.getElementById(id);
@@ -240,64 +243,6 @@ document.querySelectorAll('.btn-close').forEach(btn => {
 document.querySelectorAll('.overlay').forEach(ov => {
   ov.addEventListener('click', e => {
     if (e.target === ov) closeTopOverlay();
-  });
-});
-
-/* ---------- Android vCard xử lý tự động ---------- */
-if(/android/i.test(navigator.userAgent)){
-  const btn=document.getElementById('addContactBtn');
-  if(btn){
-    btn.setAttribute('download','');
-    document.getElementById('androidHint').style.display='block';
-  }
-}
-
-/* ---------- Logic Popup Stack ---------- */
-const stack=[];                     // lưu các overlay đang mở
-
-// Mở overlay
-function openOverlay(id){
-  const ov=document.getElementById(id);
-  if(!ov) return;
-  if(stack.length){ stack.at(-1).classList.add('blur'); }
-  ov.classList.add('show');
-  stack.push(ov);
-  document.body.style.overflow='hidden';
-}
-
-// Đóng overlay trên cùng
-function closeTopOverlay(){
-  if(!stack.length) return;
-  const ov=stack.pop();
-  ov.classList.remove('show','blur');
-  if(stack.length){
-    stack.at(-1).classList.remove('blur');
-  }else{
-    document.body.style.overflow='';
-  }
-}
-
-/* ---------- Gán sự kiện ---------- */
-// a) Mở popup: bất kỳ phần tử có class open-popup + data-target
-document.querySelectorAll('.open-popup').forEach(el=>{
-  el.addEventListener('click',e=>{
-    e.preventDefault();
-    openOverlay(el.dataset.target);
-  });
-});
-
-// b) Nút đóng (×)
-document.querySelectorAll('.btn-close').forEach(btn=>{
-  btn.addEventListener('click',e=>{
-    e.stopPropagation();
-    closeTopOverlay();
-  });
-});
-
-// c) Click ra ngoài khung popup để đóng popup trên cùng
-document.querySelectorAll('.overlay').forEach(ov=>{
-  ov.addEventListener('click',e=>{
-    if(e.target===ov) closeTopOverlay();
   });
 });
 </script>
