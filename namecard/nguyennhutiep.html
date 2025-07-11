@@ -179,26 +179,41 @@ body{
 
 <!-- ===== JavaScript ===== -->
 <script>
-/* ---------- Android vCard xử lý tự động và xử lý Zalo ---------- */
+/* ---------- Android vCard xử lý tự động và xử lý Zalo với Intent ---------- */
 const addContactBtn = document.getElementById('addContactBtn');
 if (addContactBtn) {
   // Kiểm tra User Agent để phát hiện Zalo
   const isZalo = /Zalo/i.test(navigator.userAgent);
+  const isAndroid = /android/i.test(navigator.userAgent);
+  const isIOS = /iPhone|iPad/i.test(navigator.userAgent);
 
-  if (isZalo) {
-    // Nếu đang trong Zalo, điều hướng liên kết đến trình duyệt bên ngoài
+  if (isZalo && isAndroid) {
+    // Xử lý cho Android trong Zalo với Intent
     addContactBtn.addEventListener('click', (e) => {
       e.preventDefault(); // Ngăn hành vi tải mặc định trong Zalo
       const vcfUrl = addContactBtn.href; // Lấy URL của file vCard
-      // Chuyển hướng trực tiếp đến URL để mở trong trình duyệt mặc định
-      window.location.href = vcfUrl;
-      // Hiển thị thông báo hướng dẫn (fallback)
+      // Tạo URL Intent để mở trong Chrome (hoặc trình duyệt mặc định)
+      const intentUrl = `intent://${vcfUrl.replace('https://', '')}#Intent;scheme=https;action=android.intent.action.VIEW;package=com.android.chrome;end`;
+      window.location.href = intentUrl; // Chuyển hướng đến Intent
+      // Fallback: Hiển thị thông báo sau 1 giây nếu Intent không hoạt động
       setTimeout(() => {
-        alert('Nếu file không tải trong trình duyệt, vui lòng mở liên kết này trong Chrome hoặc Safari để tải file vCard.');
-      }, 500);
+        alert('Nếu file không tải trong trình duyệt, vui lòng mở liên kết này trong Chrome để tải file vCard.');
+      }, 1000);
     });
-  } else if (/android/i.test(navigator.userAgent)) {
-    // Xử lý cho Android (như mã gốc)
+  } else if (isZalo && isIOS) {
+    // Xử lý cho iOS trong Zalo
+    addContactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const vcfUrl = addContactBtn.href;
+      // Thử mở trong trình duyệt mặc định trên iOS
+      window.location.href = vcfUrl;
+      // Fallback: Hiển thị thông báo
+      setTimeout(() => {
+        alert('Nếu file không tải trong Safari, vui lòng mở liên kết này trong Safari để tải file vCard.');
+      }, 1000);
+    });
+  } else if (isAndroid) {
+    // Xử lý cho Android ngoài Zalo (như mã gốc)
     addContactBtn.setAttribute('download', '');
     document.getElementById('androidHint').style.display = 'block';
   }
