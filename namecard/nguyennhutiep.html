@@ -214,7 +214,7 @@ END:VCARD`;
       const intentUrl = `intent://${vcfUrl.replace('https://', '')}#Intent;scheme=https;action=android.intent.action.VIEW;package=com.android.chrome;end`;
       window.location.href = intentUrl;
       setTimeout(() => {
-        alert('Nếu file không tải trong trình duyệt, vui lòng mở liên kết này trong Chrome để tải file vCard.');
+        alert('Nếu file không được tải, vui lòng bấm vào dấu "..." bên góc phải màn hình và mở liên kết này bằng trình duyệt sau đó thử lại.');
       }, 1000);
     });
   } else if (isZalo && isIOS) {
