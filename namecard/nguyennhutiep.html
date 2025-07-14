@@ -130,7 +130,7 @@ body{
     Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
   </p>
   <p id="iosHint" style="display:none;font-size:14px;color:#555">
-    Nếu bạn dùng Zalo trên iPhone, nhấn giữ nút "Thêm vào Danh bạ" và chọn "Mở trong Safari" hoặc "Lưu vào Files". Sau đó, mở file trong ứng dụng Files để thêm vào Danh bạ.
+    Nếu quý khách đang sử dụng phần mềm Zalo trên iOS (Iphone, Ipad), vui lòng bấm vào dấu "..." ở góc bên phải màn hình và chọn "Mở bằng Safari", sau đó thử "Thêm vào danh bạ" một lần nữa.
   </p>
   <p id="iosDownloadHint" style="display:none;font-size:14px;color:#555">
     <a href="/vcf/nguyennhutiep.vcf" download>Nhấn để tải file vCard</a><br>
@@ -234,7 +234,6 @@ END:VCARD`;
       setTimeout(() => {
         const safariUrl = 'https://saithanh051.netlify.app/vcf/nguyennhutiep.vcf';
         window.open(safariUrl, '_system');
-        alert('Nếu file không tải, vui lòng nhấn giữ liên kết và chọn "Mở trong Safari" để thêm vào Danh bạ.');
       }, 500);
     });
   } else if (isAndroid) {
