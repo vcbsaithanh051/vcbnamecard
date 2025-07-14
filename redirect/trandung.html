@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirect to Namecard</title>
     <script>
-        const url = "https://saithanh051.netlify.app/namecard/trandung";
-        // Thử chuyển hướng tự động
-        window.location.href = url;
-        // Thử mở trong tab mới
-        window.open(url, '_blank');
-        // Hiển thị hướng dẫn thủ công sau 1 giây
+        const vcardData = `BEGIN:VCARD
+VERSION:3.0
+N:Tran;Dung
+FN:Tran Dung
+EMAIL;TYPE=WORK:[email protected]
+TEL;TYPE=CELL:+1234567890
+END:VCARD`;
+
+        function downloadVCF() {
+            const url = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'contact.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (isIOS) {
+            downloadVCF();
+        } else {
+            window.location.href = 'https://saithanh051.netlify.app/namecard/trandung';
+        }
+
         setTimeout(() => {
             document.getElementById("manual-instructions").style.display = "block";
         }, 1000);
@@ -58,12 +76,12 @@
     <p>Vui lòng chờ giây lát để đến trang danh thiếp.</p>
     <div id="manual-instructions">
         <p>Nếu không tự động chuyển hướng, hãy sử dụng một trong các cách sau:</p>
-        <button class="open-button" onclick="window.open('https://saithanh051.netlify.app/namecard/trandung', '_blank')">Mở trong trình duyệt</button>
+        <button class="open-button" onclick="downloadVCF()">Tải file VCF</button>
+        <button class="open-button" onclick="window.open('https://saithanh051.netlify.app/namecard/trandung', '_blank')">Mở trong Safari</button>
         <p class="copy-instructions">
-            Hoặc sao chép liên kết này và dán vào trình duyệt (Chrome, Safari, v.v.):<br>
-            <span class="link-text">https://saithanh051.netlify.app/namecard/trandung</span>
+            Nếu bạn dùng Zalo trên iPhone, nhấn giữ liên kết bên dưới và chọn "Lưu vào Files". Sau đó, mở ứng dụng Files, tìm file "contact.vcf" và nhấn để thêm vào Danh bạ.<br>
+            <a href="https://saithanh051.netlify.app/namecard/trandung" download class="link-text">Tải file VCF</a>
         </p>
     </div>
 </body>
 </html>
-```
