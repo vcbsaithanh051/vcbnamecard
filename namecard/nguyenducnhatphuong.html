@@ -105,7 +105,7 @@ body{
 <div class="info-card">
   <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp" alt="Ảnh đại diện" class="avatar"/>
   <h2>Nguyễn Đức Nhật Phương</h2>
-  <p>Trưởng phòng Phòng giao dịch Bình Thạnh</p>
+  <p>Trưởng Phòng PGD Bình Thạnh</p>
   <p><strong>Chi nhánh:</strong>
      <a href="#" data-target="branchPopup" class="open-popup" style="color:#006c3f;text-decoration:underline">Sài Thành</a>
   </p>
@@ -116,18 +116,25 @@ body{
       </svg>
     </span>
     <strong>Địa chỉ:</strong>
-    <a href="https://maps.app.goo.gl/7tQm8pVuuuc2koZ57" target="_blank" rel="noopener">
-      Số 2A‑2B‑2C Lý Thường Kiệt, P. Chợ Lớn, TP. HCM
+    <a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank" rel="noopener">
+      136-138 đường Nguyễn Gia Trí, Phường Thạnh Mỹ Tây, TP. HCM
     </a>
   </p>
   <p><a href="#" data-target="subBranchPopup" class="open-popup" id="directSubBranchLink">
       Và địa chỉ các phòng giao dịch trực thuộc</a></p>
-  <p>📞 0918 851 232</p>
-  <p>📧 phuongndn.stn@vietcombank.com.vn</p>
+  <p>📞 0918 851 232</p>
+  <p>📧 phuongndn.stn@vietcombank.com.vn</p>
   <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
-  <a href="../vcf/nguyenducnhatphuong.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
+  <a href="/vcf/nguyenducnhatphuong.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
   <p id="androidHint" style="display:none;font-size:14px;color:#555">
     Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
+  </p>
+  <p id="iosHint" style="display:none;font-size:14px;color:#555">
+    Nếu quý khách đang sử dụng phần mềm Zalo trên iOS (Iphone, Ipad), vui lòng bấm vào dấu "..." ở góc bên phải màn hình và chọn "Mở bằng Safari", sau đó thử "Thêm vào danh bạ" một lần nữa.
+  </p>
+  <p id="iosDownloadHint" style="display:none;font-size:14px;color:#555">
+    <a href="/vcf/nguyenducnhatphuong.vcf" download>Nhấn để tải file vCard</a><br>
+    Sau khi tải, mở file trong ứng dụng Files để thêm vào Danh bạ.
   </p>
 </div>
 
@@ -135,10 +142,10 @@ body{
 <!-- Popup Chi nhánh -->
 <div id="branchPopup" class="overlay" role="dialog" aria-modal="true">
   <div class="popup">
-    <button class="btn-close" aria-label="Đóng">&times;</button>
+    <button class="btn-close" aria-label="Đóng">×</button>
     <h3>Chi nhánh Sài Thành</h3>
     <ul class="branch-list">
-      <li><a href="#" data-target="khBanLePopup" class="open-popup">Trưởng phòng Khách hàng Bán lẻ</a></li>
+      <li><a href="#" data-target="khblPopup"    class="open-popup">Trưởng phòng Khách hàng Bán lẻ</a></li>
       <li><a href="#" data-target="khdnPopup"    class="open-popup">Trưởng phòng Khách hàng Doanh nghiệp</a></li>
       <li><a href="#" data-target="qlNoPopup"    class="open-popup">Trưởng phòng Quản lý Nợ</a></li>
       <li><a href="#" data-target="keToanPopup"  class="open-popup">Trưởng phòng Kế toán</a></li>
@@ -149,16 +156,16 @@ body{
 </div>
 
 <!-- Các popup Trưởng phòng -->
-<div id="khBanLePopup" class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng KH Bán lẻ</h3><p><strong>Tên:</strong> Nguyễn Như Tiệp</p><p><a href="/namecard/nguyennhutiep">Thông tin liên hệ</a></p></div></div>
-<div id="khdnPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng KH Doanh nghiệp</h3><p><strong>Tên:</strong> Nguyễn Duy Ngọc</p><p><a href="/namecard/nguyenduyngoc">Thông tin liên hệ</a></p></div></div>
-<div id="qlNoPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng Quản lý Nợ</h3><p><strong>Tên:</strong> Nguyễn Minh Quốc</p><p><a href="/namecard/nguyenminhquoc">Thông tin liên hệ</a></p></div></div>
-<div id="keToanPopup" class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng Kế toán</h3><p><strong>Tên:</strong> Lê Thị Ngọc Diệp</p><p><a href="/namecard/lethingocdiep">Thông tin liên hệ</a></p></div></div>
-<div id="dvkhPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin Trưởng phòng DVKH</h3><p><strong>Tên:</strong> Huỳnh Thị Phi Yến</p><p><a href="/namecard/huynhthiphiyen">Thông tin liên hệ</a></p></div></div>
+<div id="khblPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng KH Bán lẻ</h3><p><strong>Tên:</strong> Nguyễn Như Tiệp</p><p><a href="/namecard/nguyenducnhatphuong">Thông tin liên hệ</a></p></div></div>
+<div id="khdnPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng KH Doanh nghiệp</h3><p><strong>Tên:</strong> Nguyễn Duy Ngọc</p><p><a href="/namecard/nguyenduyngoc">Thông tin liên hệ</a></p></div></div>
+<div id="qlNoPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng Quản lý Nợ</h3><p><strong>Tên:</strong> Nguyễn Minh Quốc</p><p><a href="/namecard/nguyenminhquoc">Thông tin liên hệ</a></p></div></div>
+<div id="keToanPopup" class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng Kế toán</h3><p><strong>Tên:</strong> Lê Thị Ngọc Diệp</p><p><a href="/namecard/lethingocdiep">Thông tin liên hệ</a></p></div></div>
+<div id="dvkhPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng DVKH</h3><p><strong>Tên:</strong> Huỳnh Thị Phi Yến</p><p><a href="/namecard/huynhthiphiyen">Thông tin liên hệ</a></p></div></div>
 
 <!-- Popup danh sách PGD -->
 <div id="subBranchPopup" class="overlay" role="dialog" aria-modal="true">
   <div class="popup">
-    <button class="btn-close" aria-label="Đóng">&times;</button>
+    <button class="btn-close" aria-label="Đóng">×</button>
     <h3>Địa chỉ các Phòng giao dịch</h3>
     <ul class="branch-list">
       <li><a href="#" data-target="pgdBinhThanhPopup" class="open-popup">PGD Bình Thạnh</a><br>
@@ -174,68 +181,121 @@ body{
 </div>
 
 <!-- Các popup PGD -->
-<div id="pgdBinhThanhPopup"  class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin PGD Bình Thạnh</h3><p><strong>Trưởng phòng:</strong> Nguyễn Đức Nhật Phương</p><p><a href="/namecard/nguyenducnhatphuong">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Võ Thị Hồng Thúy</p><p><a href="/namecard/vothihongthuy">Thông tin liên hệ</a></p></div></div>
-<div id="pgdTranHungDaoPopup" class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin PGD Trần Hưng Đạo</h3><p><strong>Trưởng phòng:</strong> Đỗ Thị Mỹ Phương</p><p><a href="/namecard/dothimyphuong">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Hà Ngô Thị Tuyết</p><p><a href="/namecard/hangothituyet">Thông tin liên hệ</a></p></div></div>
-<div id="pgdNgoGiaTuPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin PGD Ngô Gia Tự</h3><p><strong>Trưởng phòng:</strong> Liêu Thị Kim Chi</p><p><a href="/namecard/lieuthikimchi">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Lê Huy</p><p><a href="/namecard/lehuy">Thông tin liên hệ</a></p></div></div>
-<div id="pgdVoVanTanPopup"   class="overlay"><div class="popup"><button class="btn-close">&times;</button><h3>Thông tin PGD Võ Văn Tần</h3><p><strong>Trưởng phòng:</strong> Phan Nhất Linh</p><p><a href="/namecard/phannhatlinh">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Trần Thị Diệu Phương</p><p><a href="/namecard/tranthidieuphuong">Thông tin liên hệ</a></p></div></div>
+<div id="pgdBinhThanhPopup"  class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin PGD Bình Thạnh</h3><p><strong>Trưởng phòng:</strong> Nguyễn Đức Nhật Phương</p><p><a href="/namecard/nguyenducnhatphuong">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Võ Thị Hồng Thúy</p><p><a href="/namecard/vothihongthuy">Thông tin liên hệ</a></p></div></div>
+<div id="pgdTranHungDaoPopup" class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin PGD Trần Hưng Đạo</h3><p><strong>Trưởng phòng:</strong> Đỗ Thị Mỹ Phương</p><p><a href="/namecard/dothimyphuong">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Hà Ngô Thị Tuyết</p><p><a href="/namecard/hangothituyet">Thông tin liên hệ</a></p></div></div>
+<div id="pgdNgoGiaTuPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin PGD Ngô Gia Tự</h3><p><strong>Trưởng phòng:</strong> Liêu Thị Kim Chi</p><p><a href="/namecard/lieuthikimchi">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Lê Huy</p><p><a href="/namecard/lehuy">Thông tin liên hệ</a></p></div></div>
+<div id="pgdVoVanTanPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin PGD Võ Văn Tần</h3><p><strong>Trưởng phòng:</strong> Phan Nhất Linh</p><p><a href="/namecard/phannhatlinh">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Trần Thị Diệu Phương</p><p><a href="/namecard/tranthidieuphuong">Thông tin liên hệ</a></p></div></div>
 
 <!-- ===== JavaScript ===== -->
 <script>
-/* ---------- Android vCard xử lý tự động ---------- */
-if(/android/i.test(navigator.userAgent)){
-  const btn=document.getElementById('addContactBtn');
-  if(btn){
-    btn.setAttribute('download','');
-    document.getElementById('androidHint').style.display='block';
+/* ---------- Android vCard xử lý tự động và Zalo trên Android/iOS ---------- */
+const addContactBtn = document.getElementById('addContactBtn');
+if (addContactBtn) {
+  // Sample VCF content (replace with actual VCF data)
+  const vcardData = `BEGIN:VCARD
+VERSION:3.0
+N:Nguyen;Duc Nhat Phuong
+FN:Nguyễn Đức Nhật Phương
+ORG:Ngân hàng TMCP Ngoại thương Việt Nam
+TITLE:Trưởng Phòng PGD Bình Thạnh
+EMAIL;TYPE=WORK:phuongndn.stn@vietcombank.com.vn
+TEL;TYPE=CELL:0918 851 232
+ADR;TYPE=WORK:;;136-138 đường Nguyễn Gia Trí;P. Thạnh Mỹ Tây;TP. HCM;;Việt Nam
+END:VCARD`;
+
+  // Kiểm tra User Agent để phát hiện Zalo và hệ điều hành
+  const isZalo = /Zalo/i.test(navigator.userAgent);
+  const isAndroid = /android/i.test(navigator.userAgent);
+  const isIOS = /iPhone|iPad/i.test(navigator.userAgent);
+
+  if (isZalo && isAndroid) {
+    // Xử lý cho Android trong Zalo với Intent
+    addContactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const vcfUrl = addContactBtn.href;
+      const intentUrl = `intent://${vcfUrl.replace('https://', '')}#Intent;scheme=https;action=android.intent.action.VIEW;package=com.android.chrome;end`;
+      window.location.href = intentUrl;
+      setTimeout(() => {
+        alert('Nếu file không được tải, vui lòng bấm vào dấu "..." bên góc phải màn hình và mở liên kết này bằng trình duyệt sau đó thử lại.');
+      }, 1000);
+    });
+  } else if (isZalo && isIOS) {
+    document.getElementById('iosHint').style.display = 'block';
+    document.getElementById('iosDownloadHint').style.display = 'block';
+    addContactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Try data URL first
+      const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
+      const a = document.createElement('a');
+      a.href = vcfUrl;
+      a.download = 'nguyenducnhatphuong.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      // Fallback: Open in Safari
+      setTimeout(() => {
+        const safariUrl = 'https://saithanh051.netlify.app/vcf/nguyenducnhatphuong.vcf';
+        window.open(safariUrl, '_system');
+      }, 500);
+    });
+  } else if (isAndroid) {
+    addContactBtn.setAttribute('download', '');
+    document.getElementById('androidHint').style.display = 'block';
+  } else if (isIOS) {
+    document.getElementById('iosHint').style.display = 'block';
+    document.getElementById('iosDownloadHint').style.display = 'block';
+    addContactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
+      const a = document.createElement('a');
+      a.href = vcfUrl;
+      a.download = 'nguyenducnhatphuong.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
   }
 }
 
 /* ---------- Logic Popup Stack ---------- */
-const stack=[];                     // lưu các overlay đang mở
-
-// Mở overlay
-function openOverlay(id){
-  const ov=document.getElementById(id);
-  if(!ov) return;
-  if(stack.length){ stack.at(-1).classList.add('blur'); }
+const stack = [];
+function openOverlay(id) {
+  const ov = document.getElementById(id);
+  if (!ov) return;
+  if (stack.length) { stack.at(-1).classList.add('blur'); }
   ov.classList.add('show');
   stack.push(ov);
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
 
-// Đóng overlay trên cùng
-function closeTopOverlay(){
-  if(!stack.length) return;
-  const ov=stack.pop();
-  ov.classList.remove('show','blur');
-  if(stack.length){
+function closeTopOverlay() {
+  if (!stack.length) return;
+  const ov = stack.pop();
+  ov.classList.remove('show', 'blur');
+  if (stack.length) {
     stack.at(-1).classList.remove('blur');
-  }else{
-    document.body.style.overflow='';
+  } else {
+    document.body.style.overflow = '';
   }
 }
 
-/* ---------- Gán sự kiện ---------- */
-// a) Mở popup: bất kỳ phần tử có class open-popup + data-target
-document.querySelectorAll('.open-popup').forEach(el=>{
-  el.addEventListener('click',e=>{
+document.querySelectorAll('.open-popup').forEach(el => {
+  el.addEventListener('click', e => {
     e.preventDefault();
     openOverlay(el.dataset.target);
   });
 });
 
-// b) Nút đóng (×)
-document.querySelectorAll('.btn-close').forEach(btn=>{
-  btn.addEventListener('click',e=>{
+document.querySelectorAll('.btn-close').forEach(btn => {
+  btn.addEventListener('click', e => {
     e.stopPropagation();
     closeTopOverlay();
   });
 });
 
-// c) Click ra ngoài khung popup để đóng popup trên cùng
-document.querySelectorAll('.overlay').forEach(ov=>{
-  ov.addEventListener('click',e=>{
-    if(e.target===ov) closeTopOverlay();
+document.querySelectorAll('.overlay').forEach(ov => {
+  ov.addEventListener('click', e => {
+    if (e.target === ov) closeTopOverlay();
   });
 });
 </script>
