@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Nguyễn Minh Quốc;;;
+FN;CHARSET=utf-8:Nguyễn Minh Quốc
+TITLE;CHARSET=utf-8:Trưởng Phòng Quản lý Nợ
+TEL;TYPE=WORK:39574491
+TEL;TYPE=CELL:0963797874
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:quocnm.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD
