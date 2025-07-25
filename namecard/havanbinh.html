@@ -125,7 +125,7 @@ body{
   <p>📞 0913 187 188</p>
   <p>📧 binhhv.stn@vietcombank.com.vn</p>
   <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
-  <a href="/vcf/nguyenquanghai.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
+  <a href="/vcf/havanbinh.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
   <p id="androidHint" style="display:none;font-size:14px;color:#555">
     Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
   </p>
@@ -133,7 +133,7 @@ body{
     Nếu quý khách đang sử dụng phần mềm Zalo trên iOS (Iphone, Ipad), vui lòng bấm vào dấu "..." ở góc bên phải màn hình và chọn "Mở bằng Safari", sau đó thử "Thêm vào danh bạ" một lần nữa.
   </p>
   <p id="iosDownloadHint" style="display:none;font-size:14px;color:#555">
-    <a href="/vcf/nguyenquanghai.vcf" download>Nhấn để tải file vCard</a><br>
+    <a href="/vcf/havanbinh.vcf" download>Nhấn để tải file vCard</a><br>
     Sau khi tải, mở file trong ứng dụng Files để thêm vào Danh bạ.
   </p>
 </div>
@@ -156,7 +156,7 @@ body{
 </div>
 
 <!-- Các popup Trưởng phòng -->
-<div id="khblPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng KH Bán lẻ</h3><p><strong>Tên:</strong> Nguyễn Như Tiệp</p><p><a href="/namecard/nguyenquanghai">Thông tin liên hệ</a></p></div></div>
+<div id="khblPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng KH Bán lẻ</h3><p><strong>Tên:</strong> Nguyễn Như Tiệp</p><p><a href="/namecard/havanbinh">Thông tin liên hệ</a></p></div></div>
 <div id="khdnPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng KH Doanh nghiệp</h3><p><strong>Tên:</strong> Nguyễn Duy Ngọc</p><p><a href="/namecard/nguyenduyngoc">Thông tin liên hệ</a></p></div></div>
 <div id="qlNoPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng Quản lý Nợ</h3><p><strong>Tên:</strong> Nguyễn Minh Quốc</p><p><a href="/namecard/nguyenminhquoc">Thông tin liên hệ</a></p></div></div>
 <div id="keToanPopup" class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng Kế toán</h3><p><strong>Tên:</strong> Lê Thị Ngọc Diệp</p><p><a href="/namecard/lethingocdiep">Thông tin liên hệ</a></p></div></div>
@@ -228,13 +228,13 @@ END:VCARD`;
       const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
       const a = document.createElement('a');
       a.href = vcfUrl;
-      a.download = 'nguyenquanghai.vcf';
+      a.download = 'havanbinh.vcf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       // Fallback: Open in Safari
       setTimeout(() => {
-        const safariUrl = 'https://saithanh051.netlify.app/vcf/nguyenquanghai.vcf';
+        const safariUrl = 'https://saithanh051.netlify.app/vcf/havanbinh.vcf';
         window.open(safariUrl, '_system');
       }, 500);
     });
@@ -249,7 +249,7 @@ END:VCARD`;
       const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
       const a = document.createElement('a');
       a.href = vcfUrl;
-      a.download = 'nguyenquanghai.vcf';
+      a.download = 'havanbinh.vcf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
