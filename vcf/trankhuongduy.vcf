@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Trần Khương Duy;;;
+FN;CHARSET=utf-8:Trần Khương Duy
+TITLE;CHARSET=utf-8:Phó Trưởng Phòng Phòng Khách Hàng Doanh Nghiệp
+TEL;TYPE=WORK:(84-28) 3957 4437
+TEL;TYPE=CELL:(84) 971 288 488
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:duytk.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

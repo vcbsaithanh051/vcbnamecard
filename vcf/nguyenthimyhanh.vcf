@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Nguyễn Thị Mỹ Hạnh;;;
+FN;CHARSET=utf-8:Nguyễn Thị Mỹ Hạnh
+TITLE;CHARSET=utf-8:Phó Trưởng Phòng Kế toán
+TEL;TYPE=WORK:028.39572915
+TEL;TYPE=CELL:0908501784
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:hanhntm.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

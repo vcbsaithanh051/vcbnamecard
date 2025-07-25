@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Huỳnh Thị Phi Yến;;;
+FN;CHARSET=utf-8:Huỳnh Thị Phi Yến
+TITLE;CHARSET=utf-8:Trưởng phòng Dịch vụ khách hàng
+TEL;TYPE=WORK:028.39572130
+TEL;TYPE=CELL:0985231012
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:yenhtp.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Nguyễn Bá Vũ;;;
+FN;CHARSET=utf-8:Nguyễn Bá Vũ
+TITLE;CHARSET=utf-8:Phó trưởng phòng Khách hàng doanh nghiệp
+TEL;TYPE=WORK:028 3957 4437
+TEL;TYPE=CELL:0937 05 50 05
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:vunb.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

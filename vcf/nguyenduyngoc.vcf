@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Nguyễn Duy Ngọc;;;
+FN;CHARSET=utf-8:Nguyễn Duy Ngọc
+TITLE;CHARSET=utf-8:Trưởng phòng KHDN
+TEL;TYPE=WORK:
+TEL;TYPE=CELL:0934013007
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:ngocnd.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD
