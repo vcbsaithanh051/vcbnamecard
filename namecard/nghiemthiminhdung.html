@@ -29,7 +29,7 @@ body{
 /* ---------- Banner ---------- */
 .banner{
   width:100%;height:280px;
-  background:url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/phamnguyenlinhchi.png')
+  background:url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nghiemthiminhdung.png')
             center/cover no-repeat;
 }
 .banner-text{text-align:center;padding:20px 10px 0}
@@ -103,9 +103,9 @@ body{
 
 <!-- ===== Info Card ===== -->
 <div class="info-card">
-  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/phamnguyenlinhchi.png" alt="Ảnh đại diện" class="avatar"/>
-  <h2>Phạm Nguyễn Linh Chi</h2>
-  <p>Trưởng phòng</p>
+  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nghiemthiminhdung.png" alt="Ảnh đại diện" class="avatar"/>
+  <h2>NGHIÊM THỊ MINH DUNG</h2>
+  <p>PBO đa nhiệm</p>
   <p><strong>Chi nhánh:</strong>
      <a href="#" data-target="branchPopup" class="open-popup" style="color:#006c3f;text-decoration:underline">Sài Thành</a>
   </p>
@@ -122,10 +122,10 @@ body{
   </p>
   <p><a href="#" data-target="subBranchPopup" class="open-popup" id="directSubBranchLink">
       Và địa chỉ các phòng giao dịch trực thuộc</a></p>
-  <p>📞 0813138139</p>
-  <p>📧 chipnl.stn@vietcombank.com.vn</p>
+  <p>📞 0888199386</p>
+  <p>📧 dungntm.stn@vietcombank.com.vn</p>
   <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
-  <a href="/vcf/phamnguyenlinhchi.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
+  <a href="/vcf/nghiemthiminhdung.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
   <p id="androidHint" style="display:none;font-size:14px;color:#555">
     Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
   </p>
@@ -133,7 +133,7 @@ body{
     Nếu quý khách đang sử dụng phần mềm Zalo trên iOS (Iphone, Ipad), vui lòng bấm vào dấu "..." ở góc bên phải màn hình và chọn "Mở bằng Safari", sau đó thử "Thêm vào danh bạ" một lần nữa.
   </p>
   <p id="iosDownloadHint" style="display:none;font-size:14px;color:#555">
-    <a href="/vcf/phamnguyenlinhchi.vcf" download>Nhấn để tải file vCard</a><br>
+    <a href="/vcf/nghiemthiminhdung.vcf" download>Nhấn để tải file vCard</a><br>
     Sau khi tải, mở file trong ứng dụng Files để thêm vào Danh bạ.
   </p>
 </div>
@@ -191,12 +191,12 @@ const addContactBtn = document.getElementById('addContactBtn');
 if (addContactBtn) {
   const vcardData = `BEGIN:VCARD
 VERSION:3.0
-N:Phạm;Nguyễn;Linh;Chi
-FN:Phạm Nguyễn Linh Chi
+N:NGHIÊM;THỊ;MINH;DUNG
+FN:NGHIÊM THỊ MINH DUNG
 ORG:Ngân hàng TMCP Ngoại thương Việt Nam
-TITLE:Trưởng phòng
-EMAIL;TYPE=WORK:chipnl.stn@vietcombank.com.vn
-TEL;TYPE=CELL:0813138139
+TITLE:PBO đa nhiệm
+EMAIL;TYPE=WORK:dungntm.stn@vietcombank.com.vn
+TEL;TYPE=CELL:0888199386
 ADR;TYPE=WORK:;;Số 2A-2B-2C Lý Thường Kiệt;P. Chợ Lớn;TP. HCM;;Việt Nam
 END:VCARD`;
 
@@ -222,12 +222,12 @@ END:VCARD`;
       const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
       const a = document.createElement('a');
       a.href = vcfUrl;
-      a.download = 'phamnguyenlinhchi.vcf';
+      a.download = 'nghiemthiminhdung.vcf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       setTimeout(() => {
-        const safariUrl = 'https://saithanh051.netlify.app/vcf/phamnguyenlinhchi.vcf';
+        const safariUrl = 'https://saithanh051.netlify.app/vcf/nghiemthiminhdung.vcf';
         window.open(safariUrl, '_system');
       }, 500);
     });
@@ -242,7 +242,7 @@ END:VCARD`;
       const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
       const a = document.createElement('a');
       a.href = vcfUrl;
-      a.download = 'phamnguyenlinhchi.vcf';
+      a.download = 'nghiemthiminhdung.vcf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

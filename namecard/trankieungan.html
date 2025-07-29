@@ -1,1 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thông tin liên hệ</title>
+<link rel="icon" type="image/webp"
+      href="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp"/>
 
+<!-- ===== CSS ===== -->
+<style>
+:root{
+  --vcb-green:#009639;
+  --vcb-green-dark:#007f2a;
+  --text:#333;
+  --radius:16px;
+  --shadow:0 8px 20px rgba(0,0,0,.08);
+  --transition:.3s ease;
+  --icon-size:1em;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Work Sans',sans-serif;
+  background:#e6f7ef;
+  color:var(--text);
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ---------- Banner ---------- */
+.banner{
+  width:100%;height:280px;
+  background:url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/trankieungan.png')
+            center/cover no-repeat;
+}
+.banner-text{text-align:center;padding:20px 10px 0}
+.banner-text h1{font-size:26px;color:#006c3f;font-weight:700;margin-bottom:6px}
+.banner-text h2{font-size:21px;color:var(--vcb-green);font-weight:500}
+
+/* ---------- Info Card ---------- */
+.info-card{
+  background:#fff;max-width:480px;margin:40px auto 20px;
+  padding:80px 20px 30px;border-radius:var(--radius);box-shadow:var(--shadow);
+  text-align:center;position:relative
+}
+.avatar{
+  width:120px;height:120px;border-radius:50%;object-fit:cover;
+  border:5px solid #fff;position:absolute;top:-30px;left:50%;
+  transform:translateX(-50%);background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.2)
+}
+.info-card h2{margin-top:10px;font-size:22px;color:#006c3f;font-weight:600}
+.info-card p{font-size:15px;margin:6px 0}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-block;margin:12px 6px 0;padding:12px 20px;font-weight:600;
+     border-radius:6px;font-size:15px;text-decoration:none;transition:var(--transition)}
+.btn-green{background:var(--vcb-green);color:#fff}
+.btn-green:hover{background:var(--vcb-green-dark)}
+.btn-outline{border:2px solid var(--vcb-green);color:var(--vcb-green);background:#fff}
+.btn-outline:hover{background:#f0fdf4}
+
+/* ---------- Icons ---------- */
+.address-icon-container{display:inline-block;margin-right:5px}
+.icon-address{width:var(--icon-size);height:var(--icon-size);vertical-align:-2px}
+
+/* ---------- Overlay / Popup ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);
+  display:none;align-items:center;justify-content:center;padding:20px;
+  z-index:9999
+}
+.overlay.show{display:flex}
+.overlay.blur{filter:blur(4px);pointer-events:none}
+.popup{
+  background:#fff;border-radius:8px;max-width:500px;width:90%;padding:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.2);position:relative
+}
+.popup h3{margin-bottom:10px}
+.btn-close{
+  position:absolute;top:10px;right:10px;font-size:1.4rem;color:#999;cursor:pointer;
+  background:none;border:none
+}
+.btn-close:hover{color:#333}
+.branch-list{list-style:none;margin:0;padding:0}
+.branch-list li{margin:8px 0;font-size:15px}
+
+/* ---------- Responsive ---------- */
+@media(max-width:480px){
+  .banner-text h1{font-size:20px}
+  .banner-text h2{font-size:17px}
+  .info-card{margin:40px 10px 20px;padding:70px 15px 25px}
+  .avatar{width:100px;height:100px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Banner ===== -->
+<div class="banner"></div>
+<div class="banner-text">
+  <h2>Ngân hàng TMCP Ngoại thương Việt Nam</h2>
+  <h2><strong>Chi nhánh Sài Thành</strong></h2>
+</div>
+
+<!-- ===== Info Card ===== -->
+<div class="info-card">
+  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/trankieungan.png" alt="Ảnh đại diện" class="avatar"/>
+  <h2>Trần Kiều Ngân</h2>
+  <p>Chuyên viên Tư vấn Dịch vụ</p>
+  <p><strong>Chi nhánh:</strong>
+     <a href="#" data-target="branchPopup" class="open-popup" style="color:#006c3f;text-decoration:underline">Sài Thành</a>
+  </p>
+  <p>
+    <span class="address-icon-container">
+      <svg class="icon-address" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill="#006c3f" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+    </span>
+    <strong>Địa chỉ:</strong>
+    <a href="https://maps.app.goo.gl/7tQm8pVuuuc2koZ57" target="_blank" rel="noopener">
+      Số 2A-2B-2C Lý Thường Kiệt, P. Chợ Lớn, TP. HCM
+    </a>
+  </p>
+  <p><a href="#" data-target="subBranchPopup" class="open-popup" id="directSubBranchLink">
+      Và địa chỉ các phòng giao dịch trực thuộc</a></p>
+  <p>📞 039 303 9899</p>
+  <p>📧 ngantk.stn@vietcombank.com.vn</p>
+  <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
+  <a href="/vcf/trankieungan.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
+  <p id="androidHint" style="display:none;font-size:14px;color:#555">
+    Tệp vCard sẽ được tải xuống. Nhấn mở tệp để thêm vào danh bạ.
+  </p>
+  <p id="iosHint" style="display:none;font-size:14px;color:#555">
+    Nếu quý khách đang sử dụng phần mềm Zalo trên iOS (Iphone, Ipad), vui lòng bấm vào dấu "..." ở góc bên phải màn hình và chọn "Mở bằng Safari", sau đó thử "Thêm vào danh bạ" một lần nữa.
+  </p>
+  <p id="iosDownloadHint" style="display:none;font-size:14px;color:#555">
+    <a href="/vcf/trankieungan.vcf" download>Nhấn để tải file vCard</a><br>
+    Sau khi tải, mở file trong ứng dụng Files để thêm vào Danh bạ.
+  </p>
+</div>
+
+<!-- ===== Popups ===== -->
+<!-- Popup Chi nhánh -->
+<div id="branchPopup" class="overlay" role="dialog" aria-modal="true">
+  <div class="popup">
+    <button class="btn-close" aria-label="Đóng">×</button>
+    <h3>Chi nhánh Sài Thành</h3>
+    <ul class="branch-list">
+      <li><a href="#" data-target="khdnPopup"    class="open-popup">Trưởng phòng Khách hàng Doanh nghiệp</a></li>
+      <li><a href="#" data-target="qlNoPopup"    class="open-popup">Trưởng phòng Quản lý Nợ</a></li>
+      <li><a href="#" data-target="keToanPopup"  class="open-popup">Trưởng phòng Kế toán</a></li>
+      <li><a href="#" data-target="dvkhPopup"    class="open-popup">Trưởng phòng Dịch vụ Khách hàng</a></li>
+      <li><a href="#" data-target="subBranchPopup" class="open-popup">Địa chỉ các Phòng giao dịch</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Các popup Trưởng phòng -->
+<div id="khdnPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng KH Doanh nghiệp</h3><p><strong>Tên:</strong> Nguyễn Duy Ngọc</p><p><a href="/namecard/nguyenduyngoc">Thông tin liên hệ</a></p></div></div>
+<div id="qlNoPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng Quản lý Nợ</h3><p><strong>Tên:</strong> Nguyễn Minh Quốc</p><p><a href="/namecard/nguyenminhquoc">Thông tin liên hệ</a></p></div></div>
+<div id="keToanPopup" class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng Kế toán</h3><p><strong>Tên:</strong> Lê Thị Ngọc Diệp</p><p><a href="/namecard/lethingocdiep">Thông tin liên hệ</a></p></div></div>
+<div id="dvkhPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng DVKH</h3><p><strong>Tên:</strong> Huỳnh Thị Phi Yến</p><p><a href="/namecard/huynhthiphiyen">Thông tin liên hệ</a></p></div></div>
+
+<!-- Popup danh sách PGD -->
+<div id="subBranchPopup" class="overlay" role="dialog" aria-modal="true">
+  <div class="popup">
+    <button class="btn-close" aria-label="Đóng">×</button>
+    <h3>Địa chỉ các Phòng giao dịch</h3>
+    <ul class="branch-list">
+      <li><a href="#" data-target="pgdBinhThanhPopup" class="open-popup">PGD Bình Thạnh</a><br>
+          <a href="https://maps.app.goo.gl/VEuctfevMjqg7fZs5" target="_blank" style="font-size:14px;color:#555">136-138 đường Nguyễn Gia Trí, Phường Thạnh Mỹ Tây, TP. HCM</a></li>
+      <li><a href="#" data-target="pgdTranHungDaoPopup" class="open-popup">PGD Trần Hưng Đạo</a><br>
+          <a href="https://maps.app.goo.gl/yX1abDUvjuviDkGSA" target="_blank" style="font-size:14px;color:#555">821-823 Trần Hưng Đạo, Phường Chợ Quán, TP. HCM</a></li>
+      <li><a href="#" data-target="pgdNgoGiaTuPopup" class="open-popup">PGD Ngô Gia Tự</a><br>
+          <a href="https://maps.app.goo.gl/7b3eCDLPfQFFHhnG9" target="_blank" style="font-size:14px;color:#555">73-75 Ngô Gia Tự, Phường Vườn Lài, TP. HCM</a></li>
+      <li><a href="#" data-target="pgdVoVanTanPopup" class="open-popup">PGD Võ Văn Tần</a><br>
+          <a href="https://maps.app.goo.gl/4M7Tbp7aRXuAQEYd8" target="_blank" style="font-size:14px;color:#555">Tầng trệt toà nhà Estar số 147-149 Võ Văn Tần, Phường Xuân Hoà, TP. HCM</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Các popup PGD -->
+<div id="pgdBinhThanhPopup"  class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin PGD Bình Thạnh</h3><p><strong>Trưởng phòng:</strong> Nguyễn Đức Nhật Phương</p><p><a href="/namecard/nguyenducnhatphuong">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Võ Thị Hồng Thúy</p><p><a href="/namecard/vothihongthuy">Thông tin liên hệ</a></p></div></div>
+<div id="pgdTranHungDaoPopup" class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin PGD Trần Hưng Đạo</h3><p><strong>Trưởng phòng:</strong> Đỗ Thị Mỹ Phương</p><p><a href="/namecard/dothimyphuong">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Hà Ngô Thị Tuyết</p><p><a href="/namecard/hangothituyet">Thông tin liên hệ</a></p></div></div>
+<div id="pgdNgoGiaTuPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin PGD Ngô Gia Tự</h3><p><strong>Trưởng phòng:</strong> Liêu Thị Kim Chi</p><p><a href="/namecard/lieuthikimchi">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Lê Huy</p><p><a href="/namecard/lehuy">Thông tin liên hệ</a></p></div></div>
+<div id="pgdVoVanTanPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin PGD Võ Văn Tần</h3><p><strong>Trưởng phòng:</strong> Phan Nhất Linh</p><p><a href="/namecard/phannhatlinh">Thông tin liên hệ</a></p><p><strong>Phó phòng:</strong> Trần Thị Diệu Phương</p><p><a href="/namecard/tranthidieuphuong">Thông tin liên hệ</a></p></div></div>
+
+<!-- ===== JavaScript ===== -->
+<script>
+/* ---------- Android vCard xử lý tự động và Zalo trên Android/iOS ---------- */
+const addContactBtn = document.getElementById('addContactBtn');
+if (addContactBtn) {
+  const vcardData = `BEGIN:VCARD
+VERSION:3.0
+N:Trần;Kiều;Ngân
+FN:Trần Kiều Ngân
+ORG:Ngân hàng TMCP Ngoại thương Việt Nam
+TITLE:Chuyên viên Tư vấn Dịch vụ
+EMAIL;TYPE=WORK:ngantk.stn@vietcombank.com.vn
+TEL;TYPE=CELL:039 303 9899
+ADR;TYPE=WORK:;;Số 2A-2B-2C Lý Thường Kiệt;P. Chợ Lớn;TP. HCM;;Việt Nam
+END:VCARD`;
+
+  const isZalo = /Zalo/i.test(navigator.userAgent);
+  const isAndroid = /android/i.test(navigator.userAgent);
+  const isIOS = /iPhone|iPad/i.test(navigator.userAgent);
+
+  if (isZalo && isAndroid) {
+    addContactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const vcfUrl = addContactBtn.href;
+      const intentUrl = `intent://${vcfUrl.replace('https://', '')}#Intent;scheme=https;action=android.intent.action.VIEW;package=com.android.chrome;end`;
+      window.location.href = intentUrl;
+      setTimeout(() => {
+        alert('Nếu file không được tải, vui lòng bấm vào dấu "..." bên góc phải màn hình và mở liên kết này bằng trình duyệt sau đó thử lại.');
+      }, 1000);
+    });
+  } else if (isZalo && isIOS) {
+    document.getElementById('iosHint').style.display = 'block';
+    document.getElementById('iosDownloadHint').style.display = 'block';
+    addContactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
+      const a = document.createElement('a');
+      a.href = vcfUrl;
+      a.download = 'trankieungan.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => {
+        const safariUrl = 'https://saithanh051.netlify.app/vcf/trankieungan.vcf';
+        window.open(safariUrl, '_system');
+      }, 500);
+    });
+  } else if (isAndroid) {
+    addContactBtn.setAttribute('download', '');
+    document.getElementById('androidHint').style.display = 'block';
+  } else if (isIOS) {
+    document.getElementById('iosHint').style.display = 'block';
+    document.getElementById('iosDownloadHint').style.display = 'block';
+    addContactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
+      const a = document.createElement('a');
+      a.href = vcfUrl;
+      a.download = 'trankieungan.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  }
+}
+
+/* ---------- Logic Popup Stack ---------- */
+const stack = [];
+function openOverlay(id) {
+  const ov = document.getElementById(id);
+  if (!ov) return;
+  if (stack.length) { stack.at(-1).classList.add('blur'); }
+  ov.classList.add('show');
+  stack.push(ov);
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTopOverlay() {
+  if (!stack.length) return;
+  const ov = stack.pop();
+  ov.classList.remove('show', 'blur');
+  if (stack.length) {
+    stack.at(-1).classList.remove('blur');
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+document.querySelectorAll('.open-popup').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    openOverlay(el.dataset.target);
+  });
+});
+
+document.querySelectorAll('.btn-close').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    closeTopOverlay();
+  });
+});
+
+document.querySelectorAll('.overlay').forEach(ov => {
+  ov.addEventListener('click', e => {
+    if (e.target === ov) closeTopOverlay();
+  });
+});
+</script>
+</body>
+</html>

@@ -104,8 +104,8 @@ body{
 <!-- ===== Info Card ===== -->
 <div class="info-card">
   <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyennhutiep.png" alt="Ảnh đại diện" class="avatar"/>
-  <h2>Nguyễn Như Tiệp</h2>
-  <p>Trưởng phòng Khách hàng Bán lẻ</p>
+  <h2>Nguyễn Như Tiệp </h2>
+  <p>Trưởng phòng Khách hàng Bán lẻ </p>
   <p><strong>Chi nhánh:</strong>
      <a href="#" data-target="branchPopup" class="open-popup" style="color:#006c3f;text-decoration:underline">Sài Thành</a>
   </p>
@@ -122,7 +122,7 @@ body{
   </p>
   <p><a href="#" data-target="subBranchPopup" class="open-popup" id="directSubBranchLink">
       Và địa chỉ các phòng giao dịch trực thuộc</a></p>
-  <p>📞 0906 577 986</p>
+  <p>📞 0906577986</p>
   <p>📧 tiepnn.stn@vietcombank.com.vn</p>
   <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
   <a href="/vcf/nguyennhutiep.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
@@ -189,25 +189,22 @@ body{
 /* ---------- Android vCard xử lý tự động và Zalo trên Android/iOS ---------- */
 const addContactBtn = document.getElementById('addContactBtn');
 if (addContactBtn) {
-  // Sample VCF content (replace with actual VCF data)
   const vcardData = `BEGIN:VCARD
 VERSION:3.0
-N:Nguyen;Nhu Tiep
-FN:Nguyễn Như Tiệp
+N:Nguyễn;Như;Tiệp;
+FN:Nguyễn Như Tiệp 
 ORG:Ngân hàng TMCP Ngoại thương Việt Nam
-TITLE:Trưởng phòng Khách hàng Bán lẻ
+TITLE:Trưởng phòng Khách hàng Bán lẻ 
 EMAIL;TYPE=WORK:tiepnn.stn@vietcombank.com.vn
 TEL;TYPE=CELL:0906577986
 ADR;TYPE=WORK:;;Số 2A-2B-2C Lý Thường Kiệt;P. Chợ Lớn;TP. HCM;;Việt Nam
 END:VCARD`;
 
-  // Kiểm tra User Agent để phát hiện Zalo và hệ điều hành
   const isZalo = /Zalo/i.test(navigator.userAgent);
   const isAndroid = /android/i.test(navigator.userAgent);
   const isIOS = /iPhone|iPad/i.test(navigator.userAgent);
 
   if (isZalo && isAndroid) {
-    // Xử lý cho Android trong Zalo với Intent
     addContactBtn.addEventListener('click', (e) => {
       e.preventDefault();
       const vcfUrl = addContactBtn.href;
@@ -222,7 +219,6 @@ END:VCARD`;
     document.getElementById('iosDownloadHint').style.display = 'block';
     addContactBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      // Try data URL first
       const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
       const a = document.createElement('a');
       a.href = vcfUrl;
@@ -230,7 +226,6 @@ END:VCARD`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      // Fallback: Open in Safari
       setTimeout(() => {
         const safariUrl = 'https://saithanh051.netlify.app/vcf/nguyennhutiep.vcf';
         window.open(safariUrl, '_system');
