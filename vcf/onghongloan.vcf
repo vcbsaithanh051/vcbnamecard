@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Ông Hồng Loan;;;
+FN;CHARSET=utf-8:Ông Hồng Loan
+TITLE;CHARSET=utf-8:Nhân viên Phòng DVKH
+TEL;TYPE=WORK:02839571451
+TEL;TYPE=CELL:0937049551
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:Loanoh.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;NGUYỄN THỊ LỆ AN;;;
+FN;CHARSET=utf-8:NGUYỄN THỊ LỆ AN
+TITLE;CHARSET=utf-8:Thanh toán viên
+TEL;TYPE=WORK:(028)39572130
+TEL;TYPE=CELL:0972941833
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:anntl.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

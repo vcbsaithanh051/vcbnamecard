@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Trần Thị Diệu Phương;;;
+FN;CHARSET=utf-8:Trần Thị Diệu Phương
+TITLE;CHARSET=utf-8:Phó trưởng phòng Phòng giao dịch Võ Văn Tần
+TEL;TYPE=WORK:(84-28) 39309916
+TEL;TYPE=CELL:(84) 916.24.26.25
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:phuongttd.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

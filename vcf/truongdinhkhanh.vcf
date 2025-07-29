@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Trương Đình Khanh;;;
+FN;CHARSET=utf-8:Trương Đình Khanh
+TITLE;CHARSET=utf-8:Chuyên viên Phòng Giao dịch Bình Thạnh
+TEL;TYPE=WORK:035.992.5466
+TEL;TYPE=CELL:035.992.5466
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:khanhtd.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

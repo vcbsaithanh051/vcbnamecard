@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Hứa Minh Quang;;;
+FN;CHARSET=utf-8:Hứa Minh Quang
+TITLE;CHARSET=utf-8:Cán Bộ Phòng Khách Hàng Doanh Nghiệp
+TEL;TYPE=WORK:(84-28) 3957 4437
+TEL;TYPE=CELL:0938956924
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:quanghm.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

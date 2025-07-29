@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Trần Thanh Thuận;;;
+FN;CHARSET=utf-8:Trần Thanh Thuận
+TITLE;CHARSET=utf-8:Chuyên viên thẩm định tín dụng bán buôn (Credit Analyst) - Corporate Banking Department
+TEL;TYPE=WORK:
+TEL;TYPE=CELL:0917979512
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:thuantt.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

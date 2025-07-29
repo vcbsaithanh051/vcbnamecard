@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Mã Ngọc Linh Ngân;;;
+FN;CHARSET=utf-8:Mã Ngọc Linh Ngân
+TITLE;CHARSET=utf-8:CSA
+TEL;TYPE=WORK:0859862222
+TEL;TYPE=CELL:0859862222
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:nganmnl.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

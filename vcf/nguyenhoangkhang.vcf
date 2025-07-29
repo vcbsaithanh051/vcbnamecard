@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Nguyễn Hoàng Khang;;;
+FN;CHARSET=utf-8:Nguyễn Hoàng Khang
+TITLE;CHARSET=utf-8:Chuyên viên quan hệ KHDN
+TEL;TYPE=WORK:(84-28) 39574437
+TEL;TYPE=CELL:(84) 936 168 122
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:khangnh.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

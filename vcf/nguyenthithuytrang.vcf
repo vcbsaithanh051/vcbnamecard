@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Nguyễn Thị Thùy Trang ;;;
+FN;CHARSET=utf-8:Nguyễn Thị Thùy Trang 
+TITLE;CHARSET=utf-8:Cán bộ Phòng Khách hàng Bán lẻ
+TEL;TYPE=WORK:02839571450
+TEL;TYPE=CELL:0901117227
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:trangntt.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

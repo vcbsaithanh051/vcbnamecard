@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Võ Thị Thanh Thủy;;;
+FN;CHARSET=utf-8:Võ Thị Thanh Thủy
+TITLE;CHARSET=utf-8:CSA
+TEL;TYPE=WORK:0901889250
+TEL;TYPE=CELL:0901889250
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:thuyvtt.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Phạm Cát Sơn;;;
+FN;CHARSET=utf-8:Phạm Cát Sơn
+TITLE;CHARSET=utf-8:Chuyên viên Phòng Khách hàng doanh nghiệp
+TEL;TYPE=WORK:028 3957 4437
+TEL;TYPE=CELL:0367 186 179
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:sonpc.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

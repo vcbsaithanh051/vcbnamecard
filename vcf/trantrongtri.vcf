@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Trần Trọng Trí;;;
+FN;CHARSET=utf-8:Trần Trọng Trí
+TITLE;CHARSET=utf-8:Chuyên viên Quan Hệ Khách hàng (RM)
+TEL;TYPE=WORK:(028) 39620977
+TEL;TYPE=CELL:0983884916
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:tritt.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

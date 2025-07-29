@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Đặng Thị Thu Hường;;;
+FN;CHARSET=utf-8:Đặng Thị Thu Hường
+TITLE;CHARSET=utf-8:Chuyên viên Thẩm định tín dụng 
+TEL;TYPE=WORK:0943913979
+TEL;TYPE=CELL:0943913979
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:huongdtt.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

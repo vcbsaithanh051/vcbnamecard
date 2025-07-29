@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Trần Thành Luân;;;
+FN;CHARSET=utf-8:Trần Thành Luân
+TITLE;CHARSET=utf-8:Chuyên viên
+TEL;TYPE=WORK:
+TEL;TYPE=CELL:0938491825
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:luantt.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

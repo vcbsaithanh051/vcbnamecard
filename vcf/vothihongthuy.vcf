@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;VO THI HONG THUY;;;
+FN;CHARSET=utf-8:VO THI HONG THUY
+TITLE;CHARSET=utf-8:Phó Trưởng Phòng 
+TEL;TYPE=WORK:028-39650275
+TEL;TYPE=CELL:0909281169
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:thuyvth.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD

@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Lương Anh Vũ;;;
+FN;CHARSET=utf-8:Lương Anh Vũ
+TITLE;CHARSET=utf-8:Cán bộ Phòng Hành chính Nhân sự
+TEL;TYPE=WORK:
+TEL;TYPE=CELL:0918851232
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:vula.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HCM;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD
