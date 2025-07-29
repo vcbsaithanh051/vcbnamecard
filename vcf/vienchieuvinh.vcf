@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=utf-8:;Viên;Chiêu;Vinh;;;
+FN;CHARSET=utf-8:Viên Chiêu Vinh
+TITLE;CHARSET=utf-8:Phó Trưởng phòng Hành chính Nhân sự
+TEL;TYPE=WORK:
+TEL;TYPE=CELL: 0944 320 132
+ORG;CHARSET=utf-8:VCB Sài Thành
+EMAIL;INTERNET:vinhvc.stn@vietcombank.com.vn
+ADR;WORK;POSTAL;CHARSET=utf-8:;2A - 2B - 2C Đường Lý Thường Kiệt, Phường Chợ Lớn, TP HC
+ M;;;;;
+URL:www.vietcombank.com.vn
+NOTE:
+END:VCARD
