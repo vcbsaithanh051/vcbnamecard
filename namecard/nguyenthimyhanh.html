@@ -29,7 +29,7 @@ body{
 /* ---------- Banner ---------- */
 .banner{
   width:100%;height:280px;
-  background:url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyenthimyhanh.png')
+  background:url('https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp')
             center/cover no-repeat;
 }
 .banner-text{text-align:center;padding:20px 10px 0}
@@ -103,7 +103,7 @@ body{
 
 <!-- ===== Info Card ===== -->
 <div class="info-card">
-  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/avatar/nguyenthimyhanh.png" alt="Ảnh đại diện" class="avatar"/>
+  <img src="https://raw.githubusercontent.com/vcbsaithanh051/vcbnamecard/main/Icon-Vietcombank.webp" alt="Ảnh đại diện" class="avatar"/>
   <h2>Nguyễn Thị Mỹ Hạnh</h2>
   <p>Phó Trưởng Phòng Kế toán</p>
   <p><strong>Chi nhánh:</strong>
@@ -122,7 +122,7 @@ body{
   </p>
   <p><a href="#" data-target="subBranchPopup" class="open-popup" id="directSubBranchLink">
       Và địa chỉ các phòng giao dịch trực thuộc</a></p>
-  <p>📞 0908501784</p>
+  <p>📞 0908 501 784</p>
   <p>📧 hanhntm.stn@vietcombank.com.vn</p>
   <a href="/product.html" class="btn btn-green">Tìm hiểu sản phẩm & dịch vụ</a>
   <a href="/vcf/nguyenthimyhanh.vcf" class="btn btn-outline" id="addContactBtn">➕ Thêm vào Danh bạ</a>
@@ -145,6 +145,7 @@ body{
     <button class="btn-close" aria-label="Đóng">×</button>
     <h3>Chi nhánh Sài Thành</h3>
     <ul class="branch-list">
+      <li><a href="#" data-target="khblPopup"    class="open-popup">Trưởng phòng Khách hàng Bán lẻ</a></li>
       <li><a href="#" data-target="khdnPopup"    class="open-popup">Trưởng phòng Khách hàng Doanh nghiệp</a></li>
       <li><a href="#" data-target="qlNoPopup"    class="open-popup">Trưởng phòng Quản lý Nợ</a></li>
       <li><a href="#" data-target="keToanPopup"  class="open-popup">Trưởng phòng Kế toán</a></li>
@@ -155,6 +156,7 @@ body{
 </div>
 
 <!-- Các popup Trưởng phòng -->
+<div id="khblPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng KH Bán lẻ</h3><p><strong>Tên:</strong> Nguyễn Như Tiệp</p><p><a href="/namecard/nguyenthimyhanh">Thông tin liên hệ</a></p></div></div>
 <div id="khdnPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng KH Doanh nghiệp</h3><p><strong>Tên:</strong> Nguyễn Duy Ngọc</p><p><a href="/namecard/nguyenduyngoc">Thông tin liên hệ</a></p></div></div>
 <div id="qlNoPopup"   class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng Quản lý Nợ</h3><p><strong>Tên:</strong> Nguyễn Minh Quốc</p><p><a href="/namecard/nguyenminhquoc">Thông tin liên hệ</a></p></div></div>
 <div id="keToanPopup" class="overlay"><div class="popup"><button class="btn-close">×</button><h3>Thông tin Trưởng phòng Kế toán</h3><p><strong>Tên:</strong> Lê Thị Ngọc Diệp</p><p><a href="/namecard/lethingocdiep">Thông tin liên hệ</a></p></div></div>
@@ -189,22 +191,25 @@ body{
 /* ---------- Android vCard xử lý tự động và Zalo trên Android/iOS ---------- */
 const addContactBtn = document.getElementById('addContactBtn');
 if (addContactBtn) {
+  // Sample VCF content (replace with actual VCF data)
   const vcardData = `BEGIN:VCARD
 VERSION:3.0
-N:Nguyễn;Thị;Mỹ;Hạnh
+N:Nguyen;Thi My Hanh
 FN:Nguyễn Thị Mỹ Hạnh
 ORG:Ngân hàng TMCP Ngoại thương Việt Nam
 TITLE:Phó Trưởng Phòng Kế toán
 EMAIL;TYPE=WORK:hanhntm.stn@vietcombank.com.vn
-TEL;TYPE=CELL:0908501784
+TEL;TYPE=CELL:0908 501 784
 ADR;TYPE=WORK:;;Số 2A-2B-2C Lý Thường Kiệt;P. Chợ Lớn;TP. HCM;;Việt Nam
 END:VCARD`;
 
+  // Kiểm tra User Agent để phát hiện Zalo và hệ điều hành
   const isZalo = /Zalo/i.test(navigator.userAgent);
   const isAndroid = /android/i.test(navigator.userAgent);
   const isIOS = /iPhone|iPad/i.test(navigator.userAgent);
 
   if (isZalo && isAndroid) {
+    // Xử lý cho Android trong Zalo với Intent
     addContactBtn.addEventListener('click', (e) => {
       e.preventDefault();
       const vcfUrl = addContactBtn.href;
@@ -219,6 +224,7 @@ END:VCARD`;
     document.getElementById('iosDownloadHint').style.display = 'block';
     addContactBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      // Try data URL first
       const vcfUrl = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardData);
       const a = document.createElement('a');
       a.href = vcfUrl;
@@ -226,6 +232,7 @@ END:VCARD`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+      // Fallback: Open in Safari
       setTimeout(() => {
         const safariUrl = 'https://saithanh051.netlify.app/vcf/nguyenthimyhanh.vcf';
         window.open(safariUrl, '_system');
